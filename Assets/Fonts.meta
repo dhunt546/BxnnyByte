@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Fonts.meta
 guid: c93e58d53b0e0d047b355ed2442f21d8
+========
+guid: 9cc39b867d6053640bd6d05723d19096
+>>>>>>>> fc138f6eb33f646fc3dac13c8ae0424b8077c6f2:Assets/Scenes/GameOver.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
