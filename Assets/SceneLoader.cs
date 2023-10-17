@@ -10,6 +10,12 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene(scene);
         Debug.Log("Loaded Scene" +  scene);
     }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
