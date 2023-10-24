@@ -10,7 +10,9 @@ public class PlayerAttack : MonoBehaviour
     //probably make this a protextmesh
 
     private Dictionary<KeyCode, string> KeyInputMappings = new Dictionary<KeyCode, string>();
-    private Dictionary<string, float> attackCooldowns = new Dictionary<string, float>();
+    private Dictionary<string, bool> attackCooldownFinished = new Dictionary<string, bool>();
+
+
 
     public float basicCooldown = 1.0f;
     public float spinCooldown = 5.0f;
@@ -23,6 +25,7 @@ public class PlayerAttack : MonoBehaviour
         KeyInputMappings[KeyCode.Space] = "Spin";
         KeyInputMappings[KeyCode.Q] = "PowerAttack";
         KeyInputMappings[KeyCode.LeftShift] = "Dodge";
+       
         
     }
 
@@ -39,22 +42,15 @@ public class PlayerAttack : MonoBehaviour
         //check key inputs for attacking
         foreach (var kvp in KeyInputMappings)
         {
-            if (Input.GetKey(kvp.Key))
+            string attackName = kvp.Value;
+            if (Input.GetKey(kvp.Key) && IsCooldownFinished(attackName))
             {
-                string attackName = kvp.Value;
+                
                 if (CanAttack(attackName))
-             {
+                 {
                     Attack(attackName);
-                  StartCooldown(attackName);
-                    
-            }
-               else
-               {
-                   Debug.Log("cant use" +  attackName);
-                   
-               }
-
-
+                  StartCooldown(attackName, GetCooldownTime(attackName));
+                 }
             }
         }
        
@@ -88,31 +84,49 @@ public class PlayerAttack : MonoBehaviour
   //checks if they have a cooldown of if their cooldown is not done yet
   bool CanAttack(string attackName)
   {
-      if (!attackCooldowns.ContainsKey(attackName))
-      {
-          Debug.LogWarning("Attack cooldown not found for " + attackName);
-          return true;
+      if (!IsCooldownFinished(attackName)) {
+            Debug.Log(CanAttack(attackName) + "false return");
+          return false;
+            
       }
-      float cooldown = attackCooldowns[attackName];
-      if (cooldown <= 0f) {
-          return true;
-      }
-      return false;
+      return true;
   }
 
+    bool IsCooldownFinished(string attackName)
+    {
+        if (!attackCooldownFinished.ContainsKey(attackName))
+        {
+            Debug.LogWarning("Attack cooldown state not found for " + attackName);
+            return true;
+        }
 
-   void StartCooldown(string attackName)
+        return attackCooldownFinished[attackName];
+    }
+
+    //sets attackcooldown name and gets cooldown time
+   void StartCooldown(string attackName, float cooldown)
    {
-       if (attackCooldowns.ContainsKey(attackName))
-       {
-           attackCooldowns[attackName] = GetCooldownTime(attackName);
-       }
-       else
-       {
-           Debug.LogWarning("attack cooldown not found for" +  attackName);
-       }
-   }
-   float GetCooldownTime(string attackName)
+
+        attackCooldownFinished[attackName] = false; // Cooldown started
+
+        // Start a coroutine to count down the cooldown
+        StartCoroutine(CountDownCooldown(attackName, GetCooldownTime(attackName)));
+    }
+    IEnumerator CountDownCooldown(string attackName, float cooldown)
+    {
+        float remainingCooldown = cooldown;
+
+        while (remainingCooldown > 0.0f)
+        {
+            remainingCooldown -= Time.deltaTime;
+            yield return null;
+        }
+
+        attackCooldownFinished[attackName] = true; // Cooldown finished
+    }
+
+    //declares cooldown time for each attack name
+    float GetCooldownTime(string attackName)
    {
        switch (attackName)
        {
@@ -129,52 +143,12 @@ public class PlayerAttack : MonoBehaviour
                return 0f;
        }
    }
-
-    ////cooldown counter
-    ////i was getting really bad errors so this is the fix idk 
-    //void UpdateCooldown()
-    //{
-    //      List<string> keysToRemove = new List<string>();
-    //      foreach (var kvp in attackCooldowns)
-    //      {
-    //          if (kvp.Value > 0.0f)
-    //          {
-    //              attackCooldowns[kvp.Key] -= Time.deltaTime;
-    //              if (kvp.Value <= 0.0f)
-    //              {
-    //                  keysToRemove.Add(kvp.Key);
-    //              }
-    //          }
-    //      }
-    //      // Remove keys with cooldowns that have reached or gone below 0
-    //      foreach (var key in keysToRemove)
-    //      {
-    //          attackCooldowns.Remove(key);
-    //      }
-    //}
-    void UpdateCooldowns()
+    void InitializeCooldowns()
     {
-        foreach (var kvp in attackCooldowns)
+        foreach (var kvp in KeyInputMappings)
         {
-            if (kvp.Value > 0.0f)
-            {
-                attackCooldowns[kvp.Key] -= Time.deltaTime;
-                Debug.Log(kvp.Key + " cooldown: " + kvp.Value);
-            }
+            attackCooldownFinished[kvp.Value] = true;
         }
     }
-    //starting set cooldowns to 0 
-    void InitializeCooldowns()
-   {
-       foreach (var kvp in KeyInputMappings)
-       {
-           attackCooldowns[kvp.Value] = 0f;
-       }
-   }
- 
-  void FixedUpdate()
-  {
-     UpdateCooldowns();
-  }
- 
+   
 }
