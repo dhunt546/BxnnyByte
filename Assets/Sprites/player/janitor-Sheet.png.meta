@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0dde026d6954f0b439ce87373ea5a2dc
+guid: cf06f727c54758947b20af0e657a5078
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Spin attack sketch_0
+      name: janitor-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 871584b987f0a7e4ebb34d7e3ff4adac
-      internalID: -694643915
+      spriteID: 04852ae9eb08c124497723936b767892
+      internalID: -1651514244
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spin attack sketch_1
+      name: janitor-Sheet_1
       rect:
         serializedVersion: 2
         x: 64
@@ -158,14 +158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fbf46424d0f7f5244a10f9e7e75254fe
-      internalID: -749269020
+      spriteID: 33689fcf3e26e074d8e6f54ac947a40e
+      internalID: -1093507895
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spin attack sketch_2
+      name: janitor-Sheet_2
       rect:
         serializedVersion: 2
         x: 128
@@ -179,14 +179,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f15f67f40c8cb04bb9bad976c4eb9ef
-      internalID: 451871957
+      spriteID: 84f315b366a929d44a27ddb8bae8c9b5
+      internalID: 445310977
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spin attack sketch_3
+      name: janitor-Sheet_3
       rect:
         serializedVersion: 2
         x: 192
@@ -200,8 +200,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4d23aba994161184ab16ac74e977089b
-      internalID: 196975337
+      spriteID: adcdd0ceee3ef7a4ab95cb81c9494e2b
+      internalID: -112283550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: janitor-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fb0757aed0045243b6c8bebc7b3a628
+      internalID: 989504364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: janitor-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce8c236a9d6900447bab0fe0fafb8b71
+      internalID: -192847247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: janitor-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ec760121717f804e96404e7c3a81d82
+      internalID: 5511690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: janitor-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ab5fd30c71111d458203e975fae98ce
+      internalID: -1979949830
       vertices: []
       indices: 
       edges: []
@@ -217,10 +301,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Spin attack sketch_0: -694643915
-      Spin attack sketch_1: -749269020
-      Spin attack sketch_2: 451871957
-      Spin attack sketch_3: 196975337
+      janitor-Sheet_0: -1651514244
+      janitor-Sheet_1: -1093507895
+      janitor-Sheet_2: 445310977
+      janitor-Sheet_3: -112283550
+      janitor-Sheet_4: 989504364
+      janitor-Sheet_5: -192847247
+      janitor-Sheet_6: 5511690
+      janitor-Sheet_7: -1979949830
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
