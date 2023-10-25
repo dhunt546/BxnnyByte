@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ public class PlayerAttack : MonoBehaviour
     private Dictionary<KeyCode, string> KeyInputMappings = new Dictionary<KeyCode, string>();
     private Dictionary<string, bool> attackCooldownFinished = new Dictionary<string, bool>();
     public bool _isAttacking;
+    public float AttackAnimationCooldown;
 
 
 
@@ -45,31 +47,36 @@ public class PlayerAttack : MonoBehaviour
         foreach (var kvp in KeyInputMappings)
         {
             string attackName = kvp.Value;
-            if (Input.GetKey(kvp.Key) && IsCooldownFinished(attackName))
+            if (Input.GetKeyUp(kvp.Key) && IsCooldownFinished(attackName) && !_isAttacking)
             {
                 
                 if (CanAttack(attackName))
-                 {
+                {
+                    Debug.Log("Attack button released");
+                    SetAttacking(true);
                     Attack(attackName);
-                    
                     StartCooldown(attackName, GetCooldownTime(attackName));
-                 }
+                    Invoke("SetAttackingToFalse", AttackAnimationCooldown);
+                    
+                }
             }
-            else if (Input.GetKeyUp(kvp.Key))
-            {
-                // Set _isAttacking to false when the button is released
-                _isAttacking = false;
-            }
+
         }
-        
-       
+    }
+    void SetAttackingToFalse()
+    {
+        SetAttacking(false);
+    }
+    void SetAttacking(bool isAttacking)
+    {
+        _isAttacking = isAttacking;
     }
     void Attack(string attackName)
     {
         if (attackName == "BasicAttack")
         {
-            _isAttacking = true;
             Debug.Log(attackName);
+            
             
         }
         if (attackName == "Spin")
@@ -129,6 +136,7 @@ public class PlayerAttack : MonoBehaviour
         while (remainingCooldown > 0.0f)
         {
             remainingCooldown -= Time.deltaTime;
+           // Debug.Log("Remaining cooldown for " + attackName + " is " + remainingCooldown);
             yield return null;
         }
 

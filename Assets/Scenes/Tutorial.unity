@@ -16677,7 +16677,7 @@ MonoBehaviour:
   rb: {fileID: 816308799}
   animator: {fileID: 816308804}
   PlayerDirection: {fileID: 693280418}
-  playerDirection: start
+  playerDirection: Forward
   isMoving: 0
 --- !u!212 &816308801
 SpriteRenderer:
@@ -16834,6 +16834,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerDirection: {fileID: 693280418}
   _isAttacking: 0
+  AttackAnimationCooldown: 1
   basicCooldown: 1
   spinCooldown: 5
   powerCooldown: 10

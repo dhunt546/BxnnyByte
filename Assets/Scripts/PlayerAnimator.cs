@@ -3,24 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using Random = UnityEngine.Random;
+
 
 public class PlayerAnimator : MonoBehaviour
 {
 
-    [SerializeField] private float _attackAnimTime = 0.25f;
+    [SerializeField] private float _attackAnimTime = 3f;
     //declares what "type" these will be
     public PlayerMovement _player;
     public PlayerAttack _attackPlayer;
     public Animator _anim;
     private SpriteRenderer _renderer;
-
+    bool isCurrentlyAttacking = false;
+    private bool isAttackAnimationPlaying;
     //player bool states
-    private bool isAnimating;
-    private bool _isAttacked;
-    private float _lockedTill;
-   
-    
+
+
 
     private void Awake()
     {
@@ -37,8 +35,7 @@ public class PlayerAnimator : MonoBehaviour
         }
 
         //Getting the components. Previously declared what the type of thing it will be at the top.
-        _player = player;
-        _attackPlayer = attackPlayer;
+
         _anim = GetComponent<Animator>();
         _renderer = GetComponent<SpriteRenderer>();
 
@@ -46,42 +43,44 @@ public class PlayerAnimator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        isCurrentlyAttacking = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         
-        if (_attackPlayer != null && _player != null)
+        if (_player != null)
         {
             String direction = _player.playerDirection;
             bool isMoving = _player.isMoving;
-            bool _isAttacking = _attackPlayer._isAttacking;
 
-            if (isAnimating)
+
+            if (isCurrentlyAttacking)
             {
+                Debug.Log("Currently Animating");
                 // Don't start a new animation if one is already playing
                 return;
             }
-                if (isMoving)
+            else if (isMoving)
             {
+                Debug.Log("moving");
                 //Running + direction
                 if (direction == "Forward")
                 {
-                    StartCoroutine(PlayAnimationAndLock(MoveF));
+                    _anim.CrossFade(MoveF, 0);
                 }
                 else if (direction == "Backward")
                 {
-                    StartCoroutine(PlayAnimationAndLock(MoveB));
+                    _anim.CrossFade(MoveB, 0);
                 }
                 else if (direction == "Right")
                 {
-                    StartCoroutine(PlayAnimationAndLock(MoveR));
+                    _anim.CrossFade(MoveR, 0);
                 }
                 else if (direction == "Left")
                 {
-                    StartCoroutine(PlayAnimationAndLock(MoveL));
+                    _anim.CrossFade(MoveL, 0);
                 }
 
             }
@@ -90,24 +89,28 @@ public class PlayerAnimator : MonoBehaviour
             {
                 if (direction == "Forward")
                 {
-                    StartCoroutine(PlayAnimationAndLock(IdleF));  
+                    _anim.CrossFade(IdleF, 0);
                 }
                 else if (direction == "Backward")
                 {
-                    StartCoroutine(PlayAnimationAndLock(IdleB));
+                    _anim.CrossFade(IdleB, 0);
                 }
                 else if (direction == "Right")
                 {
-                    StartCoroutine(PlayAnimationAndLock(IdleR));
+                    _anim.CrossFade(IdleR, 0);
                 }
                 else if (direction == "Left")
                 {
-                    StartCoroutine(PlayAnimationAndLock(IdleL));
+                    _anim.CrossFade(IdleL, 0);
                 }
             }
-            
-                if (_isAttacking || _isAttacking && isMoving)
+            if (_attackPlayer != null)
+            {
+                bool _isAttacking = _attackPlayer._isAttacking;
+
+                if (_isAttacking && !IsAttackAnimationInProgress())
                 {
+                    Debug.Log("attacking or something");
                     if (direction == "Forward")
                     {
                         StartCoroutine(PlayAnimationAndLock(AttackF));
@@ -129,21 +132,29 @@ public class PlayerAnimator : MonoBehaviour
                         Debug.Log(direction + "attacking");
                     }
 
-                }      
+                }
+            }
         }
     }
-        private IEnumerator PlayAnimationAndLock(int animationHash)
+    private bool IsAttackAnimationInProgress()
+    {
+        Debug.Log("returning in progress animation");
+        return isAttackAnimationPlaying;
+    }
+    private IEnumerator PlayAnimationAndLock(int animationHash)
         {
-            isAnimating = true; // Lock animation
+        isCurrentlyAttacking = true;
 
-            // Crossfade the animation
-            _anim.CrossFade(animationHash, 0);
+        // Crossfade the attack animation
+        _anim.CrossFade(animationHash, 0);
+        isAttackAnimationPlaying = true; // Set the animation flag to true
 
-            // Wait for the animation to finish
-            yield return new WaitForSeconds(_attackAnimTime);
+        // Wait for the animation to finish
+        yield return new WaitForSeconds(_attackAnimTime);
 
-            isAnimating = false; // Unlock animation
-        }
+        isAttackAnimationPlaying = false; // Set the animation flag back to false
+        isCurrentlyAttacking = false;
+    }
 
 
     private static readonly int IdleF = Animator.StringToHash("Idle");
