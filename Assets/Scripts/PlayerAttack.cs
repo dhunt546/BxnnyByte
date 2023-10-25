@@ -11,6 +11,7 @@ public class PlayerAttack : MonoBehaviour
 
     private Dictionary<KeyCode, string> KeyInputMappings = new Dictionary<KeyCode, string>();
     private Dictionary<string, bool> attackCooldownFinished = new Dictionary<string, bool>();
+    public bool _isAttacking;
 
 
 
@@ -33,6 +34,7 @@ public class PlayerAttack : MonoBehaviour
     void Start()
     {
        InitializeCooldowns(); 
+        _isAttacking = false;
 
     }
 
@@ -49,16 +51,24 @@ public class PlayerAttack : MonoBehaviour
                 if (CanAttack(attackName))
                  {
                     Attack(attackName);
-                  StartCooldown(attackName, GetCooldownTime(attackName));
+                    
+                    StartCooldown(attackName, GetCooldownTime(attackName));
                  }
             }
+            else if (Input.GetKeyUp(kvp.Key))
+            {
+                // Set _isAttacking to false when the button is released
+                _isAttacking = false;
+            }
         }
+        
        
     }
     void Attack(string attackName)
     {
         if (attackName == "BasicAttack")
         {
+            _isAttacking = true;
             Debug.Log(attackName);
             
         }

@@ -10,9 +10,10 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
     Vector2 movement;
     public GameObject PlayerDirection;
-    public string playerDirection = "start";
+    public string playerDirection = "Forward";
 
-    bool isMoving = false;
+    public bool isMoving;
+    bool isAttacking;
 
 
     void Update()
@@ -32,11 +33,11 @@ public class PlayerMovement : MonoBehaviour
             // For example, you can rotate the player object to face the direction:
             PlayerDirection.transform.rotation = Quaternion.Euler(0, 0, angle);
             if (angle >= -45 && angle < 45)
-                playerDirection = "Right";
+                playerDirection = "Left";
             else if (angle >= 45 && angle < 135)
                 playerDirection = "Backward";
             else if (angle >= 135 || angle < -135)
-                playerDirection = "Left";
+                playerDirection = "Right";
             else
                 playerDirection = "Forward";
             //Debug.Log("player is facing "+playerDirection);
@@ -45,8 +46,6 @@ public class PlayerMovement : MonoBehaviour
         {
             isMoving = false;
         }
-        //Debug.Log("is moving" + isMoving);
-        
 
     }
 
