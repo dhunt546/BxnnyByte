@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: -5309109422718303029}
   - component: {fileID: 6454608014699158199}
   - component: {fileID: 4591545311294182599}
+  - component: {fileID: -7944934520578893350}
   m_Layer: 0
-  m_Name: Spider Alien
+  m_Name: Spider_Alien
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -164,3 +165,15 @@ CapsuleCollider2D:
   m_Offset: {x: -0.25, y: -0.32}
   m_Size: {x: 1.74, y: 1.06}
   m_Direction: 1
+--- !u!114 &-7944934520578893350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8655144454707207289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77ad4c4f07693a543a4bb25f4fa5ba42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
