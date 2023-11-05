@@ -5184,7 +5184,7 @@ SpriteRenderer:
   m_Size: {x: 0.72, y: 0.72}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1459584752
@@ -5217,6 +5217,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   rb: {fileID: 1459584754}
+  animator: {fileID: 0}
+  PlayerDirection: {fileID: 0}
+  playerDirection: Forward
+  isMoving: 0
 --- !u!50 &1459584754
 Rigidbody2D:
   serializedVersion: 4

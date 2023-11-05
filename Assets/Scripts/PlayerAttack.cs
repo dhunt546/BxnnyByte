@@ -75,22 +75,29 @@ public class PlayerAttack : MonoBehaviour
     {
         if (attackName == "BasicAttack")
         {
+            //basic attack info goes here
+
             Debug.Log(attackName);
             
             
         }
         if (attackName == "Spin")
         {
+            //attack information here
+
             Debug.Log(attackName);
 
         }
         if (attackName == "PowerAttack")
         {
+            //attack information
             Debug.Log(attackName);
 
         }
         if(attackName == "Dodge")
         {
+            //dodge here
+
             Debug.Log(attackName);
 
         }
