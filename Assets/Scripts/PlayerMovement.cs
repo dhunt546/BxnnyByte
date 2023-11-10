@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isMoving;
     bool isAttacking;
 
+    public int PlayerHealth = 5;
 
     void Update()
     {
