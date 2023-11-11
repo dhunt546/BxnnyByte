@@ -1,12 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
     public float attackCooldown = 2.0f;
-    public bool canAttack = true;
+    private bool canAttack;
 
+    public void Start()
+    {
+         
+         canAttack =true;
+    }
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player") && canAttack)
