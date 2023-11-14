@@ -1,12 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    public GameObject PlayerDirection;
+    RaycastHit2D[] hits;
+    [SerializeField] private Transform attackTransform;
+    [SerializeField] private float attack1Range = 1.5f;
+    [SerializeField] private float attack2Range = 2.0f;
+    [SerializeField] private float attack3Range = 0.5f;
+    [SerializeField] private LayerMask attackableLayer;
+    [SerializeField] private float attack1Damage = 1.0f;
+    [SerializeField] private float attack2Damage = 3.0f;
+    [SerializeField] private float attack3Damage = 0.0f;
+
+    public Vector2 PlayerDirection;
     //     public Text countdownText;
     //probably make this a protextmesh
 
@@ -76,28 +87,78 @@ public class PlayerAttack : MonoBehaviour
         if (attackName == "BasicAttack")
         {
             //basic attack info goes here
+            hits = Physics2D.CircleCastAll(attackTransform.position, attack1Range, PlayerDirection, 0f, attackableLayer);
 
+            for (int i = 0; i < hits.Length; i++)
+            {
+                IDamageable iDamageable = hits[i].collider.gameObject.GetComponent<IDamageable>();
+
+                if (iDamageable != null)
+                {
+                    //apply the pain
+                    iDamageable.Damage(attack1Damage);
+                }
+            }
             Debug.Log(attackName);
-            
-            
-        }
+
+
+             void OnDrawGizmosSelected()
+    {
+                Gizmos.DrawWireSphere(attackTransform.position, attack1Range);
+    }
+
+}
         if (attackName == "Spin")
         {
             //attack information here
+            hits = Physics2D.CircleCastAll(attackTransform.position, attack2Range, PlayerDirection, 0f, attackableLayer);
 
+            for (int i = 0; i < hits.Length; i++)
+            {
+                IDamageable iDamageable = hits[i].collider.gameObject.GetComponent<IDamageable>();
+
+                if (iDamageable != null)
+                {
+                    //apply the pain
+                    iDamageable.Damage(attack1Damage);
+                }
+            }
             Debug.Log(attackName);
 
         }
         if (attackName == "PowerAttack")
         {
             //attack information
+            hits = Physics2D.CircleCastAll(attackTransform.position, attack1Range, PlayerDirection, 0f, attackableLayer);
+
+            for (int i = 0; i < hits.Length; i++)
+            {
+                IDamageable iDamageable = hits[i].collider.gameObject.GetComponent<IDamageable>();
+
+                if (iDamageable != null)
+                {
+                    //apply the pain
+                    iDamageable.Damage(attack2Damage);
+                }
+            }
             Debug.Log(attackName);
 
         }
         if(attackName == "Dodge")
         {
             //dodge here
+            hits = Physics2D.CircleCastAll(attackTransform.position, attack3Range, PlayerDirection, 0f, attackableLayer);
 
+            for (int i = 0; i < hits.Length; i++)
+            {
+                IDamageable iDamageable = hits[i].collider.gameObject.GetComponent<IDamageable>();
+
+                if (iDamageable != null)
+                {
+                    //apply the pain
+                    iDamageable.Damage(attack3Damage);
+                }
+            }
             Debug.Log(attackName);
 
         }
