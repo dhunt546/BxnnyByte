@@ -8,7 +8,7 @@ using UnityEngine;
 public class PlayerAnimator : MonoBehaviour
 {
 
-    [SerializeField] private float _attackAnimTime = 3f;
+    [SerializeField] public float _attackAnimTime = 3f;
     //declares what "type" these will be
     public PlayerMovement _player;
     public PlayerAttack _attackPlayer;
