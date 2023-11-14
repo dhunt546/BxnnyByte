@@ -1889,6 +1889,8 @@ GameObject:
   m_Component:
   - component: {fileID: 958060043}
   - component: {fileID: 958060042}
+  - component: {fileID: 958060045}
+  - component: {fileID: 958060044}
   m_Layer: 0
   m_Name: janitor
   m_TagString: Untagged
@@ -1963,6 +1965,111 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &958060044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 958060041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a153f7a920f0634f9b31f591b849ccc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackTransform: {fileID: 0}
+  attack1Range: 1.5
+  attack2Range: 2
+  attack3Range: 0.5
+  attackableLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  attack1Damage: 1
+  attack2Damage: 3
+  attack3Damage: 0
+  PlayerDirection: {x: 0, y: 0}
+  _isAttacking: 0
+  AttackAnimationCooldown: 0
+  basicCooldown: 1
+  spinCooldown: 5
+  powerCooldown: 10
+  dodgeCooldown: 2
+--- !u!114 &958060045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 958060041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 264ced3d0785bb943b74578e45acbbaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  rb: {fileID: 0}
+  animator: {fileID: 0}
+  PlayerDirection: {fileID: 0}
+  playerDirection: Forward
+  isMoving: 0
+  PlayerHealth: 5
+--- !u!1001 &1124122696
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1554144711429746060, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.0841436
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554144711429746060, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.22795749
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554144711429746060, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554144711429746060, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554144711429746060, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554144711429746060, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554144711429746060, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554144711429746060, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554144711429746060, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554144711429746060, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8655144454707207289, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
+      propertyPath: m_Name
+      value: Spider_Alien
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
 --- !u!1 &1666350839
 GameObject:
   m_ObjectHideFlags: 0
@@ -3162,3 +3269,4 @@ SceneRoots:
   - {fileID: 7853554802850792229}
   - {fileID: 6100576884678948726}
   - {fileID: 2721166599702524500}
+  - {fileID: 1124122696}
