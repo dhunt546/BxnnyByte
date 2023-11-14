@@ -855,7 +855,7 @@ GameObject:
   - component: {fileID: 368146190}
   m_Layer: 0
   m_Name: HP
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10366,7 +10366,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a153f7a920f0634f9b31f591b849ccc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerDirection: {fileID: 693280418}
+  attackTransform: {fileID: 0}
+  attack1Range: 1.5
+  attack2Range: 2
+  attack3Range: 0.5
+  attackableLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  attack1Damage: 1
+  attack2Damage: 3
+  attack3Damage: 0
+  PlayerDirection: {x: 0, y: 0}
   _isAttacking: 0
   AttackAnimationCooldown: 1
   basicCooldown: 1
