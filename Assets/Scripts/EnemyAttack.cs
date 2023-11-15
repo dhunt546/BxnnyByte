@@ -3,32 +3,53 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class EnemyAttack : MonoBehaviour
+public class EnemyAttack : MonoBehaviour  //Jacob foran Enemy Attack
 {
-    public float enemyAttackCooldown = 2.0f;
-    private bool canAttack;
+    public float attackDamage = 1.0f;
+    public float enemyAttackCooldown = 1.0f; 
 
-    public void Start()
+    private float attackTimer = 0.0f;
+    private bool isPlayerInRange = false;
+
+    private void FixedUpdate()
     {
-         
-         canAttack =true;
-    }
-    public void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player") && canAttack)
+        if (isPlayerInRange)
         {
-            // Enemy attacks
-            Debug.Log("Enemy attacks!");
-
-            // Set cooldown
-            canAttack = false;
-            Invoke("ResetAttackCooldown", enemyAttackCooldown);
-        
+            // Timer to control attack intervals
+            attackTimer += Time.fixedDeltaTime;
+            if (attackTimer >= enemyAttackCooldown)
+            {
+                AttackPlayer();
+                attackTimer = 0.0f;
+            }
         }
     }
 
-    public void ResetAttackCooldown()
+    private void AttackPlayer()
     {
-        canAttack = true;
+        // Check if the player is still in range before attacking
+        if (isPlayerInRange)
+        {
+            // Add attack logic here
+            Debug.Log("Enemy attacks player!");
+            
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            isPlayerInRange = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            isPlayerInRange = false;
+            attackTimer = 0.0f; // Reset attack timer when player exits range
+        }
     }
 }
