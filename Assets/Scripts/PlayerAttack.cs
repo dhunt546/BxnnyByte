@@ -102,10 +102,10 @@ public class PlayerAttack : MonoBehaviour
             Debug.Log(attackName);
 
 
-             void OnDrawGizmosSelected()
-    {
-                Gizmos.DrawWireSphere(attackTransform.position, attack1Range);
-    }
+         //   void OnDrawGizmosSelected()
+         //   {
+         //      Gizmos.DrawWireSphere(attackTransform.position, attack1Range);
+         //   }
 
 }
         if (attackName == "Spin")

@@ -30,7 +30,7 @@ public class Score : MonoBehaviour
 
     void Update()
     {
-        if (SpiderHP == 0) ;
+        if (SpiderHP == 0)
         {
             score += 100;
         }
