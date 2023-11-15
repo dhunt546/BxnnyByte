@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
-    public float attackCooldown = 2.0f;
+    public float enemyAttackCooldown = 2.0f;
     private bool canAttack;
 
     public void Start()
@@ -22,7 +22,7 @@ public class EnemyAttack : MonoBehaviour
 
             // Set cooldown
             canAttack = false;
-            Invoke("ResetAttackCooldown", attackCooldown);
+            Invoke("ResetAttackCooldown", enemyAttackCooldown);
         
         }
     }

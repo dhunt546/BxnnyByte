@@ -10369,19 +10369,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a153f7a920f0634f9b31f591b849ccc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackTransform: {fileID: 0}
+  attackTransform: {fileID: 816308802}
   attack1Range: 1.5
   attack2Range: 2
   attack3Range: 0.5
   attackableLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   attack1Damage: 1
   attack2Damage: 3
   attack3Damage: 0
-  PlayerDirection: {fileID: 0}
+  PlayerDirection: {fileID: 693280418}
   _isAttacking: 0
-  AttackAnimationCooldown: 1
+  AttackAnimationCooldown: 0.2
   basicCooldown: 1
   spinCooldown: 5
   powerCooldown: 10
@@ -12923,7 +12923,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1554144711429746060, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.72
+      value: 1.7199993
       objectReference: {fileID: 0}
     - target: {fileID: 1554144711429746060, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -12935,19 +12935,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1554144711429746060, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.10564306
       objectReference: {fileID: 0}
     - target: {fileID: 1554144711429746060, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0.69917053
       objectReference: {fileID: 0}
     - target: {fileID: 1554144711429746060, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.6991707
       objectReference: {fileID: 0}
     - target: {fileID: 1554144711429746060, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.7071068
+      value: 0.105643064
       objectReference: {fileID: 0}
     - target: {fileID: 1554144711429746060, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -12955,7 +12955,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1554144711429746060, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 162.815
       objectReference: {fileID: 0}
     - target: {fileID: 1554144711429746060, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -13117,7 +13117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f21f8fd3846689b4d9ccbed2ecf20a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCooldown: 2
+  enemyAttackCooldown: 2
 --- !u!61 &7119731688891282262
 BoxCollider2D:
   m_ObjectHideFlags: 0

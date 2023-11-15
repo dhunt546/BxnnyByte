@@ -63,7 +63,7 @@ public class PlayerAttack : MonoBehaviour
                 
                 if (CanAttack(attackName))
                 {
-                    Debug.Log("Attack button released");
+                    //Debug.Log("Attack button released");
                     SetAttacking(true);
                     Attack(attackName);
                     StartCooldown(attackName, GetCooldownTime(attackName));
@@ -86,9 +86,10 @@ public class PlayerAttack : MonoBehaviour
     {
         if (attackName == "BasicAttack")
         {
+            
             //basic attack info goes here
             hits = Physics2D.CircleCastAll(attackTransform.position, attack1Range, Vector2.up, 0f, attackableLayer);
-
+            
             for (int i = 0; i < hits.Length; i++)
             {
                 IDamageable iDamageable = hits[i].collider.gameObject.GetComponent<IDamageable>();
@@ -97,6 +98,7 @@ public class PlayerAttack : MonoBehaviour
                 {
                     //apply the pain
                     iDamageable.Damage(attack1Damage);
+                    Debug.Log(attack1Damage);
                 }
             }
             Debug.Log(attackName);

@@ -58,13 +58,13 @@ public class PlayerAnimator : MonoBehaviour
 
             if (isCurrentlyAttacking)
             {
-                Debug.Log("Currently Animating");
+               // Debug.Log("Currently Animating");
                 // Don't start a new animation if one is already playing
                 return;
             }
-            else if (isMoving)
+             else if (isMoving)
             {
-                Debug.Log("moving");
+                //Debug.Log("moving");
                 //Running + direction
                 if (direction == "Forward")
                 {
@@ -110,26 +110,26 @@ public class PlayerAnimator : MonoBehaviour
 
                 if (_isAttacking && !IsAttackAnimationInProgress())
                 {
-                    Debug.Log("attacking or something");
+                    //Debug.Log("attacking or something");
                     if (direction == "Forward")
                     {
                         StartCoroutine(PlayAnimationAndLock(AttackF));
-                        Debug.Log(direction + "attacking");
+                        //Debug.Log(direction + "attacking");
                     }
                     else if (direction == "Backward")
                     {
                         StartCoroutine(PlayAnimationAndLock(AttackB));
-                        Debug.Log(direction + "attacking");
+                       // Debug.Log(direction + "attacking");
                     }
                     else if (direction == "Right")
                     {
                         StartCoroutine(PlayAnimationAndLock(AttackR));
-                        Debug.Log(direction + "attacking");
+                       // Debug.Log(direction + "attacking");
                     }
                     else if (direction == "Left")
                     {
                         StartCoroutine(PlayAnimationAndLock(AttackL));
-                        Debug.Log(direction + "attacking");
+                        //Debug.Log(direction + "attacking");
                     }
 
                 }
@@ -138,7 +138,7 @@ public class PlayerAnimator : MonoBehaviour
     }
     private bool IsAttackAnimationInProgress()
     {
-        Debug.Log("returning in progress animation");
+        //Debug.Log("returning in progress animation");
         return isAttackAnimationPlaying;
     }
     private IEnumerator PlayAnimationAndLock(int animationHash)
