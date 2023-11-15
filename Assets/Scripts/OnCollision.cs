@@ -5,20 +5,20 @@ using UnityEngine;
 public class OnCollision : MonoBehaviour    //Created by Devin H.
 {
 
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-
-        if (collision.gameObject.name == "Enemy")  //Can be changed for to a hit attack.
-        {
-            Healthbar.health--;
-            if (Healthbar.health <= 0)
-            {
-                //Gamemanger.isGameOver = true;     //Script needed to be created to run gameover scene on death for this line to work.
-                gameObject.SetActive(false);
-            }
-
-        }
-
-
-    }
+  // void OnCollisionEnter2D(Collision2D collision)
+  // {
+  //
+  //     if (collision.gameObject.name == "Enemy")  //Can be changed for to a hit attack.
+  //     {
+  //         Healthbar.currentHealth--;
+  //         if (Healthbar.currentHealth <= 0)
+  //         {
+  //             //Gamemanger.isGameOver = true;     //Script needed to be created to run gameover scene on death for this line to work.
+  //             gameObject.SetActive(false);
+  //         }
+  //
+  //     }
+  //
+  //
+  // }
 }

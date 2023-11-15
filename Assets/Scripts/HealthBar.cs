@@ -3,92 +3,54 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Healthbar : MonoBehaviour  //Edited by Devin H.   Source: https://www.youtube.com/watch?v=C_NsmQD6LK8&t=540s
+public class HealthBar : MonoBehaviour  //Edited by Regan Ly   Source: ChatGPT
 
-{ 
-    public static int health = 5;
+{
+        public Slider healthSlider;
+        public float maxHealth = 100f;
+        public float currentHealth;
 
-    public Image[] healthbar;
-
-    public Sprite fullbar;
-
-    public Sprite emptybar;
-
-    // Update is called once per frame
-    void Update()
-    {
-        foreach (Image img in healthbar)
+        void Start()
         {
-            img.sprite = emptybar;
-        }
-        for (int i = 0; i < health; i++)
-        {
-            healthbar[i].sprite = fullbar;
+        currentHealth = maxHealth;
+        UpdateHealthBar();
         }
 
+        void Update()
+        {
+            // For testing purposes, reduce health over time
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                TakeDamage(10f);
+            }
+        }
 
+        // Function to reduce health
+        public void TakeDamage(float damageAmount)
+        {
+            currentHealth -= damageAmount;
+            currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth); // Ensure health doesn't go below 0 or above maxHealth
+            UpdateHealthBar();
+
+            // Check if the player is dead (health is 0)
+            if (currentHealth == 0f)
+            {
+                Die();
+            }
+        }
+
+        // Function to update the health bar UI
+        void UpdateHealthBar()
+        {
+            float healthPercentage = currentHealth / maxHealth;
+            healthSlider.value = healthPercentage;
+        }
+
+        // Function to handle player death
+        void Die()
+        {
+            // Implement any death logic here (e.g., game over screen, respawn, etc.)
+            Debug.Log("Player has died!");
+        }
     }
-    //   public Image[] healthImgs;
-    //   Healthbar playerHealth;
-    //   int health;
-    //   void Start()
-    //   {
-    //       //playerHealth = GameObject.FindGameObjectsWithTag("Player").GetComponent<PlayerHealth>();
-    //   }
-    //
-    //   // Update is called once per frame
-    //   void Update()
-    //   {
-    //       //health = playerHealth.health;
-    //
-    //       switch(health)
-    //       {
-    //           case 5:
-    //               foreach(Image img in healthImgs)
-    //               {
-    //                   img.gameObject.SetActive(true);
-    //               }
-    //               break;
-    //          
-    //           case 4:
-    //               healthImgs[1].gameObject.SetActive(true);
-    //               healthImgs[2].gameObject.SetActive(true);
-    //               healthImgs[3].gameObject.SetActive(true);
-    //               healthImgs[4].gameObject.SetActive(true);
-    //               healthImgs[5].gameObject.SetActive(false);
-    //               break;
-    //          
-    //           case 3:
-    //               healthImgs[1].gameObject.SetActive(true);
-    //               healthImgs[2].gameObject.SetActive(true);
-    //               healthImgs[3].gameObject.SetActive(true);
-    //               healthImgs[4].gameObject.SetActive(false);
-    //               healthImgs[5].gameObject.SetActive(false);
-    //               break;
-    //
-    //           case 2:
-    //               healthImgs[1].gameObject.SetActive(true);
-    //               healthImgs[2].gameObject.SetActive(true);
-    //               healthImgs[3].gameObject.SetActive(false);
-    //               healthImgs[4].gameObject.SetActive(false);
-    //               healthImgs[5].gameObject.SetActive(false);
-    //               break;
-    //
-    //           case 1:
-    //               healthImgs[1].gameObject.SetActive(true);
-    //               healthImgs[2].gameObject.SetActive(false);
-    //               healthImgs[3].gameObject.SetActive(false);
-    //               healthImgs[4].gameObject.SetActive(false);
-    //               healthImgs[5].gameObject.SetActive(false);
-    //               break;
-    //
-    //           case 0:
-    //               healthImgs[1].gameObject.SetActive(false);
-    //               healthImgs[2].gameObject.SetActive(false);
-    //               healthImgs[3].gameObject.SetActive(false);
-    //               healthImgs[4].gameObject.SetActive(false);
-    //               healthImgs[5].gameObject.SetActive(false);
-    //               break;
-    //       }
-    //   }
-}
+
