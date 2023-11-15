@@ -6,34 +6,80 @@ public class AIChase : MonoBehaviour
 {
     private Rigidbody2D rb2d;
 
-    [SerializeField]
-    private float maxSpeed = 2, acceleration = 50, deacceleration = 100;
-    [SerializeField]
-    private float currentSpeed = 0;
-    private Vector2 oldMovementInput;
-    public Vector2 MovementInput { get; set; }
+    private AIData aiData;
+    public float moveSpeed = 5f; // Movement speed of the enemy
 
-    private void Awake()
+    private void Start()
     {
-        rb2d = GetComponent<Rigidbody2D>();
+        // Get the AIData script attached to the same GameObject
+        aiData = GetComponent<AIData>();
+    }
+    void Update()
+    {
+        if (aiData != null && aiData.currentTarget != null)
+        {
+            // Calculate the direction to the target
+            Vector3 directionToTarget = aiData.currentTarget.position - transform.position;
+
+            // Calculate the distance to the target
+            float distanceToTarget = directionToTarget.magnitude;
+
+            // Determine the obstacle weight (you may have your own logic for this)
+            float obstacleWeight = CalculateObstacleWeight();
+
+            // Determine the target weight (you may have your own logic for this)
+            float targetWeight = CalculateTargetWeight(distanceToTarget);
+
+            // Calculate the final movement vector based on weights
+            Vector3 movement = CalculateMovement(obstacleWeight, targetWeight, directionToTarget);
+
+            // Move the enemy
+            transform.Translate(movement * moveSpeed * Time.deltaTime);
+        }
     }
 
-    private void FixedUpdate()
+    float CalculateObstacleWeight()
     {
-        if (MovementInput.magnitude > 0 && currentSpeed >= 0)
+        // Your logic for calculating obstacle weight goes here
+        // Return a value between 0 and 1 based on the obstacle detection logic
+        return 0.5f;
+    }
+
+    float CalculateTargetWeight(float distanceToTarget)
+    {
+        // Your logic for calculating target weight goes here
+        // Return a value between 0 and 1 based on the distance to the target
+        return Mathf.Clamp01(1 - distanceToTarget / 10f);
+    }
+
+    Vector3 CalculateMovement(float obstacleWeight, float targetWeight, Vector3 directionToTarget)
+    {
+        // Combine obstacle and target weights to determine the final movement vector
+        // You can adjust the weights based on your desired behavior
+        float combinedWeight = obstacleWeight + targetWeight;
+
+        if (combinedWeight > 0)
         {
-            oldMovementInput = MovementInput;
-            currentSpeed += acceleration * maxSpeed * Time.deltaTime;
+            // Calculate the weighted average of obstacle and target directions
+            Vector3 obstacleAvoidance = CalculateObstacleAvoidance();
+            Vector3 weightedDirection = (obstacleWeight * obstacleAvoidance + targetWeight * directionToTarget) / combinedWeight;
+
+            // Return the normalized movement vector
+            return weightedDirection.normalized;
         }
         else
         {
-            currentSpeed -= deacceleration * maxSpeed * Time.deltaTime;
+            // No weights, return zero movement
+            return Vector3.zero;
         }
-        currentSpeed = Mathf.Clamp(currentSpeed, 0, maxSpeed);
-        rb2d.velocity = oldMovementInput * currentSpeed;
-
     }
 
+    Vector3 CalculateObstacleAvoidance()
+    {
+        // Your logic for obstacle avoidance goes here
+        // Return a vector representing the direction to avoid obstacles
+        return Vector3.zero;
+    }
 }
 
 
