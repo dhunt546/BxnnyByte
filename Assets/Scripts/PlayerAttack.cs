@@ -17,7 +17,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float attack2Damage = 3.0f;
     [SerializeField] private float attack3Damage = 0.0f;
 
-    public Vector2 PlayerDirection;
+    public GameObject PlayerDirection;
     //     public Text countdownText;
     //probably make this a protextmesh
 
@@ -63,7 +63,7 @@ public class PlayerAttack : MonoBehaviour
                 
                 if (CanAttack(attackName))
                 {
-                    Debug.Log("Attack button released");
+                    //Debug.Log("Attack button released");
                     SetAttacking(true);
                     Attack(attackName);
                     StartCooldown(attackName, GetCooldownTime(attackName));
@@ -86,9 +86,10 @@ public class PlayerAttack : MonoBehaviour
     {
         if (attackName == "BasicAttack")
         {
+            
             //basic attack info goes here
-            hits = Physics2D.CircleCastAll(attackTransform.position, attack1Range, PlayerDirection, 0f, attackableLayer);
-
+            hits = Physics2D.CircleCastAll(attackTransform.position, attack1Range, Vector2.up, 0f, attackableLayer);
+            
             for (int i = 0; i < hits.Length; i++)
             {
                 IDamageable iDamageable = hits[i].collider.gameObject.GetComponent<IDamageable>();
@@ -97,21 +98,22 @@ public class PlayerAttack : MonoBehaviour
                 {
                     //apply the pain
                     iDamageable.Damage(attack1Damage);
+                    Debug.Log(attack1Damage);
                 }
             }
             Debug.Log(attackName);
 
 
-             void OnDrawGizmosSelected()
-     {
-                Gizmos.DrawWireSphere(attackTransform.position, attack1Range);
-    }
+         //   void OnDrawGizmosSelected()
+         //   {
+         //      Gizmos.DrawWireSphere(attackTransform.position, attack1Range);
+         //   }
 
 }
         if (attackName == "Spin")
         {
             //attack information here
-            hits = Physics2D.CircleCastAll(attackTransform.position, attack2Range, PlayerDirection, 0f, attackableLayer);
+            hits = Physics2D.CircleCastAll(attackTransform.position, attack2Range, Vector2.up, 0f, attackableLayer);
 
             for (int i = 0; i < hits.Length; i++)
             {
@@ -129,7 +131,7 @@ public class PlayerAttack : MonoBehaviour
         if (attackName == "PowerAttack")
         {
             //attack information
-            hits = Physics2D.CircleCastAll(attackTransform.position, attack1Range, PlayerDirection, 0f, attackableLayer);
+            hits = Physics2D.CircleCastAll(attackTransform.position, attack1Range, Vector2.up, 0f, attackableLayer);
 
             for (int i = 0; i < hits.Length; i++)
             {
@@ -147,7 +149,7 @@ public class PlayerAttack : MonoBehaviour
         if(attackName == "Dodge")
         {
             //dodge here
-            hits = Physics2D.CircleCastAll(attackTransform.position, attack3Range, PlayerDirection, 0f, attackableLayer);
+            hits = Physics2D.CircleCastAll(attackTransform.position, attack3Range, Vector2.up, 0f, attackableLayer);
 
             for (int i = 0; i < hits.Length; i++)
             {
