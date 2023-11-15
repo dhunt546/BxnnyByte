@@ -389,7 +389,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 191532209}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
 --- !u!1 &198930716
 GameObject:
   m_ObjectHideFlags: 0
@@ -439,8 +438,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   showGizmos: 0
-=======
->>>>>>> parent of df7d8c5 (Health bar working)
 --- !u!1 &237405437
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,7 +513,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 237405437}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
 --- !u!1 &274606674
 GameObject:
   m_ObjectHideFlags: 0
@@ -569,8 +565,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   showGizmos: 0
-=======
->>>>>>> parent of df7d8c5 (Health bar working)
 --- !u!1 &280373831
 GameObject:
   m_ObjectHideFlags: 0
@@ -10372,11 +10366,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a153f7a920f0634f9b31f591b849ccc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
   PlayerDirection: {fileID: 693280418}
-=======
-  PlayerDirection: {fileID: 0}
->>>>>>> parent of df7d8c5 (Health bar working)
   _isAttacking: 0
   AttackAnimationCooldown: 1
   basicCooldown: 1
@@ -11340,11 +11330,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1288100159}
   m_Layer: 0
-<<<<<<< HEAD
   m_Name: Background
-=======
-  m_Name: GameObject
->>>>>>> parent of df7d8c5 (Health bar working)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11359,19 +11345,12 @@ Transform:
   m_GameObject: {fileID: 1288100158}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-<<<<<<< HEAD
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 907355140}
   - {fileID: 1499001198}
-=======
-  m_LocalPosition: {x: 6.7510176, y: 0.9022858, z: -5.103504}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
->>>>>>> parent of df7d8c5 (Health bar working)
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1293900487
@@ -12628,7 +12607,6 @@ Transform:
   - {fileID: 1208763030}
   m_Father: {fileID: 157874347}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
 --- !u!1 &2061035732
 GameObject:
   m_ObjectHideFlags: 0
@@ -12676,8 +12654,6 @@ MonoBehaviour:
   radius: 2.33
   agentColliderSize: 0.72
   showGizmo: 1
-=======
->>>>>>> parent of df7d8c5 (Health bar working)
 --- !u!1 &2088007117
 GameObject:
   m_ObjectHideFlags: 0
@@ -13174,7 +13150,4 @@ SceneRoots:
   - {fileID: 1109878290}
   - {fileID: 1856232740}
   - {fileID: 1288100159}
-<<<<<<< HEAD
   - {fileID: 545948370}
-=======
->>>>>>> parent of df7d8c5 (Health bar working)
