@@ -16,7 +16,7 @@ TagManager:
   - Player
   - Enemy
   - Obstacles
-  - 
+  - HUD
   - 
   - 
   - 
@@ -42,4 +42,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Hud
+    uniqueID: 930170583
     locked: 0
