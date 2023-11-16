@@ -44,7 +44,7 @@ public class EnemyAI : MonoBehaviour
         }
 
         // Check for other AI to group up
-        GroupUpWithOtherAI();
+        //GroupUpWithOtherAI();
     }
 
     bool IsPlayerInVisionRange()
@@ -84,23 +84,23 @@ public class EnemyAI : MonoBehaviour
         navMeshAgent.SetDestination(finalPosition);
     }
 
-    void GroupUpWithOtherAI()
-    {
-        //Debug.Log("Grouping up with otherAi");
-        // Find all other Enemy AI in the scene
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-
-        if (!IsPlayerInVisionRange())
-        {
-            foreach (GameObject enemy in enemies)
-            {
-                // Check if the other AI is within the group seek range and not the same AI
-                if (enemy != gameObject && Vector3.Distance(transform.position, enemy.transform.position) <= groupSeekRange)
-                {
-                    // Move towards the other AI
-                    navMeshAgent.SetDestination(enemy.transform.position);
-                }
-            }
-        }
-    }
+   // void GroupUpWithOtherAI()
+   // {
+   //     //Debug.Log("Grouping up with otherAi");
+   //     // Find all other Enemy AI in the scene
+   //     GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+   //
+   //     if (!IsPlayerInVisionRange())
+   //     {
+   //         foreach (GameObject enemy in enemies)
+   //         {
+   //             // Check if the other AI is within the group seek range and not the same AI
+   //             if (enemy != gameObject && Vector3.Distance(transform.position, enemy.transform.position) <= groupSeekRange)
+   //             {
+   //                 // Move towards the other AI
+   //                 navMeshAgent.SetDestination(enemy.transform.position);
+   //             }
+   //         }
+   //     }
+   // }s
 }

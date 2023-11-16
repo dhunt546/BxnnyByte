@@ -13472,6 +13472,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6454608014699158199, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
+      propertyPath: m_Mass
+      value: 0.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6454608014699158199, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
+      propertyPath: m_BodyType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6454608014699158199, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8655144454707207289, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
       propertyPath: m_Name
       value: Spider Alien (1)
