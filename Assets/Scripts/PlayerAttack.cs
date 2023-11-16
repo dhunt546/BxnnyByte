@@ -36,9 +36,9 @@ public class PlayerAttack : MonoBehaviour
     void Awake()
     {
         KeyInputMappings[KeyCode.E] = "BasicAttack";
-        KeyInputMappings[KeyCode.Space] = "Spin";
+        KeyInputMappings[KeyCode.X] = "Spin";
         KeyInputMappings[KeyCode.Q] = "PowerAttack";
-        KeyInputMappings[KeyCode.LeftShift] = "Dodge";
+        KeyInputMappings[KeyCode.Space] = "Dodge";
        
         
     }
