@@ -105,9 +105,9 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 2
+  m_Mass: 0.14
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -261,10 +261,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6773ab104812a2f41a4ae2842d01c69b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visionRange: 10
-  wanderRadius: 5
-  wanderTimer: 3
-  groupSeekRange: 15
+  visionRange: 4.85
+  wanderRadius: 3.2
+  wanderTimer: 2.16
+  groupSeekRange: 6
+  seekCooldown: 5
 --- !u!114 &1985451277286373852
 MonoBehaviour:
   m_ObjectHideFlags: 0

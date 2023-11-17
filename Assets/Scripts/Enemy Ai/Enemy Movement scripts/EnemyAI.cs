@@ -3,22 +3,31 @@ using System.Collections.Generic;
 using UnityEngine.Events;
 using UnityEngine;
 using UnityEngine.AI;
+using Unity.VisualScripting;
 
 public class EnemyAI : MonoBehaviour
 
 {
     //Regan Ly
     //Need to add: weighted desions, fix colliders bc theyre too chunky. Or make new alien type that is smaller as the basic alien
-    public float visionRange = 10f;
-    public float wanderRadius = 5f;
-    public float wanderTimer = 3f;
-    public float groupSeekRange = 15f;
+    public float visionRange;
+    public float wanderRadius;
+    public float wanderTimer;
+    public float groupSeekRange;
+    public float seekCooldown;
 
     private Transform player;
     private Vector3 lastKnownPlayerPosition;
     private float timer;
     private NavMeshAgent navMeshAgent;
+    private bool isCooldown;
 
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, visionRange);
+    }
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -32,15 +41,19 @@ public class EnemyAI : MonoBehaviour
     void Update()
     {
         // Check if player is in vision range
-        if (IsPlayerInVisionRange())
+        if (player != null && IsPlayerInVisionRange())
         {
-            lastKnownPlayerPosition = player.position;
-            SeekPlayer();
+
+                lastKnownPlayerPosition = player.position;
+                SeekPlayer();
+                Debug.Log("Player Found"); 
         }
         else
         {
-            // If player is not in vision range, wander or idle
-            WanderOrIdle();
+            if (!isCooldown)
+            {
+                WanderOrIdle();
+            }
         }
 
         // Check for other AI to group up
@@ -49,14 +62,40 @@ public class EnemyAI : MonoBehaviour
 
     bool IsPlayerInVisionRange()
     {
-        return Vector3.Distance(transform.position, player.position) <= visionRange;
+        return player != null && Vector3.Distance(transform.position, player.position) <= visionRange;
     }
+
+    //This is not WORKING IDK WHY 
+    //bool HasLineOfSightToPlayer()
+    //{
+    //    // Perform a raycast to check if there are obstacles between the AI and the player
+    //    RaycastHit rayHit;
+    //    if (player != null && Physics.Raycast(transform.position, player.position - transform.position, out rayHit, visionRange))
+    //    {
+    //        if (rayHit.collider.CompareTag("Player"))
+    //        {
+    //            Debug.Log("Sees player? " + HasLineOfSightToPlayer());
+    //            return true; // Player is in line of sight
+    //        }
+    //    }
+    //
+    //        return false; // Player is obstructed
+    //    
+    //}
+
 
     void SeekPlayer()
     {
-       // Debug.Log("seeking player");
+        Debug.Log("Seeking player");
+
         // Move towards the last known player position
-        navMeshAgent.SetDestination(lastKnownPlayerPosition);
+        if (navMeshAgent != null)
+        {
+            navMeshAgent.SetDestination(lastKnownPlayerPosition);
+        }
+
+        // Start the cooldown timer
+        StartCooldown();
     }
 
     void WanderOrIdle()
@@ -73,34 +112,59 @@ public class EnemyAI : MonoBehaviour
 
     void SetRandomDestination()
     {
-        // Generate a random point within the wander radius
-        Vector3 randomDirection = Random.insideUnitSphere * wanderRadius;
-        randomDirection += transform.position;
-        NavMeshHit hit;
-        NavMesh.SamplePosition(randomDirection, out hit, wanderRadius, 1);
-        Vector3 finalPosition = hit.position;
+        if (navMeshAgent != null)
+        {
+            // Generate a random point within the wander radius
+            Vector3 randomDirection = Random.insideUnitSphere * wanderRadius;
+            randomDirection += transform.position;
+            NavMeshHit hit;
+            RaycastHit rayHit;
 
-        // Set the destination to the random point
-        navMeshAgent.SetDestination(finalPosition);
+            // Perform a raycast to check if the random point is obstructed by obstacles
+            if (!Physics.Raycast(transform.position, randomDirection - transform.position, out rayHit, wanderRadius))
+            {
+                // Perform a NavMesh sample to check if the random point is on the NavMesh
+                if (NavMesh.SamplePosition(randomDirection, out hit, wanderRadius, 1))
+                {
+                    // Set the destination to the random point
+                    navMeshAgent.SetDestination(hit.position);
+                }
+            }
+        }
     }
 
-   // void GroupUpWithOtherAI()
-   // {
-   //     //Debug.Log("Grouping up with otherAi");
-   //     // Find all other Enemy AI in the scene
-   //     GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-   //
-   //     if (!IsPlayerInVisionRange())
-   //     {
-   //         foreach (GameObject enemy in enemies)
-   //         {
-   //             // Check if the other AI is within the group seek range and not the same AI
-   //             if (enemy != gameObject && Vector3.Distance(transform.position, enemy.transform.position) <= groupSeekRange)
-   //             {
-   //                 // Move towards the other AI
-   //                 navMeshAgent.SetDestination(enemy.transform.position);
-   //             }
-   //         }
-   //     }
-   // }s
+    void StartCooldown()
+    {
+        // Start the cooldown timer
+        isCooldown = true;
+        Invoke("EndCooldown", seekCooldown);
+    }
+
+    void EndCooldown()
+    {
+        // End the cooldown timer
+        isCooldown = false;
+    }
+
+
+
+    // void GroupUpWithOtherAI()
+    // {
+    //     //Debug.Log("Grouping up with otherAi");
+    //     // Find all other Enemy AI in the scene
+    //     GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+    //
+    //     if (!IsPlayerInVisionRange())
+    //     {
+    //         foreach (GameObject enemy in enemies)
+    //         {
+    //             // Check if the other AI is within the group seek range and not the same AI
+    //             if (enemy != gameObject && Vector3.Distance(transform.position, enemy.transform.position) <= groupSeekRange)
+    //             {
+    //                 // Move towards the other AI
+    //                 navMeshAgent.SetDestination(enemy.transform.position);
+    //             }
+    //         }
+    //     }
+    // }s
 }
