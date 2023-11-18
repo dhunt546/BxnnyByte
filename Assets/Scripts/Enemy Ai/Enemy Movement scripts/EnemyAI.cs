@@ -26,8 +26,10 @@ public class EnemyAI : MonoBehaviour
     private Transform player;
     private Vector3 lastKnownPlayerPosition;
     private NavMeshAgent navMeshAgent;
-    
-    
+    private float previousDistanceToPlayer;
+    private bool wasPlayerInVisionRange = false;
+
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
@@ -42,10 +44,13 @@ public class EnemyAI : MonoBehaviour
         currentVision = defaultvisionRange;
         // Start with a random destination for wandering
         SetRandomDestination();
+        wasPlayerInVisionRange = false;
+
     }
 
     void Update()
     {
+        Debug.Log(cooldownTimer);
         lastKnownPlayerPosition = player.position;
 
         // Check if player is in vision range and seek. Start seeking cooldown
@@ -59,14 +64,41 @@ public class EnemyAI : MonoBehaviour
            WanderOrIdle(); 
         }
 
+        if (!IsPlayerInVisionRange() && wasPlayerInVisionRange)
+        {
+            // Player has just left the vision range, perform any necessary actions
+            Debug.Log("Player just left vision range");
+            StartCooldown();
+            // For example, start a cooldown or trigger some behavior
+        }
+
         // Check for other AI to group up
-        //GroupUpWithOtherAI();
-    }
+        // GroupUpWithOtherAI();
+
+        // Update the previous distance for the next frame
+        UpdatePreviousDistance();
+    
+    // Check for other AI to group up
+    //GroupUpWithOtherAI();
+}
+
+
 
     bool IsPlayerInVisionRange()
     {
         return player != null && Vector3.Distance(transform.position, player.position) <= currentVision;
     }
+
+    void UpdatePreviousDistance()
+    {
+        // Update the previous distance between AI and player for the next frame
+        previousDistanceToPlayer = player != null ? Vector3.Distance(transform.position, player.position) : float.MaxValue;
+
+        // Update the flag indicating whether the player was previously in vision range
+        wasPlayerInVisionRange = IsPlayerInVisionRange();
+    }
+
+
     void SeekPlayer()
     {
         
@@ -78,12 +110,6 @@ public class EnemyAI : MonoBehaviour
             //set vision higher to chase player
             currentVision = huntingvisionRange;
          
-        }
-
-        if (!IsPlayerInVisionRange())
-        {
-            Debug.Log("started cooldown");
-            StartCooldown();
         }
     }
     void StartCooldown()
