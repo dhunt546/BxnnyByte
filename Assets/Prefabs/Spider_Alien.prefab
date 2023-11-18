@@ -261,9 +261,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6773ab104812a2f41a4ae2842d01c69b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visionRange: 4.85
+  visionRange: 8.69
   wanderRadius: 3.2
-  wanderTimer: 2.16
+  wanderTimer: 2.92
   groupSeekRange: 6
   seekCooldown: 5
 --- !u!114 &1985451277286373852

@@ -10,50 +10,55 @@ public class EnemyAI : MonoBehaviour
 {
     //Regan Ly
     //Need to add: weighted desions, fix colliders bc theyre too chunky. Or make new alien type that is smaller as the basic alien
-    public float visionRange;
+    public float defaultvisionRange;
+    public float huntingvisionRange;
+    private float currentVision;
     public float wanderRadius;
-    public float wanderTimer;
+    public float wanderTime;
+    private float wanderTimer;
     public float groupSeekRange;
+
+
     public float seekCooldown;
+    private float cooldownTimer = 0;
+    private bool isCooldown;
 
     private Transform player;
     private Vector3 lastKnownPlayerPosition;
-    private float timer;
     private NavMeshAgent navMeshAgent;
-    private bool isCooldown;
+    
+    
 
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, visionRange);
+        Gizmos.DrawWireSphere(transform.position, currentVision);
+        
     }
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         navMeshAgent = GetComponent<NavMeshAgent>();
-        timer = wanderTimer;
-
+        wanderTimer = wanderTime;
+        currentVision = defaultvisionRange;
         // Start with a random destination for wandering
         SetRandomDestination();
     }
 
     void Update()
     {
-        // Check if player is in vision range
+        lastKnownPlayerPosition = player.position;
+
+        // Check if player is in vision range and seek. Start seeking cooldown
         if (player != null && IsPlayerInVisionRange())
         {
-
-                lastKnownPlayerPosition = player.position;
-                SeekPlayer();
-                Debug.Log("Player Found"); 
+            SeekPlayer();
+            
         }
         else
         {
-            if (!isCooldown)
-            {
-                WanderOrIdle();
-            }
+           WanderOrIdle(); 
         }
 
         // Check for other AI to group up
@@ -62,51 +67,67 @@ public class EnemyAI : MonoBehaviour
 
     bool IsPlayerInVisionRange()
     {
-        return player != null && Vector3.Distance(transform.position, player.position) <= visionRange;
+        return player != null && Vector3.Distance(transform.position, player.position) <= currentVision;
     }
-
-    //This is not WORKING IDK WHY 
-    //bool HasLineOfSightToPlayer()
-    //{
-    //    // Perform a raycast to check if there are obstacles between the AI and the player
-    //    RaycastHit rayHit;
-    //    if (player != null && Physics.Raycast(transform.position, player.position - transform.position, out rayHit, visionRange))
-    //    {
-    //        if (rayHit.collider.CompareTag("Player"))
-    //        {
-    //            Debug.Log("Sees player? " + HasLineOfSightToPlayer());
-    //            return true; // Player is in line of sight
-    //        }
-    //    }
-    //
-    //        return false; // Player is obstructed
-    //    
-    //}
-
-
     void SeekPlayer()
     {
-        Debug.Log("Seeking player");
-
+        
         // Move towards the last known player position
         if (navMeshAgent != null)
         {
+            
             navMeshAgent.SetDestination(lastKnownPlayerPosition);
+            //set vision higher to chase player
+            currentVision = huntingvisionRange;
+         
         }
 
-        // Start the cooldown timer
-        StartCooldown();
+        if (!IsPlayerInVisionRange())
+        {
+            Debug.Log("started cooldown");
+            StartCooldown();
+        }
     }
+    void StartCooldown()
+    {
+        //stop the cooldown timer first to restart it.
+        if (isCooldown)
+        {
+            StopCoroutine(CooldownTimer());
+        }
+        // Start the cooldown timer
+        isCooldown = true;
+        cooldownTimer = seekCooldown;
+        StartCoroutine(CooldownTimer());
+    }
+
+    IEnumerator CooldownTimer()
+    {
+        while (cooldownTimer > 0)
+        {
+            cooldownTimer -= Time.deltaTime;
+            yield return null;
+            if (cooldownTimer < 0)
+            {
+                cooldownTimer = 0;
+            }
+        }
+
+        // End the cooldown timer
+        isCooldown = false;
+        currentVision = defaultvisionRange;
+    }
+
 
     void WanderOrIdle()
     {
-        timer += Time.deltaTime;
+        wanderTimer += Time.deltaTime;
 
-        if (timer >= wanderTimer)
+        if (wanderTimer >= wanderTime)
         {
             // If timer is greater than wanderTimer, reset timer and set new destination
-            SetRandomDestination();
-            timer = 0;
+            SetRandomDestination();          
+            wanderTimer = 0;
         }
     }
 
@@ -133,18 +154,6 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    void StartCooldown()
-    {
-        // Start the cooldown timer
-        isCooldown = true;
-        Invoke("EndCooldown", seekCooldown);
-    }
-
-    void EndCooldown()
-    {
-        // End the cooldown timer
-        isCooldown = false;
-    }
 
 
 
