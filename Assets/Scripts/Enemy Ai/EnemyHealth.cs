@@ -2,26 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour, IDamageable
 {
-    [SerializeField] public float maxHealth = 1f;
+    public float maxEnemyHealth = 10.0f;
+    [SerializeField] HPBar healthBar;
 
-    private float currentHealth;
+    private float currentEnemyHealth;
 
 
     private void Start()
     {
-        currentHealth = maxHealth;
+        currentEnemyHealth = maxEnemyHealth;
+        healthBar = GetComponentInChildren<HPBar>();
     }
     void IDamageable.Damage(float damageAmount)
     {
-        currentHealth -= damageAmount;
+        currentEnemyHealth -= damageAmount;
 
-        if (currentHealth <= 0)
-        {
+        healthBar.UpdateHBar(currentEnemyHealth, maxEnemyHealth);
+
+            if (currentEnemyHealth <= 0)
+            {
             Die();
-        }
+            }
     }
 
     private void Die()
