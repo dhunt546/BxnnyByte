@@ -28,8 +28,6 @@ public class EnemyAI : MonoBehaviour
     private NavMeshAgent navMeshAgent;
     
     
-
-
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
@@ -51,7 +49,7 @@ public class EnemyAI : MonoBehaviour
         lastKnownPlayerPosition = player.position;
 
         // Check if player is in vision range and seek. Start seeking cooldown
-        if (player != null && IsPlayerInVisionRange())
+        if ((player != null && IsPlayerInVisionRange()) || isCooldown == true)
         {
             SeekPlayer();
             
@@ -121,6 +119,7 @@ public class EnemyAI : MonoBehaviour
 
     void WanderOrIdle()
     {
+        currentVision = defaultvisionRange;
         wanderTimer += Time.deltaTime;
 
         if (wanderTimer >= wanderTime)
