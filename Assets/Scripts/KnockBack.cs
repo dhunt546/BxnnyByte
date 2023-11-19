@@ -5,7 +5,7 @@ using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class KnockBack : MonoBehaviour
+public class KnockBack : MonoBehaviour       //Jacob Foran https://www.youtube.com/watch?v=QnsGSCXknUY
 {
     public float thrust;
     public float knocktime;
