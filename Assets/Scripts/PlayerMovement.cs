@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
+    //by Devin Hunt and Regan Ly
     public float moveSpeed = 5.0f;
     public Rigidbody2D rb;
     public Animator animator;
