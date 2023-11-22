@@ -8,14 +8,17 @@ public class MakeDebris : MonoBehaviour
 
     public GameObject debris;
     float debrisTimer;
-    bool isAble;
+    bool isAble = false;
     private EnemyAI enemyAi;
     float wandering;
-    private float timer;
+    float timerUp;
+    float timerDown;
+    float madeMess;
 
     void Start()
     {   //Get EmenyAI script.
         enemyAi = FindObjectOfType<EnemyAI>();
+       
     }
 
     
@@ -23,6 +26,14 @@ public class MakeDebris : MonoBehaviour
     {   //Assigns wandering to EnemyAI wanderTimer value.
          wandering = enemyAi.wanderTimer;
 
+        if (isAble == true)
+        {
+            CauseDebris();
+        }     
+        if (isAble == false)
+        {
+            CountDown();
+        }
     }
 
     // Checks to make debris
@@ -30,15 +41,46 @@ public class MakeDebris : MonoBehaviour
     {
         debrisTimer += Time.deltaTime;
 
-        if (isAble == true) 
-        {
-           
             if (debrisTimer >= wandering)
             {
-                Instantiate(debris, transform.position,Quaternion.identity);  
+                timerUp++;
+                debrisTimer = 0;
+                Debug.Log("timerUp =" + timerUp);
+
+                if (timerUp >= 5) 
+                {
+                    Debug.Log("makingdebris");
+                    Instantiate(debris, transform.position, Quaternion.identity);
+                    madeMess++;
+                    isAble = false;
+                    if (madeMess == 2)
+                    {
+                        Debug.Log("MakeDebris is turned off");
+                        GetComponent<MakeDebris>().enabled = false;
+                    }
+                }
+                
+            }     
+
+    }
+
+    void CountDown()
+    { 
+        debrisTimer += Time.deltaTime;
+
+        if (debrisTimer >= wandering)
+        {
+            timerDown--;
+            Debug.Log("timerDown =" + timerDown);
+            debrisTimer = 0;
+
+            if (timerDown <= -10)
+            {
+                isAble = true;
+                timerDown = 0;
             }
+
         }
-      
 
     }
 
