@@ -15,7 +15,7 @@ public class EnemyAI : MonoBehaviour
     private float currentVision;
     public float wanderRadius;
     public float wanderTime;
-    private float wanderTimer;
+    public float wanderTimer;
     public float groupSeekRange;
 
 
@@ -50,7 +50,7 @@ public class EnemyAI : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(cooldownTimer);
+        //Debug.Log(cooldownTimer);
         lastKnownPlayerPosition = player.position;
 
         // Check if player is in vision range and seek. Start seeking cooldown
