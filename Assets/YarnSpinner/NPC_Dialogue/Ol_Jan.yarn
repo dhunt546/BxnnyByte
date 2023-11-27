@@ -13,7 +13,13 @@ Player: *Flatulence*
 Player: "You said it..."" 
 Player: "Okay, okay I'll be out in a minute Ol-Jan..." 
 Player: "That damn A.I Supervisor is always hounding us. 
-Tutorial: --- Press *E* to open doors. ---
+Tutorial: ---= Press *E* to open doors. =---
+<<focus_camera Ol_Jan>>
+Ol Jan: "Come over here and take this mop..." 
+<<focus_camera Player>>
+Tutorial: ---= Press *Arrow Keys* or W,A,S,D to move. =--- 
+<<focus_camera Ol_Jan>>
+Ol Jan: "I need you to attack those puddles over there."
 ===
 
 
