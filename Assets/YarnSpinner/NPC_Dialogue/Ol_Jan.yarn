@@ -2,15 +2,18 @@
 tags:
 ---
 <<focus_camera Player>>
-Player: “What am I doing with my life...?" 
-Player: "I'm out here on this ship, in this dead end job...”
+Player: "What am I doing with my life..?" 
+Player: "I'm out here on this ship, in this dead end job..."
 <<focus_camera Ol_Jan>>
-Ol' Jan: "Hey Kid..."
-Ol' Jan: "You done in there...?"
-Ol' Jan: "We gotta get back to your TRAINING..."
-TRAINING: - Use ARROW KEYS or W,A,S,D KEYS to move around -
-Ol' Jan: "Get over here anf get your mop..."
+Ol Jan: "What are you doing in there Kid..? 
+Ol Jan: "You know the boss is always watching..." 
+Ol Jan: "Let's get to it and finish your training."
+<<focus_camera Player>>
+Player: *Flatulence* 
+Player: "You said it..."" 
+Player: "Okay, okay I'll be out in a minute Ol-Jan..." 
+Player: "That damn A.I Supervisor is always hounding us. 
+Tutorial: --- Press *E* to open doors. ---
 ===
-
 
 
