@@ -20,6 +20,9 @@ Ol Jan: "Come over here and take this mop..."
 Tutorial: ---= Press *Arrow Keys* or W,A,S,D to move. =--- 
 <<focus_camera Ol_Jan>>
 Ol Jan: "I need you to attack those puddles over there."
+<<focus_camera Player>>
+<<focus_camera Triangle>>
+*Clean-Up Objetive*
 ===
 
 

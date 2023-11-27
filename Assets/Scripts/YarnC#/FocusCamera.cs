@@ -12,12 +12,12 @@ public class FocusCamera : MonoBehaviour
     //Source: https://docs.yarnspinner.dev/unity-tutorial-projects/example-project-3
 
     // Drag and drop Dialogue Runner into this variable.
-    public DialogueRunner dialogueRunner;
+    DialogueRunner dialogueRunner;
 
     // Drag and drop desired Camera into this varible.
     public GameObject newCamera;
 
-    public void Awake()
+    void Awake()
     {   // Initalize DialogueRunner. 
         dialogueRunner = FindObjectOfType<Yarn.Unity.DialogueRunner>();
        
@@ -29,6 +29,7 @@ public class FocusCamera : MonoBehaviour
     [YarnCommand("focus_camera")]
     public void CameraLookAtTarget()
     {
+
         // Turns off Main Camera.
         GameObject.Find("Main Camera").GetComponent<Camera>().enabled = false;
 
