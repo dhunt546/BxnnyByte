@@ -9,21 +9,41 @@ public class KnockBack : MonoBehaviour       //Jacob Foran https://www.youtube.c
 {
     public float thrust;
     public float knocktime;
+    Transform playerTransform;
 
 
-    private void OnTriggerEnter2D(Collider2D Other)
+    //   private void OnTriggerEnter2D(Collider2D Other)
+    //   {
+    //       if(Other.gameObject.CompareTag("Enemy"))
+    //       {
+    //           Rigidbody2D Enemy = Other.GetComponent<Rigidbody2D>();
+    //           if (Enemy != null)
+    //           {
+    //               Knockback();
+    //           }
+    //       }
+    //   }
+
+
+        public void Knockback()
     {
-        if(Other.gameObject.CompareTag("Enemy"))
+        GameObject playerObject = GameObject.FindWithTag("Player");
+
+        // Check if the player GameObject is found
+        if (playerObject != null)
         {
-            Rigidbody2D  Enemy = Other.GetComponent<Rigidbody2D>();
-            if(Enemy != null)
-            {
-                Enemy.isKinematic = false;
-                Vector2 difference = Enemy.transform.position - transform.position;
-                difference = difference.normalized * thrust;
-                Enemy.AddForce(difference, ForceMode2D.Impulse);
-                StartCoroutine(KnockCo(Enemy));
-            }
+            // Get the player's transform reference
+            playerTransform = playerObject.transform;
+        }
+        Rigidbody2D Enemy = GetComponent<Rigidbody2D>();
+        if (Enemy != null)
+        {
+            
+            Enemy.isKinematic = false;
+            Vector2 difference = Enemy.transform.position - playerObject.transform.position;
+            difference = difference.normalized * thrust;
+            Enemy.AddForce(difference, ForceMode2D.Impulse);
+            StartCoroutine(KnockCo(Enemy));
         }
     }
     private IEnumerator KnockCo(Rigidbody2D Enemy)

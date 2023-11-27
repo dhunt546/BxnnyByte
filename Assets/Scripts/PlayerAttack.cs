@@ -104,7 +104,7 @@ public class PlayerAttack : MonoBehaviour
 
             //basic attack info goes here
             hits = Physics2D.CircleCastAll(attackTransform.position, basicAttackRange, Vector2.up, 0f, attackableLayer);
-
+            
             for (int i = 0; i < hits.Length; i++)
             {
                 IDamageable iDamageable = hits[i].collider.gameObject.GetComponent<IDamageable>();
@@ -114,6 +114,15 @@ public class PlayerAttack : MonoBehaviour
                     //apply the pain
                     iDamageable.Damage(basicAttackDmg);
 
+                    
+                }
+                //apply knockback
+                Rigidbody2D enemyRb = hits[i].collider.gameObject.GetComponent<Rigidbody2D>();
+                if (enemyRb != null)
+                {
+                    //Debug.Log("got the rigitbody of the enemy");
+                    // call the Knockback function on the enemy Rigidbody
+                    enemyRb.GetComponent<KnockBack>().Knockback();
                 }
             }
             Debug.Log(attackName);

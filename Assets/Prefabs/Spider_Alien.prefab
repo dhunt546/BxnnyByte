@@ -408,8 +408,10 @@ GameObject:
   - component: {fileID: 694915010931144503}
   - component: {fileID: 7671339838900656438}
   - component: {fileID: 88079909732944653}
+  - component: {fileID: 5171477215520992585}
   - component: {fileID: 1985451277286373852}
   - component: {fileID: 2098471477766253589}
+  - component: {fileID: 7781362560401265051}
   m_Layer: 7
   m_Name: Spider_Alien
   m_TagString: Enemy
@@ -658,8 +660,23 @@ MonoBehaviour:
   huntingvisionRange: 20
   wanderRadius: 3.2
   wanderTime: 2.58
+  wanderTimer: 0
   groupSeekRange: 6
   seekCooldown: 6
+--- !u!114 &5171477215520992585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8655144454707207289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e10afdead272da4580a384bd010c721, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thrust: 2
+  knocktime: 0.5
 --- !u!114 &1985451277286373852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -693,3 +710,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7781362560401265051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8655144454707207289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf8e3fe843a30174fa5591bcf0f44636, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debris: {fileID: 6019559658868206967, guid: e2dc3a64a9aae4848a827139f54da9c9, type: 3}
