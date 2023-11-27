@@ -45,17 +45,17 @@ public class MakeDebris : MonoBehaviour
             {
                 timerUp++;
                 debrisTimer = 0;
-                Debug.Log("timerUp =" + timerUp);
+                //Debug.Log("timerUp =" + timerUp);
 
                 if (timerUp >= 5) 
                 {
-                    Debug.Log("makingdebris");
+                    //Debug.Log("makingdebris");
                     Instantiate(debris, transform.position, Quaternion.identity);
                     madeMess++;
                     isAble = false;
                     if (madeMess == 2)
                     {
-                        Debug.Log("MakeDebris is turned off");
+                        //Debug.Log("MakeDebris is turned off");
                         GetComponent<MakeDebris>().enabled = false;
                     }
                 }
@@ -71,7 +71,7 @@ public class MakeDebris : MonoBehaviour
         if (debrisTimer >= wandering)
         {
             timerDown--;
-            Debug.Log("timerDown =" + timerDown);
+            //Debug.Log("timerDown =" + timerDown);
             debrisTimer = 0;
 
             if (timerDown <= -10)
