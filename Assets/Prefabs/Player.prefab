@@ -98,7 +98,6 @@ GameObject:
   - component: {fileID: 1189373476747339768}
   - component: {fileID: 3068843272605342227}
   - component: {fileID: 8243577073624337471}
-  - component: {fileID: 1162692143266466765}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -317,20 +316,6 @@ MonoBehaviour:
   spinAttackDmg: 10
   PlayerDirection: {fileID: 6641000483796230735}
   _isAttacking: 0
---- !u!114 &1162692143266466765
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2335019052630451878}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb90ef393d3aeb74f81a8eeaede3e815, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogueRunner: {fileID: 0}
-  newCamera: {fileID: 3302773665765377738}
 --- !u!1 &3302773665765377738
 GameObject:
   m_ObjectHideFlags: 0
