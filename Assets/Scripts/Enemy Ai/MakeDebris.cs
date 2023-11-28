@@ -29,11 +29,14 @@ public class MakeDebris : MonoBehaviour
         if (isAble == true)
         {
             CauseDebris();
-        }     
+        }
+        
         if (isAble == false)
         {
             CountDown();
         }
+
+        
     }
 
     // Checks to make debris
@@ -82,6 +85,11 @@ public class MakeDebris : MonoBehaviour
 
         }
 
+    }
+
+    public void ClearDebris() 
+    {
+        Destroy(debris);
     }
 
 }

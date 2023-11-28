@@ -5,9 +5,9 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using Yarn.Unity;
 
-public class FocusCamera : MonoBehaviour
-{
-   
+public class FocusCamera : MonoBehaviour    //Created by Devin Hunt                                            
+{                                           //Source: https://docs.yarnspinner.dev/using-yarnspinner-with-unity/creating-commands-functions
+
     DialogueRunner dialogueRunner;
     public GameObject newCamera;
    
@@ -35,7 +35,7 @@ public class FocusCamera : MonoBehaviour
     [YarnCommand("doneFocus")]
     public void doneFocus()
     {         
-            newCamera.GetComponent<Camera>().enabled = false;    
+        newCamera.GetComponent<Camera>().enabled = false;    
     }
    
     public void CameraDoneLoooking()
