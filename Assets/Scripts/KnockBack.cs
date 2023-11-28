@@ -11,31 +11,8 @@ public class KnockBack : MonoBehaviour       //Jacob Foran https://www.youtube.c
     public float thrust;
     public float knocktime;
     Transform playerTransform;
-    private MakeDebris makeDebris;
-    //GameObject pile;
-  
+ 
 
-   // void Start()
-   // {
-   //     makeDebris = FindObjectOfType<MakeDebris>();
-   //      
-   // }
-   //
-   // private void Update()
-   // {
-   //    pile = makeDebris.debris;
-   // }
-   // public void OnTriggerEnter2D(Collider2D Other)
-   // {
-   //     if (Other.gameObject.CompareTag("Debris"))
-   //     {
-   //         Rigidbody2D Debris = Other.GetComponent<Rigidbody2D>();
-   //         if (Debris != null)
-   //         {
-   //             Destroy(pile);
-   //         }
-   //     }
-   // }
     public void Knockback()
     {
         GameObject playerObject = GameObject.FindWithTag("Player");
