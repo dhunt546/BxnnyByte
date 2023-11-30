@@ -185,7 +185,7 @@ public class PlayerAttack : MonoBehaviour
         {
             //dodge here
 
-            Debug.Log(attackName);
+           // Debug.Log(attackName);
 
         }
 

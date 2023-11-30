@@ -9,11 +9,13 @@ public class Score : MonoBehaviour
 {
     public static Score Instance;
     public TextMeshProUGUI scoreText;
-    private int score = 0000;
-    public int SpiderHP = 1;
+    private int score;
+    public int alienkilled;
+    public int debrisCleaned;
+
     void Start()
     {
-        scoreText.text = score.ToString();
+        UpdateScoreDisplay();
     }
 
     private void Awake()
@@ -22,17 +24,31 @@ public class Score : MonoBehaviour
             Instance = this;
     }
 
-    
-    public void UpdateScoreText(int newScore)
+    public void IncrementScore()
     {
-        scoreText.text = newScore.ToString();
+        debrisCleaned++;
+        SetScore(debrisCleaned);
+
+    }
+    public void SetScore(int newScore)
+    {
+        score = newScore;
+        UpdateScoreDisplay();
+    }
+    private void UpdateScoreDisplay()
+    {
+        if (scoreText != null)
+        {
+            scoreText.text = score.ToString();
+        }
+    }
+
+    public int GetScore()
+    {
+        return debrisCleaned;
     }
 
     void Update()
     {
-        if (SpiderHP == 0)
-        {
-            score += 100;
-        }
     }
 }

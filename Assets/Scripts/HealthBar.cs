@@ -18,11 +18,7 @@ public class HealthBar : MonoBehaviour  //Edited by Regan Ly   Source: ChatGPT
 
         void Update()
         {
-            // For testing purposes, reduce health over time
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                TakeDamage(10f);
-            }
+
         }
 
         // Function to reduce health
@@ -50,7 +46,7 @@ public class HealthBar : MonoBehaviour  //Edited by Regan Ly   Source: ChatGPT
         void Die()
         {
             // Implement any death logic here (e.g., game over screen, respawn, etc.)
-            Debug.Log("Player has died!");
+           // Debug.Log("Player has died!");
         }
     }
 

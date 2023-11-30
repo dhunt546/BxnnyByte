@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour, IDamageable
 {
-    public float maxEnemyHealth = 10.0f;
+    public float maxEnemyHealth = 1.0f;
     [SerializeField] HPBar healthBar;
+    public Score score;
 
     private float currentEnemyHealth;
 
@@ -25,12 +27,15 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
             if (currentEnemyHealth <= 0)
             {
+            
             Die();
             }
     }
 
     private void Die()
     {
+        
         Destroy(gameObject);
+        
     }
 }
