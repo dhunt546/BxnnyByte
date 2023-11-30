@@ -14,7 +14,8 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private Transform attackTransform;
 
     [SerializeField] private LayerMask attackableLayer;
-
+    public LayerMask layer1;
+    public LayerMask layer2;
 
     //range of abilities
     [SerializeField] private float basicAttackRange = 1.5f;
@@ -63,6 +64,7 @@ public class PlayerAttack : MonoBehaviour
     {
        InitializeCooldowns(); 
         _isAttacking = false;
+        attackableLayer = layer1 | layer2;
 
     }
 
@@ -107,25 +109,40 @@ public class PlayerAttack : MonoBehaviour
             
             for (int i = 0; i < hits.Length; i++)
             {
-                IDamageable iDamageable = hits[i].collider.gameObject.GetComponent<IDamageable>();
-
-                if (iDamageable != null)
+                if (hits[i].collider.gameObject.CompareTag("Enemy"))
                 {
-                    //apply the pain
-                    iDamageable.Damage(basicAttackDmg);
+                    IDamageable iDamageable = hits[i].collider.gameObject.GetComponent<IDamageable>();
 
-                    
+                    if (iDamageable != null)
+                    {
+                        //apply the pain
+                        iDamageable.Damage(basicAttackDmg);
+
+
+                    }
+                    //apply knockback
+                    Rigidbody2D enemyRb = hits[i].collider.gameObject.GetComponent<Rigidbody2D>();
+                    if (enemyRb != null)
+                    {
+                        //Debug.Log("got the rigitbody of the enemy");
+                        // call the Knockback function on the enemy Rigidbody
+                        enemyRb.GetComponent<KnockBack>().Knockback();
+                    }
+
                 }
-                //apply knockback
-                Rigidbody2D enemyRb = hits[i].collider.gameObject.GetComponent<Rigidbody2D>();
-                if (enemyRb != null)
+                else if (hits[i].collider.gameObject.CompareTag("Debris"))
                 {
-                    //Debug.Log("got the rigitbody of the enemy");
-                    // call the Knockback function on the enemy Rigidbody
-                    enemyRb.GetComponent<KnockBack>().Knockback();
+                    Rigidbody2D debrisRb = hits[i].collider.gameObject.GetComponent<Rigidbody2D>();
+                    if (debrisRb != null)
+                    {
+                       // Debug.Log("debris detected");
+                        // Destroy the debris object
+                        debrisRb.GetComponent<debris>().CleanDebris();
+                    }
                 }
+
             }
-            Debug.Log(attackName);
+           // Debug.Log(attackName);
         }
 
         if (attackName == "Spin")
@@ -143,7 +160,7 @@ public class PlayerAttack : MonoBehaviour
                     iDamageable.Damage(spinAttackDmg);
                 }
             }
-            Debug.Log(attackName);
+           // Debug.Log(attackName);
 
         }
         if (attackName == "PowerAttack")
@@ -161,7 +178,7 @@ public class PlayerAttack : MonoBehaviour
                     iDamageable.Damage(powerAttackDmg);
                 }
             }
-            Debug.Log(attackName);
+            //Debug.Log(attackName);
 
         }
         if(attackName == "Dodge")
@@ -185,7 +202,7 @@ public class PlayerAttack : MonoBehaviour
     bool CanAttack(string attackName)
   {
       if (!IsCooldownFinished(attackName)) {
-            Debug.Log(CanAttack(attackName) + "false return");
+            //Debug.Log(CanAttack(attackName) + "false return");
           return false;
             
       }
@@ -196,7 +213,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (!attackCooldownFinished.ContainsKey(attackName))
         {
-            Debug.LogWarning("Attack cooldown state not found for " + attackName);
+           // Debug.LogWarning("Attack cooldown state not found for " + attackName);
             return true;
         }
 

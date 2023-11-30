@@ -87,9 +87,5 @@ public class MakeDebris : MonoBehaviour
 
     }
 
-    public void ClearDebris() 
-    {
-        Destroy(debris);
-    }
 
 }
