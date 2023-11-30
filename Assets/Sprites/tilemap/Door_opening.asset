@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Door_opening
   m_EditorClassIdentifier: 
   m_AnimatedSprites:
-  - {fileID: -348115322, guid: 53d2809f100c3f449b674b9a9fc4180c, type: 3}
-  - {fileID: 814759445, guid: 53d2809f100c3f449b674b9a9fc4180c, type: 3}
-  - {fileID: -1179363949, guid: 53d2809f100c3f449b674b9a9fc4180c, type: 3}
-  - {fileID: 1574194648, guid: 53d2809f100c3f449b674b9a9fc4180c, type: 3}
+  - {fileID: -4487943, guid: 35fb2cd9f3eea8b42a4dd39673a38caf, type: 3}
+  - {fileID: 1325063534, guid: 35fb2cd9f3eea8b42a4dd39673a38caf, type: 3}
+  - {fileID: -416043797, guid: 35fb2cd9f3eea8b42a4dd39673a38caf, type: 3}
+  - {fileID: -1389960387, guid: 35fb2cd9f3eea8b42a4dd39673a38caf, type: 3}
+  - {fileID: -92452213, guid: 35fb2cd9f3eea8b42a4dd39673a38caf, type: 3}
   m_MinSpeed: 4
   m_MaxSpeed: 4
   m_AnimationStartTime: 0
