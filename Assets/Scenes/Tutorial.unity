@@ -22853,6 +22853,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -7944934520578893350, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
+      propertyPath: score
+      value: 
+      objectReference: {fileID: 1655302396}
+    - target: {fileID: -7944934520578893350, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
       propertyPath: scoreManager
       value: 
       objectReference: {fileID: 1655302396}
@@ -22921,6 +22925,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1290805437}
     m_Modifications:
+    - target: {fileID: -7944934520578893350, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
+      propertyPath: score
+      value: 
+      objectReference: {fileID: 1655302396}
     - target: {fileID: -7944934520578893350, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
       propertyPath: scoreManager
       value: 
@@ -23650,8 +23658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1655302397}
-  alienkilled: 0
-  debrisCleaned: 0
+  scoreAdded: 0
 --- !u!114 &1655302397 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4064001081774344445, guid: a8fea26e0bf79974cbccebb34642108e, type: 3}

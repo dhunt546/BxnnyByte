@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3906624774550624706}
   - component: {fileID: 1918796784456469737}
   - component: {fileID: 7231474089403353936}
+  - component: {fileID: 6713617609632535245}
   m_Layer: 0
   m_Name: DoorPrefab
   m_TagString: Untagged
@@ -101,8 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openDoorSprite: {fileID: -92452213, guid: 35fb2cd9f3eea8b42a4dd39673a38caf, type: 3}
   closedDoorSprite: {fileID: -4487943, guid: 35fb2cd9f3eea8b42a4dd39673a38caf, type: 3}
-  doorOpenTime: 2
-  _anim: {fileID: 7231474089403353936}
+  doorOpenTime: 0
   is_door_open: 0
 --- !u!61 &1918796784456469737
 BoxCollider2D:
@@ -159,7 +159,7 @@ Animator:
   m_GameObject: {fileID: 3774074244382676166}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 74ceabda1091cdb46a722ad5ec36ca40, type: 2}
+  m_Controller: {fileID: 9100000, guid: c553476c43119594fb7ee40d93c88810, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -170,3 +170,38 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!58 &6713617609632535245
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3774074244382676166}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.028909802, y: -0.86729056}
+  serializedVersion: 2
+  m_Radius: 1.8324614

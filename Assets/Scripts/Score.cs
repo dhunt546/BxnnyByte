@@ -10,8 +10,7 @@ public class Score : MonoBehaviour
     public static Score Instance;
     public TextMeshProUGUI scoreText;
     private int score;
-    public int alienkilled;
-    public int debrisCleaned;
+    public int scoreAdded;
 
     void Start()
     {
@@ -26,8 +25,8 @@ public class Score : MonoBehaviour
 
     public void IncrementScore()
     {
-        debrisCleaned++;
-        SetScore(debrisCleaned);
+       scoreAdded++;
+        SetScore(scoreAdded);
 
     }
     public void SetScore(int newScore)
@@ -45,7 +44,7 @@ public class Score : MonoBehaviour
 
     public int GetScore()
     {
-        return debrisCleaned;
+        return scoreAdded;
     }
 
     void Update()

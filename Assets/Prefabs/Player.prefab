@@ -308,6 +308,12 @@ MonoBehaviour:
   attackableLayer:
     serializedVersion: 2
     m_Bits: 128
+  layer1:
+    serializedVersion: 2
+    m_Bits: 0
+  layer2:
+    serializedVersion: 2
+    m_Bits: 0
   basicAttackRange: 0.9
   powerAttackRange: 1.1
   spinAttackRange: 1.5

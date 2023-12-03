@@ -1,61 +1,100 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 
 public class Doors : MonoBehaviour
 {
     public Sprite openDoorSprite;
     public Sprite closedDoorSprite;
-    public float doorOpenTime;
-    public Animator _anim;
+    public float doorOpenTime = 1f;
+    public bool is_door_open = false;
 
-    public bool is_door_open;
+    private Animator doorAnimator;
+    private SpriteRenderer doorSpriteRenderer;
 
-    private SpriteRenderer spriteRenderer;
+    // Start is called before the first frame update
     private void Awake()
     {
-        _anim = GetComponent<Animator>();
+        doorAnimator = GetComponent<Animator>();
     }
-    // Start is called before the first frame update
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        doorSpriteRenderer = GetComponent<SpriteRenderer>();
+
+        SetDoorState(true);
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (is_door_open)
+        {
+            doorSpriteRenderer.sprite = openDoorSprite;
+        }
+        else if (!is_door_open)
+        {
+            doorSpriteRenderer.sprite = closedDoorSprite;
+        }
+
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (is_door_open)
+            if (Input.GetKeyDown(KeyCode.E) && is_door_open == false)
             {
-                _anim.CrossFade(closingdoor, 1);
-                Invoke("CloseDoor", doorOpenTime);
-                Debug.Log("doorclose");
-            }
-            else if (is_door_open == false)
-            {
-                _anim.CrossFade(openingdoor, 0);
+                // Play the door opening animation
+                doorAnimator.SetTrigger("OpenDoor");
+
+                // Wait for the door to open before changing the sprite
                 Invoke("OpenDoor", doorOpenTime);
             }
-            
+            else if (Input.GetKeyDown(KeyCode.E) && is_door_open == true)
+            {
+                // Play the door closing animation
+                doorAnimator.SetTrigger("CloseDoor");
+
+                // Wait for the door to close before changing the sprite
+                Invoke("CloseDoor", doorOpenTime);
+            }
+
         }
     }
 
-    public void OpenDoor()
+    void OpenDoor()
     {
-        spriteRenderer.sprite = openDoorSprite;
-        is_door_open = true;
-        
-    }    
-    public void CloseDoor()
-    {
-        
-        spriteRenderer.sprite = closedDoorSprite;
-        is_door_open = false;
-        
+        SetDoorState(true);
     }
 
-    private static readonly int openingdoor = Animator.StringToHash("DoorOpening");
-    private static readonly int closingdoor = Animator.StringToHash("DoorClosing");
+    void CloseDoor()
+    {
+        SetDoorState(false);
+    }
+
+    void SetDoorState(bool doorOpen)
+    {
+        is_door_open=doorOpen;
+        // Set the door sprite based on the state
+        doorSpriteRenderer.sprite = doorOpen ? openDoorSprite : closedDoorSprite;
+    }
+    // Animation Event Functions
+    void OnDoorOpened()
+    {
+        OpenDoor();
+    }
+
+    void OnDoorClosed()
+    {
+        CloseDoor();
+    }
+
+    // You may want to use OnTriggerEnter2D or OnTriggerStay2D based on your needs
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            // Display a prompt or handle player interaction as needed
+        }
+    }
 }
