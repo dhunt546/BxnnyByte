@@ -1,4 +1,4 @@
-﻿title: Intro
+title: Intro
 tags:
 ---
 <<focusCamera Player_Camera>>
@@ -27,9 +27,9 @@ Tutorial: ---= Press *Arrow Keys* or W,A,S,D to move. =---
 Ol Jan: "I need you to attack those puddles over there."
 <<doneFocus Ol_Jan_Camera>>
 <<focusCamera Player_Camera>>
-<<focusCamera Triangle_Camera>>
+<<focusCamera CleanCamera>>
 *Clean-Up Objetive*
-<<doneFocus Triangle_Camera>>
+<<doneFocus CleanCamera>>
 ===
 
 
