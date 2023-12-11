@@ -12,8 +12,8 @@ public class PlayerAttack : MonoBehaviour
     RaycastHit2D[] hits;
 
     [SerializeField] private Transform attackTransform;
-
     [SerializeField] private LayerMask attackableLayer;
+   
     public LayerMask layer1;
     public LayerMask layer2;
 
@@ -21,7 +21,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float basicAttackRange = 1.5f;
     [SerializeField] private float powerAttackRange = 2.0f;
     [SerializeField] private float spinAttackRange = 0.5f;
- //dodge doesnt need a range. just degate incoming damage
+    //dodge doesnt need a range. just degate incoming damage
 
 
     //damage amount
@@ -31,7 +31,7 @@ public class PlayerAttack : MonoBehaviour
 
     public GameObject PlayerDirection;
 
-    //     public Text countdownText;
+    //public Text countdownText;
     //probably make this a protextmesh
 
 
@@ -55,9 +55,7 @@ public class PlayerAttack : MonoBehaviour
         KeyInputMappings[KeyCode.E] = "BasicAttack";
         KeyInputMappings[KeyCode.X] = "Spin";
         KeyInputMappings[KeyCode.Q] = "PowerAttack";
-        KeyInputMappings[KeyCode.Space] = "Dodge";
-       
-        
+        KeyInputMappings[KeyCode.Space] = "Dodge";      
     }
 
     void Start()
@@ -65,10 +63,8 @@ public class PlayerAttack : MonoBehaviour
        InitializeCooldowns(); 
         _isAttacking = false;
         attackableLayer = layer1 | layer2;
-
     }
-
-   
+ 
     void Update()
     {
         //check key inputs for attacking
@@ -76,8 +72,7 @@ public class PlayerAttack : MonoBehaviour
         {
             string attackName = kvp.Value;
             if (Input.GetKeyUp(kvp.Key) && IsCooldownFinished(attackName) && !_isAttacking)
-            {
-                
+            {              
                 if (CanAttack(attackName))
                 {
                     //Debug.Log("Attack button released");
@@ -103,7 +98,6 @@ public class PlayerAttack : MonoBehaviour
     {
         if (attackName == "BasicAttack")
         {
-
             //basic attack info goes here
             hits = Physics2D.CircleCastAll(attackTransform.position, basicAttackRange, Vector2.up, 0f, attackableLayer);
             
@@ -117,8 +111,6 @@ public class PlayerAttack : MonoBehaviour
                     {
                         //apply the pain
                         iDamageable.Damage(basicAttackDmg);
-
-
                     }
                     //apply knockback
                     Rigidbody2D enemyRb = hits[i].collider.gameObject.GetComponent<Rigidbody2D>();
@@ -128,7 +120,6 @@ public class PlayerAttack : MonoBehaviour
                         // call the Knockback function on the enemy Rigidbody
                         enemyRb.GetComponent<KnockBack>().Knockback();
                     }
-
                 }
                 else if (hits[i].collider.gameObject.CompareTag("Debris"))
                 {
@@ -140,9 +131,7 @@ public class PlayerAttack : MonoBehaviour
                         debrisRb.GetComponent<debris>().CleanDebris();
                     }
                 }
-
-            }
-           // Debug.Log(attackName);
+            }           
         }
 
         if (attackName == "Spin")
@@ -161,7 +150,6 @@ public class PlayerAttack : MonoBehaviour
                 }
             }
            // Debug.Log(attackName);
-
         }
         if (attackName == "PowerAttack")
         {
@@ -179,16 +167,13 @@ public class PlayerAttack : MonoBehaviour
                 }
             }
             //Debug.Log(attackName);
-
         }
         if(attackName == "Dodge")
         {
             //dodge here
 
            // Debug.Log(attackName);
-
         }
-
     }
 
     void OnDrawGizmos()
@@ -200,14 +185,13 @@ public class PlayerAttack : MonoBehaviour
     //cooldown math
     //checks if they have a cooldown of if their cooldown is not done yet
     bool CanAttack(string attackName)
-  {
+    {
       if (!IsCooldownFinished(attackName)) {
             //Debug.Log(CanAttack(attackName) + "false return");
-          return false;
-            
+          return false;           
       }
       return true;
-  }
+    }
 
     bool IsCooldownFinished(string attackName)
     {
@@ -216,19 +200,17 @@ public class PlayerAttack : MonoBehaviour
            // Debug.LogWarning("Attack cooldown state not found for " + attackName);
             return true;
         }
-
         return attackCooldownFinished[attackName];
     }
 
     //sets attackcooldown name and gets cooldown time
    void StartCooldown(string attackName, float cooldown)
    {
-
         attackCooldownFinished[attackName] = false; // Cooldown started
 
         // Start a coroutine to count down the cooldown
         StartCoroutine(CountDownCooldown(attackName, GetCooldownTime(attackName)));
-    }
+   }
     IEnumerator CountDownCooldown(string attackName, float cooldown)
     {
         float remainingCooldown = cooldown;
@@ -239,13 +221,12 @@ public class PlayerAttack : MonoBehaviour
            // Debug.Log("Remaining cooldown for " + attackName + " is " + remainingCooldown);
             yield return null;
         }
-
         attackCooldownFinished[attackName] = true; // Cooldown finished
     }
 
     //declares cooldown time for each attack name
     float GetCooldownTime(string attackName)
-   {
+    {
        switch (attackName)
        {
            case "BasicAttack":
@@ -260,7 +241,7 @@ public class PlayerAttack : MonoBehaviour
            default:
                return 0f;
        }
-   }
+    }
     void InitializeCooldowns()
     {
         foreach (var kvp in KeyInputMappings)

@@ -63,7 +63,7 @@ public class PlayerAnimator : MonoBehaviour
                 // Don't start a new animation if one is already playing
                 return;
             }
-             else if (isMoving)
+            else if (isMoving)
             {
                 //Debug.Log("moving");
                 //Running + direction
@@ -83,7 +83,6 @@ public class PlayerAnimator : MonoBehaviour
                 {
                     _anim.CrossFade(MoveL, 0);
                 }
-
             }
             //idle + direction
             else if (!isMoving)
@@ -143,7 +142,7 @@ public class PlayerAnimator : MonoBehaviour
         return isAttackAnimationPlaying;
     }
     private IEnumerator PlayAnimationAndLock(int animationHash)
-        {
+    {
         isCurrentlyAttacking = true;
 
         // Crossfade the attack animation
@@ -156,8 +155,6 @@ public class PlayerAnimator : MonoBehaviour
         isAttackAnimationPlaying = false; // Set the animation flag back to false
         isCurrentlyAttacking = false;
     }
-
-
     private static readonly int IdleF = Animator.StringToHash("Idle");
     private static readonly int IdleR = Animator.StringToHash("idle_R");
     private static readonly int IdleB = Animator.StringToHash("idle_B");
@@ -171,5 +168,4 @@ public class PlayerAnimator : MonoBehaviour
     private static readonly int MoveB = Animator.StringToHash("move_B");
     private static readonly int MoveR = Animator.StringToHash("move_R");
     private static readonly int MoveL = Animator.StringToHash("move_L");
-
 }

@@ -14,8 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public string playerDirection = "Forward";
 
     public bool isMoving;
-    bool isAttacking;
-
+   
     public int PlayerHealth = 5;
 
     void Update()
@@ -23,18 +22,15 @@ public class PlayerMovement : MonoBehaviour
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
         movement.Normalize();
-
-        // animator.SetFloat("Horizontal", movement.x);
-        // animator.SetFloat("vertical", movement.y);
-        // animator.SetFloat("Speed", movement.sqrMagnitude);
+    
         if (movement != Vector2.zero)
         {
             isMoving = true;
-            float angle = Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg;
-            // angle will be in the range of -180 to 180 degrees
-            // You can use angle to determine the direction or rotation of the player
-            // For example, you can rotate the player object to face the direction:
+
+            float angle = Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg; 
+            
             PlayerDirection.transform.rotation = Quaternion.Euler(0, 0, angle);
+
             if (angle >= -45 && angle < 45)
                 playerDirection = "Left";
             else if (angle >= 45 && angle < 135)
@@ -42,25 +38,17 @@ public class PlayerMovement : MonoBehaviour
             else if (angle >= 135 || angle < -135)
                 playerDirection = "Right";
             else
-                playerDirection = "Forward";
-            //Debug.Log("player is facing "+playerDirection);
+                playerDirection = "Forward";         
         }
         else
         {
             isMoving = false;
         }
-
     }
-
-   
-   
-
 
     private void FixedUpdate()
     {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
-
-
     }
 
 }

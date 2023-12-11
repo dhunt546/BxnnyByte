@@ -12,8 +12,8 @@ public class HealthBar : MonoBehaviour  //Edited by Regan Ly   Source: ChatGPT
 
         void Start()
         {
-        currentHealth = maxHealth;
-        UpdateHealthBar();
+            currentHealth = maxHealth;
+            UpdateHealthBar();
         }
 
         void Update()
@@ -48,5 +48,5 @@ public class HealthBar : MonoBehaviour  //Edited by Regan Ly   Source: ChatGPT
             // Implement any death logic here (e.g., game over screen, respawn, etc.)
            // Debug.Log("Player has died!");
         }
-    }
+}
 
