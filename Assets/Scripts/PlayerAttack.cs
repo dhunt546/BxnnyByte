@@ -23,6 +23,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float spinAttackRange = 0.5f;
     //dodge doesnt need a range. just degate incoming damage
 
+    [SerializeField] private AudioSource attackSource;
 
     //damage amount
     [SerializeField] private float basicAttackDmg = 1.0f;
@@ -111,6 +112,7 @@ public class PlayerAttack : MonoBehaviour
                     {
                         //apply the pain
                         iDamageable.Damage(basicAttackDmg);
+                        attackSource.Play();
                     }
                     //apply knockback
                     Rigidbody2D enemyRb = hits[i].collider.gameObject.GetComponent<Rigidbody2D>();
@@ -147,6 +149,7 @@ public class PlayerAttack : MonoBehaviour
                 {
                     //apply the pain
                     iDamageable.Damage(spinAttackDmg);
+                    attackSource.Play();
                 }
             }
            // Debug.Log(attackName);
@@ -164,6 +167,7 @@ public class PlayerAttack : MonoBehaviour
                 {
                     //apply the pain
                     iDamageable.Damage(powerAttackDmg);
+                    attackSource.Play();
                 }
             }
             //Debug.Log(attackName);
