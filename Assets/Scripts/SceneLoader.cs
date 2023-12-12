@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneLoader : MonoBehaviour
+public class SceneLoader : MonoBehaviour        //Edited by Devin Hunt.
 {
     public void RestartLevel()
     {

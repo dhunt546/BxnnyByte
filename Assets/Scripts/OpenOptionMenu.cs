@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OpenOptionMenu : MonoBehaviour
+public class OpenOptionMenu : MonoBehaviour     //Created by Devin Hunt.
 {
     public GameObject optionsPanel;
 

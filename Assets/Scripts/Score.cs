@@ -27,13 +27,14 @@ public class Score : MonoBehaviour
     {
        scoreAdded++;
         SetScore(scoreAdded);
-
     }
+
     public void SetScore(int newScore)
     {
         score = newScore;
         UpdateScoreDisplay();
     }
+
     private void UpdateScoreDisplay()
     {
         if (scoreText != null)
@@ -45,9 +46,5 @@ public class Score : MonoBehaviour
     public int GetScore()
     {
         return scoreAdded;
-    }
-
-    void Update()
-    {
     }
 }

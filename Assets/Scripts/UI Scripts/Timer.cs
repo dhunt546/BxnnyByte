@@ -5,7 +5,8 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-public class Timer : MonoBehaviour
+public class Timer : MonoBehaviour      //Created by Regan Ly.
+                                        //Tinkered around with, by Devin Hunt.
 {
     public float timeRemaining = 0;
     public static bool timeIsRunning = true;
