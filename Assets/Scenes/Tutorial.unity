@@ -390,6 +390,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 28039620}
   m_CullTransparentMesh: 1
+--- !u!1 &132608172 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1504963565107086782, guid: a8fea26e0bf79974cbccebb34642108e, type: 3}
+  m_PrefabInstance: {fileID: 215538593}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &180973448
 GameObject:
   m_ObjectHideFlags: 0
@@ -498,6 +503,14 @@ PrefabInstance:
       propertyPath: m_ReferencePixelsPerUnit
       value: 64
       objectReference: {fileID: 0}
+    - target: {fileID: 3249323387235972214, guid: a8fea26e0bf79974cbccebb34642108e, type: 3}
+      propertyPath: timeRemaining
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 3249323387235972214, guid: a8fea26e0bf79974cbccebb34642108e, type: 3}
+      propertyPath: CountdownTimer
+      value: 
+      objectReference: {fileID: 132608172}
     - target: {fileID: 4085216027289838694, guid: a8fea26e0bf79974cbccebb34642108e, type: 3}
       propertyPath: m_Pivot.x
       value: 0

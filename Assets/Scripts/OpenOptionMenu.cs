@@ -4,20 +4,21 @@ using UnityEngine;
 
 public class OpenOptionMenu : MonoBehaviour
 {
-    // Reference to the options menu panel
     public GameObject optionsPanel;
+   
+    private void Start()
+    {   
 
-    // Called when the options button is pressed
+    }
     public void ShowOptionsMenu()
-    {
-        // Set the options menu panel to active
+    {   
+        Timer.timeIsRunning = false;
         optionsPanel.SetActive(true);
     }
-
-    // Called when the close button in the options menu is pressed
+  
     public void CloseOptionsMenu()
     {
-        // Set the options menu panel to inactive
+        Timer.timeIsRunning = true;
         optionsPanel.SetActive(false);
     }
 }

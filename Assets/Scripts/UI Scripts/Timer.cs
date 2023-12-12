@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class Timer : MonoBehaviour
 {
     public float timeRemaining = 0;
-    public bool timeIsRunning = true;
+    public static bool timeIsRunning = true;
     public TMP_Text timeText;
     public GameObject CountdownTimer;
 
@@ -19,12 +19,14 @@ public class Timer : MonoBehaviour
 
     void Update()
     {
+        DisplayTime(timeRemaining);
+
         if (timeIsRunning == true)
         {
             if (timeRemaining >= 0)
             {
                 timeRemaining -= Time.deltaTime;
-                DisplayTime(timeRemaining);
+                //DisplayTime(timeRemaining);
             }
             if (timeRemaining <= 0)
             {
