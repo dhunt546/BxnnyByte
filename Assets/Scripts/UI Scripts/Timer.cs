@@ -9,20 +9,19 @@ public class Timer : MonoBehaviour
     public float timeRemaining = 0;
     public bool timeIsRunning = true;
     public TMP_Text timeText;
-    // Start is called before the first frame update
+
     void Start()
     {
         timeIsRunning = true; 
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (timeIsRunning)
         {
             if (timeRemaining >= 0)
             {
-                timeRemaining += Time.deltaTime;
+                timeRemaining -= Time.deltaTime;
                 DisplayTime(timeRemaining);
             }
         }
@@ -30,10 +29,10 @@ public class Timer : MonoBehaviour
 
     void DisplayTime(float timeToDisplay)
     {
-        timeToDisplay += 1;
+        timeToDisplay -= 1;
         float minutes = Mathf.FloorToInt(timeToDisplay / 60); 
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
-        float milliseconds = Mathf.FloorToInt((timeToDisplay * 1000) % 100); // Calculate milliseconds
-        timeText.text = string.Format("{0:00}:{1:00}:{2:00}", minutes, seconds, milliseconds);
+        //float milliseconds = Mathf.FloorToInt((timeToDisplay * 1000) % 100); // Calculate milliseconds
+        timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds); //, milliseconds);
     }
 }
