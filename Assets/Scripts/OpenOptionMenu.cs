@@ -5,11 +5,7 @@ using UnityEngine;
 public class OpenOptionMenu : MonoBehaviour
 {
     public GameObject optionsPanel;
-   
-    private void Start()
-    {   
 
-    }
     public void ShowOptionsMenu()
     {   
         Timer.timeIsRunning = false;
