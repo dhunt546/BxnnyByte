@@ -3,28 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
     public float timeRemaining = 0;
     public bool timeIsRunning = true;
     public TMP_Text timeText;
+    public GameObject CountdownTimer;
 
-    void Start()
+    void Awake()
     {
         timeIsRunning = true; 
     }
 
     void Update()
     {
-        if (timeIsRunning)
+        if (timeIsRunning == true)
         {
             if (timeRemaining >= 0)
             {
                 timeRemaining -= Time.deltaTime;
                 DisplayTime(timeRemaining);
             }
-        }
+            if (timeRemaining <= 0)
+            {
+                CountdownTimer.SetActive(false);
+                timeRemaining = 0;
+                timeIsRunning = false;
+                SceneManager.LoadScene("Game Over");               
+            }
+        }     
     }
 
     void DisplayTime(float timeToDisplay)
