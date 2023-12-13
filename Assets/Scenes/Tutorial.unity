@@ -1341,8 +1341,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 418423273}
-  - component: {fileID: 418423275}
   - component: {fileID: 418423274}
+  - component: {fileID: 418423275}
   m_Layer: 0
   m_Name: TutorialInstructions
   m_TagString: Untagged
@@ -1379,8 +1379,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textUi: {fileID: 1752914177}
---- !u!58 &418423275
-CircleCollider2D:
+--- !u!61 &418423275
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1411,9 +1411,19 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 1.2529552, y: -0.13418674}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 2.61
+  m_Size: {x: 7.7380624, y: 2.2225895}
+  m_EdgeRadius: 0
 --- !u!1 &445511654
 GameObject:
   m_ObjectHideFlags: 0
@@ -25355,7 +25365,7 @@ Transform:
   m_GameObject: {fileID: 2099437306}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.52, y: 0.78, z: 0}
+  m_LocalPosition: {x: 0.62, y: 0.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
