@@ -9,13 +9,14 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 {
     public float maxEnemyHealth = 1.0f;
     [SerializeField] HPBar healthBar;
-    public Score score;
+    public ScoreManager score;
 
     private float currentEnemyHealth;
 
 
     private void Start()
     {
+        score = score.GetComponent<ScoreManager>();
         currentEnemyHealth = maxEnemyHealth;
         healthBar = GetComponentInChildren<HPBar>();
     }
@@ -28,14 +29,13 @@ public class EnemyHealth : MonoBehaviour, IDamageable
             if (currentEnemyHealth <= 0)
             {
             
-            Die();
+                Die();
             }
     }
 
     private void Die()
     {
         score.IncrementScore();
-        Destroy(gameObject);
-        
+        Destroy(gameObject);      
     }
 }

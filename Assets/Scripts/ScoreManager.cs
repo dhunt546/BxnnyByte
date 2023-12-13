@@ -5,23 +5,25 @@ using TMPro;
 using UnityEngine.SocialPlatforms.Impl;
 using Unity.VisualScripting;
 
-public class Score : MonoBehaviour
+public class ScoreManager : MonoBehaviour
 {
-    public static Score Instance;
+    public static int score;
     public TextMeshProUGUI scoreText;
-    private int score;
+  
     public int scoreAdded;
+
+ //   public GameObject debris;
+ //   public GameObject Swarmer;
+ //   public GameObject Brute;
+ //   public GameObject PossessedHost;
+ //   public GameObject HostMother;
 
     void Start()
     {
         UpdateScoreDisplay();
     }
 
-    private void Awake()
-    {
-        if (Instance == null)
-            Instance = this;
-    }
+
 
     public void IncrementScore()
     {

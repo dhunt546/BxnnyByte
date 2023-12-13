@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class debris : MonoBehaviour
 {
-    public Score score;
+    public ScoreManager score;
     //add to score
     //remove debris
     // Start is called before the first frame update
