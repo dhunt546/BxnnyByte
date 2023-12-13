@@ -11,8 +11,7 @@ public class LevelFinishDoor : MonoBehaviour
     int debrisCount;
 
     void Start()
-    {
-        
+    {        
         enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
         debrisCount = GameObject.FindGameObjectsWithTag("Debris").Length;
     }
@@ -29,10 +28,8 @@ public class LevelFinishDoor : MonoBehaviour
     }
 
     void OpenDoor()
-    {
-       
-       levelFinshDoor.GetComponent<SpriteRenderer>().sprite.Equals(openDoor);
-       // Debug.Log(levelFinshDoor.GetComponent<SpriteRenderer>().sprite.name);
-        levelFinshDoor.GetComponent<BoxCollider2D>().enabled = false;      
+    {       
+       levelFinshDoor.GetComponent<SpriteRenderer>().sprite = openDoor;       
+       levelFinshDoor.GetComponent<BoxCollider2D>().enabled = false;      
     }
 }

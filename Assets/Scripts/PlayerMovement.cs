@@ -32,11 +32,11 @@ public class PlayerMovement : MonoBehaviour
             PlayerDirection.transform.rotation = Quaternion.Euler(0, 0, angle);
 
             if (angle >= -45 && angle < 45)
-                playerDirection = "Left";
+                playerDirection = "Right";
             else if (angle >= 45 && angle < 135)
                 playerDirection = "Backward";
             else if (angle >= 135 || angle < -135)
-                playerDirection = "Right";
+                playerDirection = "Left";
             else
                 playerDirection = "Forward";         
         }
