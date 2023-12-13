@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3906624774550624706}
   - component: {fileID: 7231474089403353936}
   - component: {fileID: 6495583503112340015}
-  - component: {fileID: 3150340713787180924}
+  - component: {fileID: 1940132215498587067}
   m_Layer: 0
   m_Name: DoorPrefab
   m_TagString: Untagged
@@ -100,10 +100,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e42fb7e7a44c904b81fb7a6c45b847f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openDoorSprite: {fileID: -92452213, guid: 35fb2cd9f3eea8b42a4dd39673a38caf, type: 3}
-  closedDoorSprite: {fileID: -4487943, guid: 35fb2cd9f3eea8b42a4dd39673a38caf, type: 3}
-  doorOpenTime: 0.25
-  is_door_open: 0
   doorPrefab: {fileID: 3774074244382676166}
 --- !u!95 &7231474089403353936
 Animator:
@@ -158,7 +154,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.25425172}
+  m_Offset: {x: -0.06694627, y: -0.99072444}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -169,10 +165,10 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.53125, y: 4.175081}
+  m_Size: {x: 2.8973145, y: 2.193992}
   m_EdgeRadius: 0
---- !u!68 &3150340713787180924
-EdgeCollider2D:
+--- !u!70 &1940132215498587067
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -203,12 +199,6 @@ EdgeCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: -1.2643833, y: -1.4975257}
-  - {x: 1.2622633, y: -1.5023298}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
+  m_Offset: {x: 0, y: -1.4}
+  m_Size: {x: 2.7, y: 0.375}
+  m_Direction: 1

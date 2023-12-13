@@ -9,8 +9,6 @@ public class Doors : MonoBehaviour
 
     private Animator doorAnimator;
  
-    bool doorStatus = false;
-
     void Start()
     {
         doorAnimator = GetComponent<Animator>();        
@@ -19,25 +17,26 @@ public class Doors : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player") || other.CompareTag("Enemy"))
-        {                        
-            if(doorStatus == false)
-            {
-                doorAnimator.SetBool("doorStatus", true);
-                doorStatus = true;
-                doorPrefab.GetComponent<EdgeCollider2D>().enabled = false;
-            }
+        {                                  
+            doorAnimator.SetBool("doorStatus", true);
+               
+            doorPrefab.GetComponent<CapsuleCollider2D>().enabled = false;            
+        }
+    }
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("Player") || other.CompareTag("Enemy"))
+        {
+            doorAnimator.SetBool("doorStatus", true);
         }
     }
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player") || other.CompareTag("Enemy"))
-        {                     
-            if (doorStatus == true)
-            {
-                doorAnimator.SetBool("doorStatus", false);
-                doorStatus = false;
-                doorPrefab.GetComponent<EdgeCollider2D>().enabled = true;
-            }
+        {                                
+            doorAnimator.SetBool("doorStatus", false);
+             
+            doorPrefab.GetComponent<CapsuleCollider2D>().enabled = true;           
         }
     }
 }
