@@ -39,26 +39,26 @@ public class Doors : MonoBehaviour
             doorSpriteRenderer.sprite = closedDoorSprite;
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            if (Input.GetKeyDown(KeyCode.E) && is_door_open == false)
-            {
-                // Play the door opening animation
-                doorAnimator.SetTrigger("OpenDoor");
-
-                // Wait for the door to open before changing the sprite
-                Invoke("OpenDoor", doorOpenTime);
-            }
-            else if (Input.GetKeyDown(KeyCode.E) && is_door_open == true)
-            {
-                // Play the door closing animation
-                doorAnimator.SetTrigger("CloseDoor");
-
-                // Wait for the door to close before changing the sprite
-                Invoke("CloseDoor", doorOpenTime);
-            }
-
-        }
+      //  if (Input.GetKeyDown(KeyCode.E))
+      //  {
+      //      if (Input.GetKeyDown(KeyCode.E) && is_door_open == false)
+      //      {
+      //          // Play the door opening animation
+      //          doorAnimator.SetTrigger("OpenDoor");
+      //
+      //          // Wait for the door to open before changing the sprite
+      //          Invoke("OpenDoor", doorOpenTime);
+      //      }
+      //      else if (Input.GetKeyDown(KeyCode.E) && is_door_open == true)
+      //      {
+      //          // Play the door closing animation
+      //          doorAnimator.SetTrigger("CloseDoor");
+      //
+      //          // Wait for the door to close before changing the sprite
+      //          Invoke("CloseDoor", doorOpenTime);
+      //      }
+      //
+      //  }
     }
 
     void OpenDoor()

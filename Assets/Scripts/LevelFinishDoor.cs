@@ -5,22 +5,34 @@ using UnityEngine;
 public class LevelFinishDoor : MonoBehaviour
 {
     public GameObject levelFinshDoor;
+    public Sprite openDoor;
+
+    int enemyCount;
+    int debrisCount;
 
     void Start()
     {
         
+        enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        debrisCount = GameObject.FindGameObjectsWithTag("Debris").Length;
     }
+  
     void Update()
-    {
-        FinalDoorChecks();
-    }
-    
-    void FinalDoorChecks()
-    {
-        if(gameObject.CompareTag("Enemy") && gameObject.CompareTag("Debris") == false)
+    {     
+        enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        debrisCount = GameObject.FindGameObjectsWithTag("Debris").Length;
+        
+        if (enemyCount == 0 && debrisCount == 0)
         {
-            levelFinshDoor.GetComponent<BoxCollider2D>().enabled = false;
-            levelFinshDoor.SetActive(false);
+            OpenDoor();
         }
+    }
+
+    void OpenDoor()
+    {
+       
+       levelFinshDoor.GetComponent<SpriteRenderer>().sprite.Equals(openDoor);
+       // Debug.Log(levelFinshDoor.GetComponent<SpriteRenderer>().sprite.name);
+        levelFinshDoor.GetComponent<BoxCollider2D>().enabled = false;      
     }
 }
