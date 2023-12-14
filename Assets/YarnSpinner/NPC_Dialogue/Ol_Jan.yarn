@@ -1,35 +1,20 @@
 title: Intro
 tags:
 ---
-<<focusCamera Player_Camera>>
 Player: "What am I doing with my life..?" 
 Player: "I'm out here on this ship, in this dead end job..."
-<<doneFocus Player_Camera>>
-<<focusCamera Ol_Jan_Camera>>
 Ol Jan: "What are you doing in there Kid..? 
 Ol Jan: "You know the boss is always watching..." 
 Ol Jan: "Let's get to it and finish your training."
-<<doneFocus Ol_Jan_Camera>>
-<<focusCamera Player_Camera>>
 Player: *Flatulence* 
 Player: "You said it..."" 
 Player: "Okay, okay I'll be out in a minute Ol-Jan..." 
 Player: "That damn A.I Supervisor is always hounding us. 
 Tutorial: ---= Press *E* to open doors. =---
-<<doneFocus Player_Camera>>
-<<focusCamera Ol_Jan_Camera>>
 Ol Jan: "Come over here and take this mop..." 
-<<doneFocus Ol_Jan_Camera>>  
-<<focusCamera Player_Camera>>
 Tutorial: ---= Press *Arrow Keys* or W,A,S,D to move. =--- 
-<<doneFocus Player_Camera>> 
-<<focusCamera Ol_Jan_Camera>>
 Ol Jan: "I need you to attack those puddles over there."
-<<doneFocus Ol_Jan_Camera>>
-<<focusCamera Player_Camera>>
-<<focusCamera CleanCamera>>
 *Clean-Up Objetive*
-<<doneFocus CleanCamera>>
 ===
 
 
