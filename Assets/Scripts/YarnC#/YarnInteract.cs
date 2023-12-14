@@ -28,7 +28,7 @@ public class YarnInteract : MonoBehaviour
 
             dialogueRunner.StartDialogue(conversationStartNode);
 
-            GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = false;
+           // GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = false;
         }
     }
 
@@ -40,7 +40,7 @@ public class YarnInteract : MonoBehaviour
 
             isCurrentConversation = false;
 
-            GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = true;
+           // GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = true;
         }
     }
        
@@ -58,7 +58,7 @@ public class YarnInteract : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             if (canTalk)
             

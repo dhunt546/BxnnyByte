@@ -873,7 +873,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.2529552, y: -0.13418674}
+  m_Offset: {x: 1.2529552, y: -0.1953826}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -884,7 +884,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 7.7380624, y: 2.2225895}
+  m_Size: {x: 7.7380624, y: 1.5290346}
   m_EdgeRadius: 0
 --- !u!4 &457135377 stripped
 Transform:
@@ -19945,7 +19945,7 @@ PrefabInstance:
       objectReference: {fileID: 7545569452688597077, guid: dc8b56c510d9d6d44b0d0c55305e6a62, type: 3}
     - target: {fileID: 3579681405068720530, guid: 7f29e5f7ffdea4a6793cefb278b61f0c, type: 3}
       propertyPath: startAutomatically
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3739197626111815070, guid: 7f29e5f7ffdea4a6793cefb278b61f0c, type: 3}
       propertyPath: m_PixelPerfect
@@ -20977,7 +20977,10 @@ MonoBehaviour:
 
 
 
-    Press "E" to Attack'
+    Press "E" to Attack
+
+    and
+    Interact'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -24333,6 +24336,7 @@ GameObject:
   - component: {fileID: 2099437310}
   - component: {fileID: 2099437309}
   - component: {fileID: 2099437308}
+  - component: {fileID: 2099437312}
   m_Layer: 0
   m_Name: Ol_Jan
   m_TagString: Untagged
@@ -24491,6 +24495,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2099437312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099437306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b38a4f40b32c2b040858148ed5cf2cf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conversationStartNode: Intro
 --- !u!1 &2121140427
 GameObject:
   m_ObjectHideFlags: 0
