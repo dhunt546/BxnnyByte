@@ -33,6 +33,7 @@ public class WhenDialogueIsRunning : MonoBehaviour
             if (player != null)
             {
                 player.GetComponent<PlayerMovement>().enabled = false;
+                player.GetComponent<PlayerAttack>().enabled = false;
             }
             if (enemy != null)
             {
@@ -44,6 +45,7 @@ public class WhenDialogueIsRunning : MonoBehaviour
             if (player != null)
             {
                 player.GetComponent<PlayerMovement>().enabled = true;
+                player.GetComponent<PlayerAttack>().enabled = false;
             }
             if (enemy != null)
             {
