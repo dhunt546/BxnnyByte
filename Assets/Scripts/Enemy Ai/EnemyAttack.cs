@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using System;
 
 public class EnemyAttack : MonoBehaviour  //Jacob foran Enemy Attack
 {
@@ -10,7 +11,12 @@ public class EnemyAttack : MonoBehaviour  //Jacob foran Enemy Attack
 
     private float attackTimer = 0.0f;
     private bool isPlayerInRange = false;
+    private HealthBar playerHealthBar;
 
+    private void Start()
+    {
+        playerHealthBar = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthBar>();
+    }
     private void FixedUpdate()
     {
         if (isPlayerInRange)
@@ -20,20 +26,22 @@ public class EnemyAttack : MonoBehaviour  //Jacob foran Enemy Attack
             if (attackTimer >= enemyAttackCooldown)
             {
                 AttackPlayer();
-                attackTimer = 0.0f;
+                attackTimer = 0.0f;                
             }
         }
     }
-
-    private void AttackPlayer()
+    public void AttackPlayer()
     {
-        // Check if the player is still in range before attacking
-        if (isPlayerInRange)
+        Debug.Log("Enemy attacks player!");
+        
+        if (isPlayerInRange && playerHealthBar != null)
         {
-            // Add attack logic here
-            Debug.Log("Enemy attacks player!");
-            
+            // Damage the player by calling the TakeDamage method from HealthBar script
+            playerHealthBar.TakeDamage(attackDamage);
+            Debug.Log(":::::::::::");
+
         }
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
