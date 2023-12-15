@@ -9,6 +9,7 @@ public class YarnInteract : MonoBehaviour
     DialogueRunner dialogueRunner;
     
     public string conversationStartNode;
+
     bool isCurrentConversation = false;
     bool canTalk = false;
 
@@ -17,7 +18,6 @@ public class YarnInteract : MonoBehaviour
         dialogueRunner = FindObjectOfType<Yarn.Unity.DialogueRunner>();
 
         dialogueRunner.onDialogueComplete.AddListener(EndConversation);
-
     }
   
     public void StartConversation()
@@ -26,25 +26,19 @@ public class YarnInteract : MonoBehaviour
         {
             isCurrentConversation = true;
 
-            dialogueRunner.StartDialogue(conversationStartNode);
-
-           // GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = false;
+            dialogueRunner.StartDialogue(conversationStartNode);       
         }
     }
-
 
     public void EndConversation()
     {
         if (isCurrentConversation)
         {
-
             isCurrentConversation = false;
-
-           // GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = true;
+         
         }
     }
        
-
 
     public void OnTriggerEnter2D()
     {

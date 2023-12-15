@@ -50,9 +50,9 @@ public class ForcedDialogue : MonoBehaviour
         }
     }
 
-    public void OnTriggerEnter2D()
+    public void OnTriggerEnter2D(Collider2D other)
     {
-        if (CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
             StartConversation();
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
