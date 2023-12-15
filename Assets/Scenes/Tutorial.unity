@@ -1203,6 +1203,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4502040451394494555, guid: e69d1735cc330554182758c143ed6df9, type: 3}
   m_PrefabInstance: {fileID: 533286223}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &576382992 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 22862129021551722, guid: a8fea26e0bf79974cbccebb34642108e, type: 3}
+  m_PrefabInstance: {fileID: 215538593}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47e58a16d21ee624bb40d970b9023f44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &651192940
 GameObject:
   m_ObjectHideFlags: 0
@@ -1437,6 +1448,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &792809930 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6409599655753404871, guid: a8fea26e0bf79974cbccebb34642108e, type: 3}
+  m_PrefabInstance: {fileID: 215538593}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &847721182
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7419,6 +7441,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8006339205974105129, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
+      propertyPath: attackDamage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8006339205974105129, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
+      propertyPath: playerHealthBar
+      value: 
+      objectReference: {fileID: 576382992}
     - target: {fileID: 8655144454707207289, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
       propertyPath: m_Name
       value: Spider_Alien
@@ -21740,6 +21770,26 @@ Transform:
   - {fileID: 2099437307}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1917249546 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2335019052630451878, guid: f446d32d945ae8a4ca568dcdc20d87ad, type: 3}
+  m_PrefabInstance: {fileID: 7430500867740767344}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1917249555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1917249546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47e58a16d21ee624bb40d970b9023f44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthSlider: {fileID: 792809930}
+  maxHealth: 100
+  currentHealth: 100
 --- !u!1 &1918896603
 GameObject:
   m_ObjectHideFlags: 0
@@ -25145,7 +25195,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2335019052630451878, guid: f446d32d945ae8a4ca568dcdc20d87ad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1917249555}
   m_SourcePrefab: {fileID: 100100000, guid: f446d32d945ae8a4ca568dcdc20d87ad, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

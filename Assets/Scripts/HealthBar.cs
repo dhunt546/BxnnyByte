@@ -8,7 +8,7 @@ public class HealthBar : MonoBehaviour  //Edited by Regan Ly   Source: ChatGPT
 {
         public Slider healthSlider;
         public float maxHealth = 100f;
-        public float currentHealth;
+        public float currentHealth = 100f;
 
         void Start()
         {
@@ -18,7 +18,7 @@ public class HealthBar : MonoBehaviour  //Edited by Regan Ly   Source: ChatGPT
 
         void Update()
         {
-
+                    
         }
 
         // Function to reduce health
