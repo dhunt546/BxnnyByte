@@ -5,7 +5,7 @@ using Yarn.Unity;
 
 public class WhenDialogueIsRunning : MonoBehaviour
 {
-    DialogueRunner dialogueRunner;
+    private DialogueRunner dialogueRunner;
 
     GameObject player;
     GameObject enemy;
@@ -45,7 +45,7 @@ public class WhenDialogueIsRunning : MonoBehaviour
             if (player != null)
             {
                 player.GetComponent<PlayerMovement>().enabled = true;
-                player.GetComponent<PlayerAttack>().enabled = false;
+                player.GetComponent<PlayerAttack>().enabled = true;
             }
             if (enemy != null)
             {
