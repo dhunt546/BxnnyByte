@@ -5,11 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class debris : MonoBehaviour
 {
-    public ScoreManager score;
+    ScoreManager score;
 
     private void Start()
     {
-        score = GetComponent<ScoreManager>();
+        score = FindObjectOfType<ScoreManager>();
     }
     public void CleanDebris()
     {       
