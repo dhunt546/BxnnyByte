@@ -5,8 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class debris : MonoBehaviour
 {
-    public ScoreManager score;
+    ScoreManager score;
 
+    private void Start()
+    {
+        score = FindObjectOfType<ScoreManager>();
+    }
     public void CleanDebris()
     {       
         score.IncrementScore();

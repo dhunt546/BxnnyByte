@@ -8,6 +8,7 @@ using Unity.VisualScripting;
 public class ScoreManager : MonoBehaviour
 {
     public static int score;
+    
     public TextMeshProUGUI scoreText;
   
     public int scoreAdded;
@@ -23,8 +24,6 @@ public class ScoreManager : MonoBehaviour
         UpdateScoreDisplay();
     }
 
-
-
     public void IncrementScore()
     {
        scoreAdded++;
@@ -37,7 +36,7 @@ public class ScoreManager : MonoBehaviour
         UpdateScoreDisplay();
     }
 
-    private void UpdateScoreDisplay()
+    public void UpdateScoreDisplay()
     {
         if (scoreText != null)
         {
