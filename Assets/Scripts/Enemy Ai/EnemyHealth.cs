@@ -7,19 +7,23 @@ using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour, IDamageable
 {
+
     public float maxEnemyHealth = 1.0f;
+   
     [SerializeField] HPBar healthBar;
-    public ScoreManager score;
+
+   
+    ScoreManager score;
 
     private float currentEnemyHealth;
 
-
     private void Start()
     {
-        score = score.GetComponent<ScoreManager>();
+        score = FindObjectOfType<ScoreManager>();
         currentEnemyHealth = maxEnemyHealth;
         healthBar = GetComponentInChildren<HPBar>();
     }
+
     void IDamageable.Damage(float damageAmount)
     {
         currentEnemyHealth -= damageAmount;
@@ -27,13 +31,12 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         healthBar.UpdateHBar(currentEnemyHealth, maxEnemyHealth);
 
             if (currentEnemyHealth <= 0)
-            {
-            
+            {            
                 Die();
             }
     }
 
-    private void Die()
+    void Die()
     {
         score.IncrementScore();
         Destroy(gameObject);      
