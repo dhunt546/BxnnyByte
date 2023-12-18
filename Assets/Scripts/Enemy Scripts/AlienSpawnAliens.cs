@@ -21,7 +21,7 @@ public class AlienSpawnAliens : MonoBehaviour
     void Start()
     {
         enemyAi = FindObjectOfType<EnemyAI>();
-        spawnling = GameObject.FindGameObjectWithTag("Spider_Alien");
+        spawnling = GameObject.Find("Spider_Alien");
     }
 
     void Update()
@@ -51,15 +51,18 @@ public class AlienSpawnAliens : MonoBehaviour
 
             if (timerUp >= 5)
             {
-                Instantiate(spawnling, transform.position * 2.0f , Quaternion.identity);
-
-                totalSpawnlings++;
-
-                isAble = false;
-
-                if (totalSpawnlings == 2)
+                if( spawnling != null)
                 {
-                    GetComponent<MakeDebris>().enabled = false;
+                    Instantiate(spawnling, transform.position, Quaternion.identity);
+
+                    totalSpawnlings++;
+
+                    isAble = false;
+                }         
+
+                if (totalSpawnlings == 3)
+                {
+                    GetComponent<AlienSpawnAliens>().enabled = false;
                 }
             }
         }
@@ -75,7 +78,7 @@ public class AlienSpawnAliens : MonoBehaviour
        
             spawnTimer = 0;
 
-            if (timerDown <= -10)
+            if (timerDown <= -20)
             {
                 isAble = true;
                 timerDown = 0;
