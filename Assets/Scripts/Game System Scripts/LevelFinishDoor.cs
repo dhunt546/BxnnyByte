@@ -2,15 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelFinishDoor : MonoBehaviour        // created by Devin Hunt
+public class LevelFinishDoor : MonoBehaviour
 {
     public GameObject levelFinshDoor;
-    
     public Sprite openDoor;
 
+    int enemyCount;
+    int debrisCount;
+
+    void Start()
+    {        
+        enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        debrisCount = GameObject.FindGameObjectsWithTag("Debris").Length;
+    }
+  
     void Update()
-    {             
-        if (CleanUpObjectiveManager.enemyCount == 0 && CleanUpObjectiveManager.debrisCount == 0)
+    {     
+        enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        debrisCount = GameObject.FindGameObjectsWithTag("Debris").Length;
+        
+        if (enemyCount == 0 && debrisCount == 0)
         {
             OpenDoor();
         }

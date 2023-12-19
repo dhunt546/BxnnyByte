@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TeminalDoors : MonoBehaviour       // created by Devin Hunt
+public class TeminalDoors : MonoBehaviour
 {
     public Sprite lockedTerminal;
     public Sprite unlockedTerminal;
