@@ -22,7 +22,7 @@ public class LevelCheckDialogue : MonoBehaviour
     public int enemyRequiredFail;
     public int debrisRequiredFail;
 
-    public void Awake()
+    private void Start()
     {
         dialogueRunner = FindObjectOfType<Yarn.Unity.DialogueRunner>();
 
@@ -37,7 +37,7 @@ public class LevelCheckDialogue : MonoBehaviour
         enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
         debrisCount = GameObject.FindGameObjectsWithTag("Debris").Length;
     }
-    public void StartConversation()
+    private void StartConversation()
     {
         if (isCurrentConversation == false)
         {
@@ -49,7 +49,7 @@ public class LevelCheckDialogue : MonoBehaviour
         }
     }
 
-    public void EndConversation()
+    private void EndConversation()
     {
         if (isCurrentConversation)
         {
@@ -59,7 +59,7 @@ public class LevelCheckDialogue : MonoBehaviour
         }
     }
 
-    public void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player") && enemyCount >= enemyRequiredFail && debrisCount >= debrisRequiredFail)
         {

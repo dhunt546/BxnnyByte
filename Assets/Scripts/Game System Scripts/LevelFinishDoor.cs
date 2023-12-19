@@ -10,13 +10,13 @@ public class LevelFinishDoor : MonoBehaviour
     int enemyCount;
     int debrisCount;
 
-    void Start()
+    private void Start()
     {        
         enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
         debrisCount = GameObject.FindGameObjectsWithTag("Debris").Length;
     }
   
-    void Update()
+    private void Update()
     {     
         enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
         debrisCount = GameObject.FindGameObjectsWithTag("Debris").Length;
@@ -27,7 +27,7 @@ public class LevelFinishDoor : MonoBehaviour
         }
     }
 
-    void OpenDoor()
+    private void OpenDoor()
     {       
        levelFinshDoor.GetComponent<SpriteRenderer>().sprite = openDoor;       
        levelFinshDoor.GetComponent<BoxCollider2D>().enabled = false;      

@@ -400,9 +400,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   conversationStartNode: Ai_Intro
-  enemyRequiredPass: 1
-  debrisRequiredPass: 2
-  enemyRequiredFail: 1
+  enemyRequiredPass: 0
+  debrisRequiredPass: 3
+  enemyRequiredFail: 0
   debrisRequiredFail: 4
 --- !u!4 &66614669 stripped
 Transform:
@@ -985,7 +985,7 @@ MonoBehaviour:
   conversationStartNode: Ai_Cutscene2
   enemyRequiredPass: 0
   debrisRequiredPass: 0
-  enemyRequiredFail: 1
+  enemyRequiredFail: 0
   debrisRequiredFail: 1
 --- !u!61 &369710396
 BoxCollider2D:
