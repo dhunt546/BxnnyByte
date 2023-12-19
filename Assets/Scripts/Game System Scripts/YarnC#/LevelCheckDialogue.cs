@@ -6,27 +6,37 @@ using UnityEngine.Rendering;
 using Yarn;
 using Yarn.Unity;
 
-public class ForcedDialogue : MonoBehaviour
-{
-
+public class LevelCheckDialogue : MonoBehaviour
+{   
     DialogueRunner dialogueRunner;
 
     public string conversationStartNode;
+
     bool isCurrentConversation = false;
 
+    int enemyCount;
+    int debrisCount;
 
-    private InMemoryVariableStorage variableStorage;
+    public int enemyRequiredPass;
+    public int debrisRequiredPass;
+    public int enemyRequiredFail;
+    public int debrisRequiredFail;
 
-
-    public void Start()
+    public void Awake()
     {
         dialogueRunner = FindObjectOfType<Yarn.Unity.DialogueRunner>();
 
         dialogueRunner.onDialogueComplete.AddListener(EndConversation);
 
-        variableStorage = FindObjectOfType<InMemoryVariableStorage>();
+        enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        debrisCount = GameObject.FindGameObjectsWithTag("Debris").Length;
     }
 
+    private void Update()
+    {
+        enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        debrisCount = GameObject.FindGameObjectsWithTag("Debris").Length;
+    }
     public void StartConversation()
     {
         if (isCurrentConversation == false)
@@ -38,7 +48,6 @@ public class ForcedDialogue : MonoBehaviour
             GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = false;
         }
     }
-
 
     public void EndConversation()
     {
@@ -52,11 +61,13 @@ public class ForcedDialogue : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && enemyCount >= enemyRequiredFail && debrisCount >= debrisRequiredFail)
         {
-            StartConversation();
+            StartConversation();         
+        }
+        if (other.CompareTag("Player") && enemyCount <= enemyRequiredPass && debrisCount <= debrisRequiredPass)
+        {
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
         }
-
     }
 }
