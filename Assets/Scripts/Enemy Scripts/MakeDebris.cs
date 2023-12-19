@@ -71,7 +71,7 @@ public class MakeDebris : MonoBehaviour
         if (debrisTimer >= wandering)
         {
             timerDown--;
-            //Debug.Log("timerDown =" + timerDown);
+            
             debrisTimer = 0;
 
             if (timerDown <= -10)

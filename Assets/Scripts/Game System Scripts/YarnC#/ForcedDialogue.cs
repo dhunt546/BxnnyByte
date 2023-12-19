@@ -6,25 +6,19 @@ using UnityEngine.Rendering;
 using Yarn;
 using Yarn.Unity;
 
-public class ForcedDialogue : MonoBehaviour
+public class ForcedDialogue : MonoBehaviour     // created by Devin Hunt
 {
-
     DialogueRunner dialogueRunner;
 
     public string conversationStartNode;
+
     bool isCurrentConversation = false;
-
-
-    private InMemoryVariableStorage variableStorage;
-
 
     public void Start()
     {
         dialogueRunner = FindObjectOfType<Yarn.Unity.DialogueRunner>();
 
         dialogueRunner.onDialogueComplete.AddListener(EndConversation);
-
-        variableStorage = FindObjectOfType<InMemoryVariableStorage>();
     }
 
     public void StartConversation()
@@ -38,7 +32,6 @@ public class ForcedDialogue : MonoBehaviour
             GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = false;
         }
     }
-
 
     public void EndConversation()
     {
@@ -57,6 +50,5 @@ public class ForcedDialogue : MonoBehaviour
             StartConversation();
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
         }
-
     }
 }

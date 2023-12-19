@@ -6,16 +6,13 @@ using UnityEngine.Rendering;
 using Yarn;
 using Yarn.Unity;
 
-public class LevelCheckDialogue : MonoBehaviour
+public class LevelCheckDialogue : MonoBehaviour         // created by Devin Hunt
 {   
     DialogueRunner dialogueRunner;
 
     public string conversationStartNode;
 
     bool isCurrentConversation = false;
-
-    int enemyCount;
-    int debrisCount;
 
     public int enemyRequiredPass;
     public int debrisRequiredPass;
@@ -27,16 +24,8 @@ public class LevelCheckDialogue : MonoBehaviour
         dialogueRunner = FindObjectOfType<Yarn.Unity.DialogueRunner>();
 
         dialogueRunner.onDialogueComplete.AddListener(EndConversation);
-
-        enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
-        debrisCount = GameObject.FindGameObjectsWithTag("Debris").Length;
     }
 
-    private void Update()
-    {
-        enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
-        debrisCount = GameObject.FindGameObjectsWithTag("Debris").Length;
-    }
     public void StartConversation()
     {
         if (isCurrentConversation == false)
@@ -61,11 +50,13 @@ public class LevelCheckDialogue : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && enemyCount >= enemyRequiredFail && debrisCount >= debrisRequiredFail)
+        if (other.CompareTag("Player") && CleanUpObjectiveManager.enemyCount >= enemyRequiredFail 
+                                       && CleanUpObjectiveManager.debrisCount >= debrisRequiredFail)
         {
             StartConversation();         
         }
-        if (other.CompareTag("Player") && enemyCount <= enemyRequiredPass && debrisCount <= debrisRequiredPass)
+        if (other.CompareTag("Player") && CleanUpObjectiveManager.enemyCount <= enemyRequiredPass 
+                                       && CleanUpObjectiveManager.debrisCount <= debrisRequiredPass)
         {
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
         }
