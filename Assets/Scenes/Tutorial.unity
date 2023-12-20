@@ -36029,7 +36029,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1548596936}
-  - component: {fileID: 1548596937}
   m_Layer: 0
   m_Name: CutSceneManager
   m_TagString: Untagged
@@ -36055,23 +36054,6 @@ Transform:
   - {fileID: 369710394}
   m_Father: {fileID: 1309871766}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!320 &1548596937
-PlayableDirector:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1548596935}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: a1ecd606dbb3d834492f71df0806f41a, type: 2}
-  m_InitialState: 1
-  m_WrapMode: 2
-  m_DirectorUpdateMode: 1
-  m_InitialTime: 0
-  m_SceneBindings: []
-  m_ExposedReferences:
-    m_References: []
 --- !u!1001 &1559567168
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40328,6 +40310,7 @@ GameObject:
   - component: {fileID: 2099437309}
   - component: {fileID: 2099437308}
   - component: {fileID: 2099437312}
+  - component: {fileID: 2099437313}
   m_Layer: 0
   m_Name: Ol_Jan
   m_TagString: Untagged
@@ -40343,8 +40326,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2099437306}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.53, y: 0.94, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.87, y: 1.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -40499,6 +40482,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   conversationStartNode: Intro
+--- !u!95 &2099437313
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099437306}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 495754700e30edf4bbc28d00be086646, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &2121140428 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8659630483954656793, guid: 0cfcbcac372fa1442979f873707db2ad, type: 3}
