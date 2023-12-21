@@ -13,7 +13,7 @@ public class ForcedDialogue : MonoBehaviour
 
     public string conversationStartNode;
     bool isCurrentConversation = false;
-    bool canTalk = false;
+
 
     private InMemoryVariableStorage variableStorage;
 
@@ -60,4 +60,3 @@ public class ForcedDialogue : MonoBehaviour
 
     }
 }
-
