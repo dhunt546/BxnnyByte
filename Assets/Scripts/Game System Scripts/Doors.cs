@@ -13,7 +13,10 @@ public class Doors : MonoBehaviour
     {
         doorAnimator = GetComponent<Animator>();        
     }
-
+    public void OnDoorOpened()
+    {
+       
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player") || other.CompareTag("Enemy"))
