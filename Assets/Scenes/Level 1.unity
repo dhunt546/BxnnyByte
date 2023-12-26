@@ -15379,7 +15379,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 30
-      m_TileSpriteIndex: 29
+      m_TileSpriteIndex: 35
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -22218,8 +22218,8 @@ Tilemap:
     m_Data: {fileID: -853994855, guid: 47046cee0a7d2844aa3be71245dc8f37, type: 3}
   - m_RefCount: 7
     m_Data: {fileID: -908910620, guid: 137ad2e43953268448e62e41fe0f2ac6, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -964403711, guid: 83d2f44780e9d1a4a86cab853662ce5b, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 1877148086, guid: 83d2f44780e9d1a4a86cab853662ce5b, type: 3}
   - m_RefCount: 6
@@ -22230,8 +22230,8 @@ Tilemap:
     m_Data: {fileID: 994573257, guid: 83d2f44780e9d1a4a86cab853662ce5b, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 2003130961, guid: 83d2f44780e9d1a4a86cab853662ce5b, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -964403711, guid: 83d2f44780e9d1a4a86cab853662ce5b, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 2175
     m_Data:
@@ -59377,11 +59377,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7995739831956178138, guid: a8fea26e0bf79974cbccebb34642108e, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8555269574736865976, guid: a8fea26e0bf79974cbccebb34642108e, type: 3}
       propertyPath: m_Name
       value: HUD
+      objectReference: {fileID: 0}
+    - target: {fileID: 8555269574736865976, guid: a8fea26e0bf79974cbccebb34642108e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
