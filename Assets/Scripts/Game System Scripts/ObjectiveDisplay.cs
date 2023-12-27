@@ -33,7 +33,7 @@ public class ObjectiveDisplay : MonoBehaviour
     {
         if (debrisCount <= 0 )
         {
-            debrisText.text = "Complete";
+            debrisText.text = ":Complete";
         }
         if (debrisCount >= 1)
         {
@@ -42,7 +42,7 @@ public class ObjectiveDisplay : MonoBehaviour
         
         if (enemyCount <= 0 )
         {
-            enemyText.text = "Safe";
+            enemyText.text = ":Safe";
         }
         if (enemyCount >= 1)
         {
