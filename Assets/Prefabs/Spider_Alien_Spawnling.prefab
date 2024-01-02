@@ -199,6 +199,7 @@ GameObject:
   - component: {fileID: 2957325908300880591}
   - component: {fileID: 8054737561038510631}
   - component: {fileID: 3532072214504724282}
+  - component: {fileID: 5592134055036045221}
   - component: {fileID: 872378326724267953}
   - component: {fileID: 4663212203201932513}
   - component: {fileID: 1344504681750281665}
@@ -357,8 +358,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77ad4c4f07693a543a4bb25f4fa5ba42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxEnemyHealth: 1
+  maxEnemyHealth: 50
   healthBar: {fileID: 2451847341605690229}
+--- !u!114 &5592134055036045221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5568819609839955189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 457bc4bd27485e343b503673ab33ea6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &872378326724267953
 MonoBehaviour:
   m_ObjectHideFlags: 0
