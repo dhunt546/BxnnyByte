@@ -32,13 +32,13 @@ public class EnemyAttack : MonoBehaviour  //Jacob foran Enemy Attack
     }
     public void AttackPlayer()
     {
-        Debug.Log("Enemy attacks player!");
+        
         
         if (isPlayerInRange && playerHealthBar != null)
         {
             // Damage the player by calling the TakeDamage method from HealthBar script
             playerHealthBar.TakeDamage(attackDamage);
-            Debug.Log(":::::::::::");
+            
 
         }
 

@@ -1235,6 +1235,17 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 1
   m_TargetDisplay: 0
+--- !u!114 &496818984 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8243577073624337471, guid: f446d32d945ae8a4ca568dcdc20d87ad, type: 3}
+  m_PrefabInstance: {fileID: 7430500867740767344}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a153f7a920f0634f9b31f591b849ccc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &497642630
 GameObject:
   m_ObjectHideFlags: 0
@@ -17005,6 +17016,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7944934520578893350, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
+      propertyPath: maxEnemyHealth
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 1554144711429746060, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 36.59
@@ -17047,11 +17062,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4537870478123677205, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4537870478123677205, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8655144454707207289, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
       propertyPath: m_Name
@@ -17059,7 +17074,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8655144454707207289, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -40617,6 +40632,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3532072214504724282, guid: 15c451bc82c53ba439cba70c0293a908, type: 3}
+      propertyPath: maxEnemyHealth
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 4176311971727886424, guid: 15c451bc82c53ba439cba70c0293a908, type: 3}
       propertyPath: m_LocalPosition.x
       value: 29.1
@@ -40663,15 +40682,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5568819609839955189, guid: 15c451bc82c53ba439cba70c0293a908, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6723459682462247379, guid: 15c451bc82c53ba439cba70c0293a908, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6723459682462247379, guid: 15c451bc82c53ba439cba70c0293a908, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -40807,6 +40826,14 @@ PrefabInstance:
     - target: {fileID: 2335019052630451878, guid: f446d32d945ae8a4ca568dcdc20d87ad, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3068843272605342227, guid: f446d32d945ae8a4ca568dcdc20d87ad, type: 3}
+      propertyPath: _attackPlayer
+      value: 
+      objectReference: {fileID: 496818984}
+    - target: {fileID: 4955941610700560990, guid: f446d32d945ae8a4ca568dcdc20d87ad, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.881
       objectReference: {fileID: 0}
     - target: {fileID: 7135656899457232387, guid: f446d32d945ae8a4ca568dcdc20d87ad, type: 3}
       propertyPath: healthSlider
