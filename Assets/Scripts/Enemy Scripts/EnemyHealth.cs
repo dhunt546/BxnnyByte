@@ -9,7 +9,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 {
     EnemyAnimator animatorScript;
     public float maxEnemyHealth = 1.0f;
-   
+    ParticleSystem enemyPS;
     [SerializeField] HPBar healthBar;
 
    
@@ -19,6 +19,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
     private void Start()
     {
+        enemyPS = GetComponentInChildren<ParticleSystem>();
         currentEnemyHealth = maxEnemyHealth;
         score = FindObjectOfType<ScoreManager>();
         currentEnemyHealth = maxEnemyHealth;
@@ -34,6 +35,10 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         if (animatorScript != null)
         {
             animatorScript.EnemyVisualDamageTaken();
+        }
+        if (enemyPS != null)
+        {
+            enemyPS.Play();
         }
 
         if (currentEnemyHealth <= 0)

@@ -98,7 +98,6 @@ public class PlayerAttack : MonoBehaviour
     void SetAttacking(bool isAttacking)
     {
         _isPlayerAttacking = isAttacking;
-        Debug.Log("Set Is Attacking to " + isAttacking);
     }
     void Attack(string attackName)
     {

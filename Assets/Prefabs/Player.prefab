@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 264ced3d0785bb943b74578e45acbbaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 7
   rb: {fileID: 587657636343756053}
   animator: {fileID: 1189373476747339768}
   PlayerDirection: {fileID: 6641000483796230735}
@@ -172,9 +172,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackAnimTime: 0.2
-  _player: {fileID: 2279367400545581808}
-  _attackPlayer: {fileID: 0}
-  _anim: {fileID: 1189373476747339768}
 --- !u!114 &8243577073624337471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,7 +202,7 @@ MonoBehaviour:
   powerAttackDmg: 3
   spinAttackDmg: 10
   PlayerDirection: {fileID: 6641000483796230735}
-  _isAttacking: 0
+  _isPlayerAttacking: 0
 --- !u!82 &2096313602671208732
 AudioSource:
   m_ObjectHideFlags: 0
@@ -409,7 +406,7 @@ Transform:
   m_GameObject: {fileID: 7992863486499475510}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.34, y: 0, z: 0}
+  m_LocalPosition: {x: 0.881, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
