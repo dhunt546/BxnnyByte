@@ -39,7 +39,7 @@ public class PlayerAttack : MonoBehaviour
     private Dictionary<KeyCode, string> KeyInputMappings = new Dictionary<KeyCode, string>();
     private Dictionary<string, bool> attackCooldownFinished = new Dictionary<string, bool>();
 
-    public bool _isAttacking;
+    public bool _isPlayerAttacking;
 
     //maybe change add to this if any animations take longer.
     private float AttackAnimationCooldown = 0.2f;
@@ -61,8 +61,8 @@ public class PlayerAttack : MonoBehaviour
 
     void Start()
     {
-       InitializeCooldowns(); 
-        _isAttacking = false;
+       InitializeCooldowns();
+        _isPlayerAttacking = false;
         attackableLayer = layer1 | layer2;
     }
  
@@ -72,20 +72,24 @@ public class PlayerAttack : MonoBehaviour
         foreach (var kvp in KeyInputMappings)
         {
             string attackName = kvp.Value;
-            if (Input.GetKeyUp(kvp.Key) && IsCooldownFinished(attackName) && !_isAttacking)
-            {              
+            if (Input.GetKeyUp(kvp.Key) && IsCooldownFinished(attackName) && !_isPlayerAttacking)
+            {
                 if (CanAttack(attackName))
                 {
-                    //Debug.Log("Attack button released");
-                    SetAttacking(true);
-                    Attack(attackName);
-                    StartCooldown(attackName, GetCooldownTime(attackName));
-                    Invoke("SetAttackingToFalse", AttackAnimationCooldown);
+                    Attacking(attackName);
                     
                 }
             }
 
         }
+    }
+
+    void Attacking(string attackName)
+    {
+        SetAttacking(true);
+        Attack(attackName);
+        StartCooldown(attackName, GetCooldownTime(attackName));
+        Invoke("SetAttackingToFalse", AttackAnimationCooldown);
     }
     void SetAttackingToFalse()
     {
@@ -93,7 +97,7 @@ public class PlayerAttack : MonoBehaviour
     }
     void SetAttacking(bool isAttacking)
     {
-        _isAttacking = isAttacking;
+        _isPlayerAttacking = isAttacking;
     }
     void Attack(string attackName)
     {

@@ -10,63 +10,36 @@ public class PlayerAnimator : MonoBehaviour
     //By Regan Ly
 
     [SerializeField] public float _attackAnimTime = 3f;
-    //declares what "type" these will be
-    public PlayerMovement _player;
-    public PlayerAttack _attackPlayer;
-    public Animator _anim;
-    private SpriteRenderer _renderer;
+
+    PlayerMovement _player;
+    PlayerAttack _attackPlayer;
+    Animator _anim;
+    SpriteRenderer _renderer;
     bool isCurrentlyAttacking = false;
     private bool isAttackAnimationPlaying;
-    //player bool states
 
-
-
-    private void Awake()
-    {
-        //Getting movement funtions from playermovement script
-        if (!TryGetComponent(out PlayerMovement player))
-        {
-            Destroy(this);
-            return;
-        }
-        if (!TryGetComponent(out PlayerAttack attackPlayer))
-        {
-            Destroy(this);
-            return;
-        }
-
-        //Getting the components. Previously declared what the type of thing it will be at the top.
-
-        _anim = GetComponent<Animator>();
-        _renderer = GetComponent<SpriteRenderer>();
-
-    }
-    // Start is called before the first frame update
     void Start()
     {
+        _player = GetComponent<PlayerMovement>();
+        _anim = GetComponent<Animator>();
+        _renderer = GetComponent<SpriteRenderer>();
+        _attackPlayer = GetComponent<PlayerAttack>();
         isCurrentlyAttacking = false;
     }
 
-    // Update is called once per frame
     void Update()
-    {
-        
+    {      
         if (_player != null)
         {
             String direction = _player.playerDirection;
             bool isMoving = _player.isMoving;
 
-
             if (isCurrentlyAttacking)
             {
-               // Debug.Log("Currently Animating");
-                // Don't start a new animation if one is already playing
                 return;
             }
             else if (isMoving)
-            {
-                //Debug.Log("moving");
-                //Running + direction
+            {            
                 if (direction == "Forward")
                 {
                     _anim.CrossFade(MoveF, 0);
@@ -84,7 +57,6 @@ public class PlayerAnimator : MonoBehaviour
                     _anim.CrossFade(MoveL, 0);
                 }
             }
-            //idle + direction
             else if (!isMoving)
             {
                 if (direction == "Forward")
@@ -106,30 +78,25 @@ public class PlayerAnimator : MonoBehaviour
             }
             if (_attackPlayer != null)
             {
-                bool _isAttacking = _attackPlayer._isAttacking;
+                bool _isPlayerAttacking = _attackPlayer._isPlayerAttacking;
 
-                if (_isAttacking && !IsAttackAnimationInProgress())
-                {
-                    //Debug.Log("attacking or something");
+                if (_isPlayerAttacking && !IsAttackAnimationInProgress())
+                {                 
                     if (direction == "Forward")
                     {
-                        StartCoroutine(PlayAnimationAndLock(AttackF));
-                        //Debug.Log(direction + "attacking");
+                        StartCoroutine(PlayAnimationAndLock(AttackF));;
                     }
                     else if (direction == "Backward")
                     {
                         StartCoroutine(PlayAnimationAndLock(AttackB));
-                       // Debug.Log(direction + "attacking");
                     }
                     else if (direction == "Right")
                     {
                         StartCoroutine(PlayAnimationAndLock(AttackR));
-                       // Debug.Log(direction + "attacking");
                     }
                     else if (direction == "Left")
                     {
                         StartCoroutine(PlayAnimationAndLock(AttackL));
-                        //Debug.Log(direction + "attacking");
                     }
 
                 }
@@ -138,21 +105,18 @@ public class PlayerAnimator : MonoBehaviour
     }
     private bool IsAttackAnimationInProgress()
     {
-        //Debug.Log("returning in progress animation");
         return isAttackAnimationPlaying;
     }
     private IEnumerator PlayAnimationAndLock(int animationHash)
     {
         isCurrentlyAttacking = true;
 
-        // Crossfade the attack animation
         _anim.CrossFade(animationHash, 0);
-        isAttackAnimationPlaying = true; // Set the animation flag to true
+        isAttackAnimationPlaying = true;
 
-        // Wait for the animation to finish
         yield return new WaitForSeconds(_attackAnimTime);
 
-        isAttackAnimationPlaying = false; // Set the animation flag back to false
+        isAttackAnimationPlaying = false; 
         isCurrentlyAttacking = false;
     }
     private static readonly int IdleF = Animator.StringToHash("Idle");
