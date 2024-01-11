@@ -14,7 +14,7 @@ public class PlayerAnimator : MonoBehaviour
     PlayerMovement _player;
     PlayerAttack _attackPlayer;
     Animator _anim;
-    SpriteRenderer _renderer;
+
     bool isCurrentlyAttacking = false;
     private bool isAttackAnimationPlaying;
 
@@ -22,7 +22,7 @@ public class PlayerAnimator : MonoBehaviour
     {
         _player = GetComponent<PlayerMovement>();
         _anim = GetComponent<Animator>();
-        _renderer = GetComponent<SpriteRenderer>();
+
         _attackPlayer = GetComponent<PlayerAttack>();
         isCurrentlyAttacking = false;
     }

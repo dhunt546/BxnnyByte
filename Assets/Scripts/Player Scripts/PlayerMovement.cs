@@ -12,7 +12,6 @@ public class PlayerMovement : MonoBehaviour
     Vector2 movement;
     public GameObject PlayerDirection;
     public string playerDirection = "Forward";
-
     public bool isMoving;
    
     //public int PlayerHealth = 5;
@@ -48,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        rb.velocity = movement * moveSpeed;
     }
 
 }
