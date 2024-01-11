@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 86e30a105fdff56488e210084cb663bb
+guid: bc6ca0ed6dfdff249af5758a35c8e322
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -95,7 +95,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638405784164782975
+  platformSettingsDirtyTick: 638405780621538026
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -119,7 +119,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: alien spawner animation_Frame_0
+  - name: Alien Spawner2 Animation_Frame_0
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -130,7 +130,7 @@ ScriptedImporter:
       y: 110
       width: 78
       height: 98
-    spriteID: 2413e626e75a08148be4e57d6f0c8864
+    spriteID: d7c9c2eb6748219419e2e28c094435a6
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -139,7 +139,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 178, y: 110}
-  - name: alien spawner animation_Frame_1
+  - name: Alien Spawner2 Animation_Frame_1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -150,7 +150,7 @@ ScriptedImporter:
       y: 110
       width: 79
       height: 98
-    spriteID: 35893b9cfbb64b647b22fd1c7c8cd100
+    spriteID: b8ab2752e1bc23c458a28221ae174007
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -159,7 +159,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 110}
-  - name: alien spawner animation_Frame_2
+  - name: Alien Spawner2 Animation_Frame_2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -170,7 +170,7 @@ ScriptedImporter:
       y: 110
       width: 65
       height: 92
-    spriteID: cc4ad520b7d5a5b4bac34bdcfff81bef
+    spriteID: 73e9ef9c6be530441860d146d5d46e58
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -179,7 +179,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 350, y: 110}
-  - name: alien spawner animation_Frame_3
+  - name: Alien Spawner2 Animation_Frame_3
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -190,7 +190,7 @@ ScriptedImporter:
       y: 4
       width: 81
       height: 98
-    spriteID: 4af24385b52aa6a4c99604e524ab4f8a
+    spriteID: 67700f7dea7bc674f9dcda12b9d29ef9
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -199,7 +199,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 198, y: 4}
-  - name: alien spawner animation_Frame_4
+  - name: Alien Spawner2 Animation_Frame_4
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -210,7 +210,7 @@ ScriptedImporter:
       y: 4
       width: 81
       height: 98
-    spriteID: ee9072ef7096d3d48ab879e41a603f9e
+    spriteID: bd3f9385976ea134ab36a634dcff6a9b
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -219,7 +219,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 287, y: 4}
-  - name: alien spawner animation_Frame_5
+  - name: Alien Spawner2 Animation_Frame_5
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -230,7 +230,7 @@ ScriptedImporter:
       y: 110
       width: 79
       height: 98
-    spriteID: a982f1df82791944c997cade408a0d3d
+    spriteID: e7b6798ab42f2a24bad0ef2dbc12bec8
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -239,7 +239,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 91, y: 110}
-  - name: alien spawner animation_Frame_6
+  - name: Alien Spawner2 Animation_Frame_6
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -250,7 +250,7 @@ ScriptedImporter:
       y: 4
       width: 82
       height: 98
-    spriteID: 027ef04bb7c9854489e27c11f958f906
+    spriteID: ddd28e8988c5e5a48ab7c348143d395d
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -259,7 +259,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 108, y: 4}
-  - name: alien spawner animation_Frame_7
+  - name: Alien Spawner2 Animation_Frame_7
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -270,7 +270,7 @@ ScriptedImporter:
       y: 4
       width: 80
       height: 98
-    spriteID: 9e8de20018a1a8f49973a950141fe385
+    spriteID: 9b5b39992d4540443942054d006ab498
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -279,7 +279,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 376, y: 4}
-  - name: alien spawner animation_Frame_8
+  - name: Alien Spawner2 Animation_Frame_8
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -290,7 +290,7 @@ ScriptedImporter:
       y: 4
       width: 96
       height: 98
-    spriteID: be6623062be708e4e9ba140857ad1278
+    spriteID: 0722fc578d4df9d4fb17147b7cf7e1e3
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -299,10 +299,10 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: alien spawner animation_Frame_9
+  - name: Alien Spawner2 Animation_Frame_9
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.7076923, y: -0.0326087}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
@@ -310,7 +310,7 @@ ScriptedImporter:
       y: 110
       width: 65
       height: 92
-    spriteID: f2efa4fff9035744b9aa047a3f70598e
+    spriteID: 0aa70e4393abfe24aad8ae2f13bde393
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -319,10 +319,10 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 423, y: 110}
-  - name: alien spawner animation_Frame_10
+  - name: Alien Spawner2 Animation_Frame_10
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.5897436, y: -0.030612245}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
@@ -330,7 +330,7 @@ ScriptedImporter:
       y: 110
       width: 78
       height: 98
-    spriteID: ac23c1bb7fbaf7f4cafa89aa8f286524
+    spriteID: 85dba5d15f8f5f94989ca1faea53a51b
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -342,100 +342,100 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -2077591427
-    name: alien spawner animation
+    guid: 834872291
+    name: Alien Spawner2 Animation
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: alien spawner animation_Frame_0
+    - name: Alien Spawner2 Animation_Frame_0
       frameIndex: 0
       cellRect:
         x: 12
         y: 3
         width: 78
         height: 98
-      spriteId: 2413e626e75a08148be4e57d6f0c8864
-    - name: alien spawner animation_Frame_1
+      spriteId: d7c9c2eb6748219419e2e28c094435a6
+    - name: Alien Spawner2 Animation_Frame_1
       frameIndex: 1
       cellRect:
         x: 11
         y: 3
         width: 79
         height: 98
-      spriteId: 35893b9cfbb64b647b22fd1c7c8cd100
-    - name: alien spawner animation_Frame_2
+      spriteId: b8ab2752e1bc23c458a28221ae174007
+    - name: Alien Spawner2 Animation_Frame_2
       frameIndex: 2
       cellRect:
         x: 12
         y: 3
         width: 65
         height: 92
-      spriteId: cc4ad520b7d5a5b4bac34bdcfff81bef
-    - name: alien spawner animation_Frame_3
+      spriteId: 73e9ef9c6be530441860d146d5d46e58
+    - name: Alien Spawner2 Animation_Frame_3
       frameIndex: 3
       cellRect:
         x: 12
         y: 3
         width: 81
         height: 98
-      spriteId: 4af24385b52aa6a4c99604e524ab4f8a
-    - name: alien spawner animation_Frame_4
+      spriteId: 67700f7dea7bc674f9dcda12b9d29ef9
+    - name: Alien Spawner2 Animation_Frame_4
       frameIndex: 4
       cellRect:
         x: 9
         y: 3
         width: 81
         height: 98
-      spriteId: ee9072ef7096d3d48ab879e41a603f9e
-    - name: alien spawner animation_Frame_5
+      spriteId: bd3f9385976ea134ab36a634dcff6a9b
+    - name: Alien Spawner2 Animation_Frame_5
       frameIndex: 5
       cellRect:
         x: 11
         y: 3
         width: 79
         height: 98
-      spriteId: a982f1df82791944c997cade408a0d3d
-    - name: alien spawner animation_Frame_6
+      spriteId: e7b6798ab42f2a24bad0ef2dbc12bec8
+    - name: Alien Spawner2 Animation_Frame_6
       frameIndex: 6
       cellRect:
         x: 8
         y: 3
         width: 82
         height: 98
-      spriteId: 027ef04bb7c9854489e27c11f958f906
-    - name: alien spawner animation_Frame_7
+      spriteId: ddd28e8988c5e5a48ab7c348143d395d
+    - name: Alien Spawner2 Animation_Frame_7
       frameIndex: 7
       cellRect:
         x: 10
         y: 3
         width: 80
         height: 98
-      spriteId: 9e8de20018a1a8f49973a950141fe385
-    - name: alien spawner animation_Frame_8
+      spriteId: 9b5b39992d4540443942054d006ab498
+    - name: Alien Spawner2 Animation_Frame_8
       frameIndex: 8
       cellRect:
         x: 2
         y: 3
         width: 96
         height: 98
-      spriteId: be6623062be708e4e9ba140857ad1278
-    - name: alien spawner animation_Frame_9
+      spriteId: 0722fc578d4df9d4fb17147b7cf7e1e3
+    - name: Alien Spawner2 Animation_Frame_9
       frameIndex: 9
       cellRect:
         x: 12
         y: 3
         width: 65
         height: 92
-      spriteId: f2efa4fff9035744b9aa047a3f70598e
-    - name: alien spawner animation_Frame_10
+      spriteId: 0aa70e4393abfe24aad8ae2f13bde393
+    - name: Alien Spawner2 Animation_Frame_10
       frameIndex: 10
       cellRect:
         x: 12
         y: 3
         width: 78
         height: 98
-      spriteId: ac23c1bb7fbaf7f4cafa89aa8f286524
+      spriteId: 85dba5d15f8f5f94989ca1faea53a51b
     linkedCells: []
     parentIndex: -1
   platformSettings:

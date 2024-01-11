@@ -1,45 +1,62 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private GameObject frontEgg;
-    [SerializeField] private GameObject middleEgg;
-    [SerializeField] private GameObject backEgg;
-    [SerializeField] private GameObject glow1;
-    [SerializeField] private GameObject glow2;
-    private SpriteRenderer glow1Renderer;
-    private SpriteRenderer glow2Renderer;
+    [SerializeField] private GameObject[] Spawners;
+    [SerializeField] private GameObject[] GlowingVeins;
     [SerializeField] private float glowspeed;
+    [SerializeField] private float spawnTime = 5f;
+    [SerializeField] private float animationLockTime = 3f;
     
-    private float minScale = 0.95f;
-    private float maxScale = 1.05f;
+    Animator animator;
+
+    private float minScale = -0.05f;
+    private float maxScale = 0.05f;
     // Start is called before the first frame update
     void Start()
     {
-        glow1Renderer = glow1.GetComponent<SpriteRenderer>();
-        glow2Renderer = glow2.GetComponent<SpriteRenderer>();
+        
         //start Glow
-        StartCoroutine(GlowViens(glow2));
-        StartCoroutine(GlowViens(glow1));
+        StartGlowing(GlowingVeins);
         //Start pulse for each
-        StartCoroutine(PulseSprite(frontEgg));
-        StartCoroutine(PulseSprite(middleEgg));
-        StartCoroutine(PulseSprite(backEgg));
+        StartBreathing(Spawners);
+
+        StartCoroutine(SpawnTimer());
     }
 
-    IEnumerator PulseSprite(GameObject egg)
+    void StartBreathing(GameObject[] objects)
     {
-        float randomSquishSpeed = Random.Range(0.5f, 1.0f);
+        foreach (var obj in objects)
+        {
+            StartCoroutine(PulseSprite(obj));
+        }
+    }
+    void StartGlowing(GameObject[] objects)
+    {
+        foreach (var obj in objects)
+        {
+            StartCoroutine(GlowViens(obj));
+        }
+    }
+    IEnumerator PulseSprite(GameObject obj)
+    {
+        float randomSquishSpeed = UnityEngine.Random.Range(0.5f, 1.0f);
+        Vector3 originalScale = obj.transform.localScale;
         while (true)
         {
-
+            minScale = -0.05f;
+            maxScale = 0.05f;
             float lerpTime = Mathf.PingPong(Time.time * randomSquishSpeed, 1);
             float scale = Mathf.Lerp(minScale, maxScale, lerpTime);
 
             // Apply the pulsating scale to the GameObject
-            egg.transform.localScale = new Vector3(1, scale, 1);
+
+            obj.transform.localScale = new Vector3(originalScale.x, originalScale.y + scale, originalScale.z);
 
             yield return null;
         }
@@ -51,7 +68,7 @@ public class Spawner : MonoBehaviour
         renderer.color = new Color(renderer.color.r, renderer.color.g, renderer.color.b, 0);
         while (true)
         {
-            float targetAlpha = Random.Range(0.2f, 0.8f);
+            float targetAlpha = UnityEngine.Random.Range(0.2f, 0.8f);
 
             float elapsedTime = 0f;
             float duration = 1f;
@@ -74,4 +91,38 @@ public class Spawner : MonoBehaviour
             }
         }
     }
+
+    IEnumerator SpawnTimer()
+    {
+        while (true)
+        {
+            // Iterate through each spawner in the array
+            foreach (var spawner in Spawners)
+            {
+                // Call your AlienHatch function (replace with your actual logic)
+                AlienHatch(spawner);
+
+                // Wait for the specified spawn time before hatching the next alien egg
+                yield return new WaitForSeconds(spawnTime);
+            }
+        }
+    }
+    void AlienHatch(GameObject obj)
+    {
+        //Play Partile effect
+        //Play Animation
+        StartCoroutine(HatchingAnimation(obj, FrontHatching));
+        //Insitiate Alien
+    }
+
+    private IEnumerator HatchingAnimation(GameObject obj,int animationHash)
+    {
+        animator = obj.GetComponent<Animator>();
+        animator.Play(animationHash, 0,0);
+        yield return new WaitForSeconds(animationLockTime);
+        animator.StopPlayback();
+    }
+
+    private static readonly int FrontHatching = Animator.StringToHash("alien spawner animation_Clip");
+    private static readonly int BackHatching = Animator.StringToHash("Alien Spawner2 Animation_Clip");
 }

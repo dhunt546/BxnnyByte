@@ -95,7 +95,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638405188801145930
+  platformSettingsDirtyTick: 638405767276078118
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -140,7 +140,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 4, y: -124}
   spriteSheetImportData:
-  - name: Eggs spawning_0
+  - name: BackGoo
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -148,7 +148,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 460
+      y: 513
       width: 128
       height: 118
     spriteID: 54b131175f3a57548934a990f768460a
@@ -160,15 +160,15 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: Eggs spawning_1
+  - name: BackSpawnerOpen
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 379
+      x: 5
+      y: 432
       width: 69
       height: 75
     spriteID: f2fe261b6d9a65d4b99972358547e4b0
@@ -180,17 +180,17 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: Eggs spawning_2
+  - name: MiddleSpawnerOpen
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 40
-      y: 236
-      width: 85
-      height: 79
+      x: 43
+      y: 292
+      width: 82
+      height: 76
     spriteID: 3a6fe0585a812244cb6caf8d9552de8c
     spriteBone: []
     spriteOutline: []
@@ -200,7 +200,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: Eggs spawning_3
+  - name: FrontSpawnerOpen
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -208,7 +208,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 6
-      y: 73
+      y: 126
       width: 96
       height: 89
     spriteID: a88151bc504cb3a43afa1b1a302df7c2
@@ -220,17 +220,17 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: Eggs spawning_4
+  - name: FrontSpawnerClosed
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 4
-      width: 104
-      height: 38
+      x: 145
+      y: 5
+      width: 65
+      height: 77
     spriteID: 3a47eeac58ade02459f798c018424eee
     spriteBone: []
     spriteOutline: []
@@ -240,15 +240,15 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: Eggs spawning_5
+  - name: MiddleGoo
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 153
-      y: 228
+      x: 159
+      y: 278
       width: 98
       height: 56
     spriteID: 8500d8f01bd5cf345afc1bb6617453bb
@@ -267,11 +267,71 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 113
-      y: 81
-      width: 76
-      height: 59
+      x: 118
+      y: 139
+      width: 64
+      height: 52
     spriteID: e7e1a0011691ebb48b93637e375ebbf0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: MiddleSpawnerClosed
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 298
+      y: 7
+      width: 54
+      height: 67
+    spriteID: e2708d8a315384a4190280c2a372f069
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: FrontGoo
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1
+      y: 54
+      width: 109
+      height: 46
+    spriteID: 7677addc7e725044f8b0ab0b49ea301c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: BackClosedAlienSpawner
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 195
+      y: 535
+      width: 60
+      height: 72
+    spriteID: 74ce5ddf8f327664f91bbf3496544472
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -292,9 +352,9 @@ ScriptedImporter:
       frameIndex: 0
       cellRect:
         x: 0
-        y: 62
-        width: 242
-        height: 574
+        y: 9
+        width: 349
+        height: 627
       spriteId: d6aff29be3a4c354595257debda5fcb1
     linkedCells: []
     parentIndex: -1
@@ -347,6 +407,30 @@ ScriptedImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     androidETC2FallbackOverride: 0
+  - name: Android
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Windows Store Apps
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 252, y: 640}
+  canvasSize: {x: 376, y: 640}
