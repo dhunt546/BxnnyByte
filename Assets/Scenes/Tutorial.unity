@@ -324,7 +324,7 @@ Animator:
   m_GameObject: {fileID: 28398416}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 4662291842453905940, guid: 86e30a105fdff56488e210084cb663bb, type: 3}
+  m_Controller: {fileID: 9100000, guid: 34acb1704bf9aa4439917e91c63019e2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -998,7 +998,7 @@ Animator:
   m_GameObject: {fileID: 335006154}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 4662291842453905940, guid: 86e30a105fdff56488e210084cb663bb, type: 3}
+  m_Controller: {fileID: 9100000, guid: 34acb1704bf9aa4439917e91c63019e2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1024,7 +1024,7 @@ Animator:
   m_GameObject: {fileID: 366267641}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 4662291842453905940, guid: 86e30a105fdff56488e210084cb663bb, type: 3}
+  m_Controller: {fileID: 9100000, guid: 34acb1704bf9aa4439917e91c63019e2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -16684,7 +16684,7 @@ Animator:
   m_GameObject: {fileID: 902893793}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 4662291842453905940, guid: 86e30a105fdff56488e210084cb663bb, type: 3}
+  m_Controller: {fileID: 9100000, guid: 34acb1704bf9aa4439917e91c63019e2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -17066,7 +17066,7 @@ Animator:
   m_GameObject: {fileID: 1021692140}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 4662291842453905940, guid: 86e30a105fdff56488e210084cb663bb, type: 3}
+  m_Controller: {fileID: 9100000, guid: 34acb1704bf9aa4439917e91c63019e2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -37646,7 +37646,7 @@ Animator:
   m_GameObject: {fileID: 1919126312}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 4662291842453905940, guid: 86e30a105fdff56488e210084cb663bb, type: 3}
+  m_Controller: {fileID: 9100000, guid: 34acb1704bf9aa4439917e91c63019e2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

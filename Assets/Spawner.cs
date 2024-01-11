@@ -123,6 +123,6 @@ public class Spawner : MonoBehaviour
         animator.StopPlayback();
     }
 
-    private static readonly int FrontHatching = Animator.StringToHash("alien spawner animation_Clip");
-    private static readonly int BackHatching = Animator.StringToHash("Alien Spawner2 Animation_Clip");
+    private static readonly int FrontHatching = Animator.StringToHash("Hatching1");
+    private static readonly int BackHatching = Animator.StringToHash("Hatching2");
 }
