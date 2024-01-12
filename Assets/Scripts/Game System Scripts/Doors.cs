@@ -20,26 +20,35 @@ public class Doors : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player") || other.CompareTag("Enemy"))
-        {                                  
-            doorAnimator.SetBool("doorStatus", true);
-               
-            doorPrefab.GetComponent<CapsuleCollider2D>().enabled = false;            
+        {
+            if (doorAnimator != null)
+            {
+                doorAnimator.SetBool("doorStatus", true);
+
+                doorPrefab.GetComponent<CapsuleCollider2D>().enabled = false;
+            }
         }
     }
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Player") || other.CompareTag("Enemy"))
         {
-            doorAnimator.SetBool("doorStatus", true);
+            if (doorAnimator != null)
+            {
+                doorAnimator.SetBool("doorStatus", true);
+            }
         }
     }
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player") || other.CompareTag("Enemy"))
-        {                                
-            doorAnimator.SetBool("doorStatus", false);
-             
-            doorPrefab.GetComponent<CapsuleCollider2D>().enabled = true;           
+        {
+            if (doorAnimator != null)
+            {
+                doorAnimator.SetBool("doorStatus", false);
+
+                doorPrefab.GetComponent<CapsuleCollider2D>().enabled = true;
+            }
         }
     }
 }
