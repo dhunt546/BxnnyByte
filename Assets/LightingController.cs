@@ -9,10 +9,6 @@ public class LightingController : MonoBehaviour
     [SerializeField] private GameObject[] LightObjects;
     private bool isFlashing;
 
-
-    [SerializeField] private float minIntensity = 0.5f;
-    [SerializeField] private float maxIntensity = 1.0f;
-
     float flickerDuration = 0.1f;
     // Start is called before the first frame update
     void Start()
@@ -47,10 +43,12 @@ public class LightingController : MonoBehaviour
     
     IEnumerator LightsFlicker(Light2D light)
     {
+        float maxIntensity = light.intensity;
         while (isFlashing)
         {
+            
             float off = 0f;
-            float on = Random.Range(minIntensity, maxIntensity);
+            float on = Random.Range(0.6f, maxIntensity);
 
             if (isFlashing)
             {
