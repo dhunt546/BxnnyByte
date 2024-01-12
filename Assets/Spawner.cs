@@ -10,7 +10,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private GameObject[] Spawners;
     [SerializeField] private GameObject[] GlowingVeins;
     [SerializeField] private float glowspeed;
-    [SerializeField] private float spawnTime = 5f;
+    [SerializeField] private float spawnTime;
     [SerializeField] private float animationLockTime = 3f;
     [SerializeField] private GameObject gasEffect;
     [SerializeField] private GameObject Alien;
