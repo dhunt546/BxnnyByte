@@ -10,8 +10,10 @@ public class Spawner : MonoBehaviour
     [SerializeField] private GameObject[] Spawners;
     [SerializeField] private GameObject[] GlowingVeins;
     [SerializeField] private float glowspeed;
-    [SerializeField] private float spawnTime = 5f;
+    [SerializeField] private float spawnTime;
     [SerializeField] private float animationLockTime = 3f;
+    [SerializeField] private GameObject gasEffect;
+    [SerializeField] private GameObject Alien;
     
     Animator animator;
 
@@ -25,10 +27,12 @@ public class Spawner : MonoBehaviour
         StartGlowing(GlowingVeins);
         //Start pulse for each
         StartBreathing(Spawners);
-
+        
+    }
+    public void StartSpawningEggs()
+    {
         StartCoroutine(SpawnTimer());
     }
-
     void StartBreathing(GameObject[] objects)
     {
         foreach (var obj in objects)
@@ -110,9 +114,46 @@ public class Spawner : MonoBehaviour
     void AlienHatch(GameObject obj)
     {
         //Play Partile effect
+        gasEffect.transform.position = obj.transform.position;
+        ParticleSystem gasEffectPS = gasEffect.GetComponent<ParticleSystem>();
+        gasEffectPS.Play();
         //Play Animation
         StartCoroutine(HatchingAnimation(obj, FrontHatching));
         //Insitiate Alien
+
+        GameObject newAlien = HatchedAlien(obj);
+        GrowAlien(newAlien);
+        
+    }
+   
+    GameObject HatchedAlien(GameObject obj)
+    {
+        var newNewAlien =
+        Instantiate(Alien, obj.transform.position, Quaternion.identity);
+        
+        return newNewAlien;
+    }
+
+    void GrowAlien(GameObject newAlien)
+    {
+        Vector3 newAlienOriginalScale = newAlien.transform.localScale;
+        newAlien.transform.localScale = new Vector3(0, 0, 0);
+        StartCoroutine(ScaleObject(newAlien.transform, newAlienOriginalScale, 200f));
+    
+    }
+    IEnumerator ScaleObject(Transform objTransform, Vector3 targetScale, float duration)
+    {
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            objTransform.localScale = Vector3.Lerp(objTransform.localScale, targetScale, (elapsedTime / duration));
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // Ensure the object's scale is exactly the target scale when the animation is complete
+        objTransform.localScale = targetScale;
     }
 
     private IEnumerator HatchingAnimation(GameObject obj,int animationHash)
@@ -120,7 +161,6 @@ public class Spawner : MonoBehaviour
         animator = obj.GetComponent<Animator>();
         animator.Play(animationHash, 0,0);
         yield return new WaitForSeconds(animationLockTime);
-        animator.StopPlayback();
     }
 
     private static readonly int FrontHatching = Animator.StringToHash("Hatching1");
