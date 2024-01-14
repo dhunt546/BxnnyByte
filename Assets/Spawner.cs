@@ -1,20 +1,21 @@
-using System;
+
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
-
+using UnityEngine.Rendering.Universal;
 
 public class Spawner : MonoBehaviour
+    //By Regan Ly!
 {
     [SerializeField] private GameObject[] Spawners;
     [SerializeField] private GameObject[] GlowingVeins;
+    [SerializeField] private GameObject[] lights;
     [SerializeField] private float glowspeed;
     [SerializeField] private float spawnTime;
     [SerializeField] private float animationLockTime = 3f;
     [SerializeField] private GameObject gasEffect;
     [SerializeField] private GameObject Alien;
     
+
     Animator animator;
 
     private float minScale = -0.05f;
@@ -22,7 +23,7 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        GlowLights(lights);
         //start Glow
         StartGlowing(GlowingVeins);
         //Start pulse for each
@@ -147,13 +148,38 @@ public class Spawner : MonoBehaviour
 
         while (elapsedTime < duration)
         {
+            if (objTransform != null)
             objTransform.localScale = Vector3.Lerp(objTransform.localScale, targetScale, (elapsedTime / duration));
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
         // Ensure the object's scale is exactly the target scale when the animation is complete
-        objTransform.localScale = targetScale;
+        if (objTransform != null)
+            objTransform.localScale = targetScale;
+    }
+
+    void GlowLights(GameObject[] lights)
+    {
+        foreach (var light in lights)
+        {
+            Light2D lights2D = light.GetComponent<Light2D>();
+            float orginalIntensity = lights2D.intensity;
+            StartCoroutine(LightsGlow(lights2D, orginalIntensity));
+        }
+    }
+    IEnumerator LightsGlow( Light2D lights, float orginalIntensity)
+    {
+        while (true)
+        {
+
+            if (lights != null)
+            {
+                // Set the light intensity
+                lights.intensity = Mathf.PingPong(Time.time/8, orginalIntensity);
+            }
+            yield return null;
+        }
     }
 
     private IEnumerator HatchingAnimation(GameObject obj,int animationHash)

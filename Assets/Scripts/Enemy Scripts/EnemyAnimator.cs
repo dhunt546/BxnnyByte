@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyAnimator : MonoBehaviour
 {
+
     SpriteRenderer spriteRenderer;
     private float flashDuration = 0.2f;
    // private float shakeIntensity = 0.1f;
@@ -16,10 +17,8 @@ public class EnemyAnimator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (spriteRenderer == null)
-        {
-            spriteRenderer = GetComponent<SpriteRenderer>();
-        }
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
         originalColor = spriteRenderer.color;
        // originalScale = transform.localScale;
     }
@@ -32,30 +31,32 @@ public class EnemyAnimator : MonoBehaviour
 
     public void EnemyVisualDamageTaken()
     {
-        StartCoroutine(FlashAndShake());
-    }
 
-    private IEnumerator FlashAndShake()
-    {
-        // Flash red
-        spriteRenderer.color = Color.red;
-        yield return new WaitForSeconds(flashDuration);
-        spriteRenderer.color = originalColor;
-        /*squish 
-
-         Vector3 squishedScale = new Vector3(originalScale.x, originalScale.y * squishScale, originalScale.z);
-
-        // Shake and Squish
-        float elapsedTime = 0f;
-        while (elapsedTime < shakeDuration)
+        if (spriteRenderer != null)
         {
-            originalPosition = transform.position;
-            transform.position = originalPosition + Random.insideUnitSphere * shakeIntensity;
-            transform.localScale = Vector3.Lerp(originalScale, squishedScale, elapsedTime / shakeDuration);
-            elapsedTime += Time.deltaTime;
-            yield return null; // Yield inside the shaking loop
+            StartCoroutine(EnemyFlash(spriteRenderer));
         }
-        transform.localScale = originalScale;
-        */
+        else
+        {
+            Debug.LogError("SpriteRenderer is null. Make sure the object has a SpriteRenderer component.");
+        }
     }
+
+    public IEnumerator EnemyFlash(SpriteRenderer spriteRenderer)
+    {
+        float flashDuration = 0.2f;
+
+        if (spriteRenderer == null)
+        {
+            Color originalColor = spriteRenderer.color;
+            // Flash red
+            spriteRenderer.color = Color.red;
+            yield return new WaitForSeconds(flashDuration);
+            spriteRenderer.color = originalColor;
+            Debug.Log(spriteRenderer);
+
+        }
+    }
+
+
 }
