@@ -99,82 +99,67 @@ public class PlayerAttack : MonoBehaviour
     {
         _isPlayerAttacking = isAttacking;
     }
+    void PreformAttack(float attackDamage)
+    {
+        hits = Physics2D.CircleCastAll(attackTransform.position, basicAttackRange, Vector2.up, 0f, attackableLayer);
+        for (int i = 0; i < hits.Length; i++)
+        {
+            if (hits[i].collider.gameObject.CompareTag("Enemy"))
+            {
+                IDamageable iDamageable = hits[i].collider.gameObject.GetComponent<IDamageable>();
+
+                if (iDamageable != null)
+                {
+                    //apply the pain
+                    iDamageable.Damage(attackDamage);
+                    attackSource.Play();
+                }
+                //apply knockback
+                Rigidbody2D enemyRb = hits[i].collider.gameObject.GetComponent<Rigidbody2D>();
+                if (enemyRb != null)
+                {
+                    //Debug.Log("got the rigitbody of the enemy");
+                    // call the Knockback function on the enemy Rigidbody
+                    enemyRb.GetComponent<KnockBack>().Knockback();
+                }
+            }
+            else if (hits[i].collider.gameObject.CompareTag("Debris"))
+            {
+                Rigidbody2D debrisRb = hits[i].collider.gameObject.GetComponent<Rigidbody2D>();
+                if (debrisRb != null)
+                {
+                    // Debug.Log("debris detected");
+                    // Destroy the debris object
+                    debrisRb.GetComponent<debris>().CleanDebris();
+                }
+            }
+            else if (hits[i].collider.gameObject.CompareTag("Spawner"))
+            {
+                IDamageable iDamageable = hits[i].collider.gameObject.GetComponent<IDamageable>();
+                if (iDamageable != null)
+                {
+                    iDamageable.Damage(attackDamage);
+                    //Change sounds
+                    attackSource.Play();
+                }
+            }
+        }
+    }
     void Attack(string attackName)
     {
         if (attackName == "BasicAttack")
         {
             //basic attack info goes here
-            hits = Physics2D.CircleCastAll(attackTransform.position, basicAttackRange, Vector2.up, 0f, attackableLayer);
-            
-            for (int i = 0; i < hits.Length; i++)
-            {
-                if (hits[i].collider.gameObject.CompareTag("Enemy"))
-                {
-                    IDamageable iDamageable = hits[i].collider.gameObject.GetComponent<IDamageable>();
-
-                    if (iDamageable != null)
-                    {
-                        //apply the pain
-                        iDamageable.Damage(basicAttackDmg);
-                        attackSource.Play();
-                    }
-                    //apply knockback
-                    Rigidbody2D enemyRb = hits[i].collider.gameObject.GetComponent<Rigidbody2D>();
-                    if (enemyRb != null)
-                    {
-                        //Debug.Log("got the rigitbody of the enemy");
-                        // call the Knockback function on the enemy Rigidbody
-                        enemyRb.GetComponent<KnockBack>().Knockback();
-                    }
-                }
-                else if (hits[i].collider.gameObject.CompareTag("Debris"))
-                {
-                    Rigidbody2D debrisRb = hits[i].collider.gameObject.GetComponent<Rigidbody2D>();
-                    if (debrisRb != null)
-                    {
-                       // Debug.Log("debris detected");
-                        // Destroy the debris object
-                        debrisRb.GetComponent<debris>().CleanDebris();
-                    }
-                }
-            }           
+            PreformAttack(basicAttackDmg);
         }
 
         if (attackName == "Spin")
         {
-            //attack information here
-            hits = Physics2D.CircleCastAll(transform.position, spinAttackRange, Vector2.up, 0f, attackableLayer);
-
-            for (int i = 0; i < hits.Length; i++)
-            {
-                IDamageable iDamageable = hits[i].collider.gameObject.GetComponent<IDamageable>();
-
-                if (iDamageable != null)
-                {
-                    //apply the pain
-                    iDamageable.Damage(spinAttackDmg);
-                    attackSource.Play();
-                }
-            }
-           // Debug.Log(attackName);
+            PreformAttack(spinAttackDmg);
         }
         if (attackName == "PowerAttack")
         {
-            //attack information
-            hits = Physics2D.CircleCastAll(attackTransform.position, powerAttackRange, Vector2.up, 0f, attackableLayer);
-
-            for (int i = 0; i < hits.Length; i++)
-            {
-                IDamageable iDamageable = hits[i].collider.gameObject.GetComponent<IDamageable>();
-
-                if (iDamageable != null)
-                {
-                    //apply the pain
-                    iDamageable.Damage(powerAttackDmg);
-                    attackSource.Play();
-                }
-            }
-            //Debug.Log(attackName);
+            PreformAttack(powerAttackDmg);
         }
         if(attackName == "Dodge")
         {

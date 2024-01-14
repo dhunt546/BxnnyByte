@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - RoomBoundary
   - Debris
+  - Spawner
   layers:
   - Default
   - TransparentFX
