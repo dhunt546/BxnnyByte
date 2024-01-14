@@ -40428,7 +40428,7 @@ MonoBehaviour:
   - {fileID: 1183797367}
   - {fileID: 624200613}
   - {fileID: 621902163}
-  lightsFlickerIntensity: 0
+  lightsFlickerIntensity: 1
 --- !u!114 &1953866677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40446,7 +40446,7 @@ MonoBehaviour:
   - {fileID: 1179717050}
   - {fileID: 750638533}
   - {fileID: 1573082774}
-  lightsFlickerIntensity: 2
+  lightsFlickerIntensity: 1
 --- !u!114 &1953866678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40481,7 +40481,7 @@ MonoBehaviour:
   - {fileID: 465981989}
   - {fileID: 796265852}
   - {fileID: 254082768}
-  lightsFlickerIntensity: 0
+  lightsFlickerIntensity: 1
 --- !u!1 &1975469473
 GameObject:
   m_ObjectHideFlags: 0

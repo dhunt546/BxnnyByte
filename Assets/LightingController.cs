@@ -8,39 +8,26 @@ using UnityEngine.Rendering.Universal;
 public class LightingController : MonoBehaviour
 {
     [SerializeField] private GameObject[] LightObjects;
+    [Range(1, 5)]  public int lightsFlickerIntensity;
+
+
     private bool isFlashing;
+    private float flickerDuration = 0.15f;
 
-    float flickerDuration = 0.15f;
-
-    
-    [Range(1, 5)]
-    public int lightsFlickerIntensity;
     void Start()
     {
         StartFlashing(LightObjects);
     }
     void StartFlashing(GameObject[] Lights)
     {
-
         if (!isFlashing)
         {
-            GrabLights(Lights);
-        }
-    }
-
-    float SetMaxIntensity(GameObject light)
-    {
-        Light2D light2D = light.GetComponent<Light2D>();
-        float originalIntencity = light2D.intensity;
-        return originalIntencity;
-    }
-    void GrabLights(GameObject[] lightlist)
-    {
-        foreach (GameObject light in lightlist)
-        {
-            float maxIntensity = SetMaxIntensity(light);
-            Light2D light2D = light.GetComponent<Light2D>();
-            FlickerAllLights(light2D, maxIntensity);
+            foreach (GameObject light in Lights)
+            {
+                Light2D light2D = light.GetComponent<Light2D>();
+                float originalIntensity = light2D.intensity;
+                FlickerAllLights(light2D, originalIntensity);
+            }
         }
 
     }
@@ -70,11 +57,9 @@ public class LightingController : MonoBehaviour
     }
     void FlickerAllLights(Light2D lights, float maxIntensity)
     {
-        float minDelayRange = delayBetweenFlickers();
-        float randomDuration = durationOfFlickers();
         isFlashing = true;
             StartCoroutine(LightsFlicker(lights, maxIntensity));
-            StartCoroutine(RestartFlashingAfterDuration(lights, minDelayRange, randomDuration, maxIntensity));
+            StartCoroutine(RestartFlashingAfterDuration(lights, maxIntensity));
     }
     
     //Actual flicker occurs here
@@ -101,8 +86,9 @@ public class LightingController : MonoBehaviour
     }
 
     //stops  flickering and then starts it again
-    IEnumerator RestartFlashingAfterDuration(Light2D lights, float Delay, float randomDuration, float maxIntensity)
+    IEnumerator RestartFlashingAfterDuration(Light2D lights, float maxIntensity)
     {
+        float randomDuration = durationOfFlickers();
         //wait random duration time
         yield return new WaitForSeconds(randomDuration);
 
@@ -111,6 +97,7 @@ public class LightingController : MonoBehaviour
         //set lights to its original intensity
         lights.intensity = maxIntensity;
         //delay time
+        float Delay = delayBetweenFlickers();
         yield return new WaitForSeconds(Delay);
 
         //after delay, restarts flashing

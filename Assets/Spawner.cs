@@ -147,13 +147,15 @@ public class Spawner : MonoBehaviour
 
         while (elapsedTime < duration)
         {
+            if (objTransform != null)
             objTransform.localScale = Vector3.Lerp(objTransform.localScale, targetScale, (elapsedTime / duration));
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
         // Ensure the object's scale is exactly the target scale when the animation is complete
-        objTransform.localScale = targetScale;
+        if (objTransform != null)
+            objTransform.localScale = targetScale;
     }
 
     private IEnumerator HatchingAnimation(GameObject obj,int animationHash)
