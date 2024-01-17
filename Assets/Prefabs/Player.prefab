@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 1597683158203327403}
   - component: {fileID: 2279367400545581808}
   - component: {fileID: 587657636343756053}
+  - component: {fileID: 1073044869833559542}
   - component: {fileID: 1189373476747339768}
-  - component: {fileID: 3068843272605342227}
   - component: {fileID: 8243577073624337471}
   - component: {fileID: 2096313602671208732}
   - component: {fileID: 7135656899457232387}
@@ -107,12 +107,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 264ced3d0785bb943b74578e45acbbaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 7
-  rb: {fileID: 587657636343756053}
-  animator: {fileID: 1189373476747339768}
+  slowedSpeed: 0.1
+  normalSpeed: 5
   PlayerDirection: {fileID: 6641000483796230735}
   playerDirection: Forward
-  isMoving: 0
 --- !u!50 &587657636343756053
 Rigidbody2D:
   serializedVersion: 4
@@ -140,6 +138,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1073044869833559542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2335019052630451878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f28e769326a7d84d809da3cc0365d48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackAnimTime: 0.8
+  isPlayerRunning: 0
+  isPlayerAttacking: 0
 --- !u!95 &1189373476747339768
 Animator:
   serializedVersion: 5
@@ -161,19 +174,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3068843272605342227
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2335019052630451878}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecb3d6956b27718458b374df1c44e669, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _attackAnimTime: 0.2
 --- !u!114 &8243577073624337471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,14 +197,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   basicAttackRange: 0.9
-  powerAttackRange: 1.1
-  spinAttackRange: 1.5
   attackSource: {fileID: 2096313602671208732}
   basicAttackDmg: 1
   powerAttackDmg: 3
   spinAttackDmg: 10
   PlayerDirection: {fileID: 6641000483796230735}
   _isPlayerAttacking: 0
+  TypeOfAttack: 
 --- !u!82 &2096313602671208732
 AudioSource:
   m_ObjectHideFlags: 0

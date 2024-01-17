@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
@@ -9,10 +8,11 @@ public class PlayerAnimation : MonoBehaviour
     PlayerController _player;
     PlayerAttack _attackPlayer;
     Animator _anim;
+    private SpriteRenderer _spriteRenderer;
 
     string playerDirection;
-    [SerializeField] private float _attackAnimTime = 3f;
-
+    [SerializeField] public float _attackAnimTime = 3f;
+    private Color OriginalColour;
     public bool isPlayerRunning;
     public bool isPlayerAttacking;
 
@@ -26,6 +26,8 @@ public class PlayerAnimation : MonoBehaviour
         _player = GetComponent<PlayerController>();
         _anim = GetComponent<Animator>();
         _attackPlayer = GetComponent<PlayerAttack>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        OriginalColour = _spriteRenderer.color;
     }
 
     // Update is called once per frame
@@ -57,11 +59,7 @@ public class PlayerAnimation : MonoBehaviour
 
     void SetPlayerState()
     {
-        if (isPlayerRunning)
-        {
-            currentPlayerState = PlayerState.Running;
-        }
-        else if (isPlayerAttacking)
+        if (isPlayerAttacking)
         {
             animationLock = true;
             switch (_attackPlayer.TypeOfAttack)
@@ -80,6 +78,11 @@ public class PlayerAnimation : MonoBehaviour
                     break;
             }
         }
+        else if (isPlayerRunning)
+        {
+            currentPlayerState = PlayerState.Running;
+        }
+        
         else
         {
             currentPlayerState = PlayerState.Idle;
@@ -110,15 +113,25 @@ public class PlayerAnimation : MonoBehaviour
     {
         if (isPlayerAttacking)
         {
-
+            StartCoroutine(_player.SlowSpeed());
             _anim.CrossFade(animationHash, 0);
-             animationLock = true;
+            
+            animationLock = true;
 
             yield return new WaitForSeconds(_attackAnimTime);
 
-             animationLock = false;
+            animationLock = false;
 
             isPlayerAttacking = false;
+
         }
+    }
+
+    private IEnumerator OnHit()
+    {
+        
+      //  _spriteRenderer.color = color.red;
+        yield return new WaitForSeconds(0.2f);
+        //_spriteRenderer.sprite = OriginalColour;
     }
 }

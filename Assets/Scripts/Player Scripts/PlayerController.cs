@@ -6,11 +6,12 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     //by Devin Hunt and Regan Ly
-    public float moveSpeed = 5.0f;
+    private float moveSpeed = 5.0f;
     private Rigidbody2D rb;
 
     private PlayerAnimation animator;
-
+    [SerializeField]private float slowedSpeed;
+    [SerializeField]private float normalSpeed;
     Vector2 movement;
     public GameObject PlayerDirection;
     public string playerDirection = "Forward";
@@ -18,6 +19,7 @@ public class PlayerController : MonoBehaviour
     //public int PlayerHealth = 5;
     private void Start()
     {
+        moveSpeed = normalSpeed;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<PlayerAnimation>();
     }
@@ -56,4 +58,12 @@ public class PlayerController : MonoBehaviour
         rb.velocity = movement * moveSpeed;
     }
 
+    //if the player is attacking, slow their speed greatly
+
+    public IEnumerator SlowSpeed()
+    {
+        moveSpeed = slowedSpeed;
+        yield return new WaitForSeconds(animator._attackAnimTime);
+        moveSpeed = normalSpeed;
+    }
 }
