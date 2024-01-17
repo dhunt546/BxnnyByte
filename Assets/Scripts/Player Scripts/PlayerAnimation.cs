@@ -16,12 +16,12 @@ public class PlayerAnimation : MonoBehaviour
     public bool isPlayerRunning;
     public bool isPlayerAttacking;
 
-    bool isCurrentlyAttacking = false;
+    bool animationLock = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        isCurrentlyAttacking = false;
+        animationLock = false;
         //Get Components
         _player = GetComponent<PlayerController>();
         _anim = GetComponent<Animator>();
@@ -32,7 +32,7 @@ public class PlayerAnimation : MonoBehaviour
     void Update()
     {
         playerDirection = _player.playerDirection;
-        if (isCurrentlyAttacking)
+        if (animationLock)
         {
             return;
         }
@@ -63,6 +63,7 @@ public class PlayerAnimation : MonoBehaviour
         }
         else if (isPlayerAttacking)
         {
+            animationLock = true;
             switch (_attackPlayer.TypeOfAttack)
             {
                 case "BasicAttack":
@@ -90,17 +91,34 @@ public class PlayerAnimation : MonoBehaviour
     private int AnimationLibrary(string playerDirection)
     {
         string animationName = $"{currentPlayerState}{playerDirection}";
-        Debug.Log(animationName);
-
         int animationHash = Animator.StringToHash(animationName);
-
+        //Debug.Log(animationName);
         return animationHash;
     }
 
     void PlayAnimation(string playerDirection)
     {
+        if (isPlayerAttacking)
+        {
+            StartCoroutine(PlayAnimationAndLock(AnimationLibrary(playerDirection)));
+        }
+        else
         _anim.CrossFade(AnimationLibrary(playerDirection), 0);
-        Debug.Log
-            ("If no animation plays, animationName not found for: " + AnimationLibrary(playerDirection));
+    }
+
+    private IEnumerator PlayAnimationAndLock(int animationHash)
+    {
+        if (isPlayerAttacking)
+        {
+
+            _anim.CrossFade(animationHash, 0);
+             animationLock = true;
+
+            yield return new WaitForSeconds(_attackAnimTime);
+
+             animationLock = false;
+
+            isPlayerAttacking = false;
+        }
     }
 }

@@ -35,7 +35,7 @@ public class ForcedDialogue : MonoBehaviour
 
             dialogueRunner.StartDialogue(conversationStartNode);
 
-            GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = false;
+            GameObject.Find("Player").GetComponent<PlayerController>().enabled = false;
         }
     }
 
@@ -46,7 +46,7 @@ public class ForcedDialogue : MonoBehaviour
         {
             isCurrentConversation = false;
 
-            GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = true;
+            GameObject.Find("Player").GetComponent<PlayerController>().enabled = true;
         }
     }
 

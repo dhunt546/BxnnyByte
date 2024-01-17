@@ -6,7 +6,6 @@ public class EnemyAnimator : MonoBehaviour
 {
 
     SpriteRenderer spriteRenderer;
-    private float flashDuration = 0.2f;
    // private float shakeIntensity = 0.1f;
    // private float shakeDuration = 0.1f;
    // private float squishScale = 0.5f;
