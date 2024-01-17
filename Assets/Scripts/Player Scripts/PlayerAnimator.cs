@@ -9,9 +9,9 @@ public class PlayerAnimator : MonoBehaviour
 {
     //By Regan Ly
 
-    [SerializeField] public float _attackAnimTime = 3f;
+    [SerializeField] private float _attackAnimTime = 3f;
 
-    PlayerMovement _player;
+    PlayerController _player;
     PlayerAttack _attackPlayer;
     Animator _anim;
 
@@ -20,10 +20,11 @@ public class PlayerAnimator : MonoBehaviour
 
     void Start()
     {
-        _player = GetComponent<PlayerMovement>();
+        _player = GetComponent<PlayerController>();
         _anim = GetComponent<Animator>();
-
         _attackPlayer = GetComponent<PlayerAttack>();
+
+
         isCurrentlyAttacking = false;
     }
 

@@ -3,18 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     //by Devin Hunt and Regan Ly
     public float moveSpeed = 5.0f;
-    public Rigidbody2D rb;
-    public Animator animator;
+    private Rigidbody2D rb;
+
+    private PlayerAnimation animator;
+
     Vector2 movement;
     public GameObject PlayerDirection;
     public string playerDirection = "Forward";
-    public bool isMoving;
-   
+
     //public int PlayerHealth = 5;
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<PlayerAnimation>();
+    }
 
     void Update()
     {
@@ -24,12 +30,12 @@ public class PlayerMovement : MonoBehaviour
     
         if (movement != Vector2.zero)
         {
-            isMoving = true;
+            animator.isPlayerRunning = true;
 
             float angle = Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg; 
-            
             PlayerDirection.transform.rotation = Quaternion.Euler(0, 0, angle);
 
+            //Set Direction of player if they have moved.
             if (angle >= -45 && angle < 45)
                 playerDirection = "Right";
             else if (angle >= 45 && angle < 135)
@@ -41,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            isMoving = false;
+            animator.isPlayerRunning = false;
         }
     }
 

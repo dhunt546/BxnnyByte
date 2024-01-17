@@ -50,6 +50,7 @@ public class PlayerAttack : MonoBehaviour
     private float powerCooldown = 10.0f;
     private float dodgeCooldown = 2.0f;
 
+    public string TypeOfAttack;
     void Awake()
     {
         //keybinds
@@ -86,6 +87,7 @@ public class PlayerAttack : MonoBehaviour
 
     void Attacking(string attackName)
     {
+        TypeOfAttack = attackName;
         SetAttacking(true);
         Attack(attackName);
         StartCooldown(attackName, GetCooldownTime(attackName));
