@@ -31,7 +31,7 @@ public class EnemyAnimator : MonoBehaviour
 
     public void EnemyVisualDamageTaken()
     {
-
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         if (spriteRenderer != null)
         {
             StartCoroutine(EnemyFlash(spriteRenderer));
@@ -44,6 +44,7 @@ public class EnemyAnimator : MonoBehaviour
 
     public IEnumerator EnemyFlash(SpriteRenderer spriteRenderer)
     {
+
         float flashDuration = 0.2f;
 
         if (spriteRenderer == null)

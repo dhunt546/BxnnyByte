@@ -12,7 +12,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     ParticleSystem enemyPS;
     [SerializeField] HPBar healthBar;
 
-   
+
     ScoreManager score;
 
     private float currentEnemyHealth;
