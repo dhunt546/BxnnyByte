@@ -15,9 +15,9 @@ public class EnemyAI : MonoBehaviour
     private float currentVision;
     public float wanderRadius;
     public float wanderTime;
-    public float wanderTimer;
     public float groupSeekRange;
 
+    private bool isWandering;
 
     public float seekCooldown;
     private float cooldownTimer = 0;
@@ -28,6 +28,8 @@ public class EnemyAI : MonoBehaviour
     private NavMeshAgent navMeshAgent;
     private float previousDistanceToPlayer;
     private bool wasPlayerInVisionRange = false;
+    private EnemyStates currentState;
+    public LayerMask playerLayer;
 
 
     private void OnDrawGizmos()
@@ -40,28 +42,36 @@ public class EnemyAI : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         navMeshAgent = GetComponent<NavMeshAgent>();
-        wanderTimer = wanderTime;
         currentVision = defaultvisionRange;
         // Start with a random destination for wandering
         SetRandomDestination();
         wasPlayerInVisionRange = false;
 
     }
+    private enum EnemyStates
+    {
+        Wandering,
+        Hunting
+    }
 
     void Update()
     {
         //Debug.Log(cooldownTimer);
-        lastKnownPlayerPosition = player.position;
+
+        
 
         // Check if player is in vision range and seek. Start seeking cooldown
-        if ((player != null && IsPlayerInVisionRange()) || isCooldown == true)
+        if ((IsPlayerInVisionRange()) || isCooldown == true)
         {
+            currentState = EnemyStates.Hunting;
             SeekPlayer();
             
         }
         else
         {
-           WanderOrIdle(); 
+            currentState = EnemyStates.Wandering;
+            if (!isWandering)
+                WanderOrIdle(); 
         }
 
         if (!IsPlayerInVisionRange() && wasPlayerInVisionRange)
@@ -101,7 +111,7 @@ public class EnemyAI : MonoBehaviour
 
     void SeekPlayer()
     {
-        
+        SetLastPosition();
         // Move towards the last known player position
         if (navMeshAgent != null)
         {
@@ -145,17 +155,53 @@ public class EnemyAI : MonoBehaviour
 
     void WanderOrIdle()
     {
-        currentVision = defaultvisionRange;
-        wanderTimer += Time.deltaTime;
 
-        if (wanderTimer >= wanderTime)
+        currentVision = defaultvisionRange;
+        if (!isWandering)
+        StartCoroutine(WanderTimer());
+    }
+    private IEnumerator WanderTimer()
+    {
+        isWandering = true;
+        SetRandomDestination();
+        yield return new WaitForSeconds(wanderTime);
+        isWandering = false;
+    }
+    void SetLastPosition()
+    {
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, huntingvisionRange, Vector2.zero, 0f, playerLayer);
+
+
+        foreach (RaycastHit2D hit in hits)
         {
-            // If timer is greater than wanderTimer, reset timer and set new destination
-            SetRandomDestination();          
-            wanderTimer = 0;
+            // Check for obstacle in front of the hit
+            
+            if (!IsCheckForObstacle(hit))
+            {
+                lastKnownPlayerPosition = player.position;
+            }
         }
     }
+    bool IsCheckForObstacle(RaycastHit2D hit)
+    {
+        Vector2 hitPoint = hit.point;
+        Vector2 hitNormal = hit.normal;
 
+        // Cast a ray from the hit point in the direction of the hit normal
+        RaycastHit2D obstacleHit = Physics2D.Raycast(hitPoint, hitNormal, huntingvisionRange);
+
+        // Check if there's an obstacle in front
+        if (obstacleHit.collider != null)
+        {
+            // Do something with the obstacle hit
+            Debug.Log("Obstacle in front: " + obstacleHit.collider.gameObject.name);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     void SetRandomDestination()
     {
         if (navMeshAgent != null)

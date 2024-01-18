@@ -29089,6 +29089,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 88079909732944653, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
+      propertyPath: wanderTimer
+      value: 0.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 88079909732944653, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
+      propertyPath: playerLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 1554144711429746060, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 41.51848
@@ -29131,11 +29139,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4537870478123677205, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4537870478123677205, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7808414028776961750, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
       propertyPath: m_Enabled
@@ -29147,7 +29155,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8655144454707207289, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
