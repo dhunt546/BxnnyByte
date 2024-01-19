@@ -95,7 +95,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638411885360973781
+  platformSettingsDirtyTick: 638412253714930906
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -121,13 +121,13 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Idle Front SpriteSheet_Frame_0
     originalName: 
-    pivot: {x: 0.5789474, y: -0.41176468}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 86
+      y: 4
       width: 38
       height: 68
     spriteID: f4a0e4ad0d14aee48b97158c13ad0e88
@@ -138,18 +138,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 86}
+    uvTransform: {x: 4, y: 4}
   - name: Idle Front SpriteSheet_Frame_1
     originalName: 
-    pivot: {x: 0.5681819, y: -0.2972973}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 4
-      width: 44
-      height: 74
+      y: 80
+      width: 38
+      height: 68
     spriteID: c97d6ad75dc7edf48b8c8d8cd497aa0f
     spriteBone: []
     spriteOutline: []
@@ -158,15 +158,15 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 4}
+    uvTransform: {x: 4, y: 80}
   - name: Idle Front SpriteSheet_Frame_2
     originalName: 
-    pivot: {x: 0.5675675, y: -0.41791043}
+    pivot: {x: 0.4864865, y: 0.5074627}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 56
+      x: 50
       y: 4
       width: 37
       height: 67
@@ -178,15 +178,15 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 56, y: 4}
+    uvTransform: {x: 50, y: 4}
   - name: Idle Front SpriteSheet_Frame_3
     originalName: 
-    pivot: {x: 0.5675675, y: -0.41791043}
+    pivot: {x: 0.4864865, y: 0.5074627}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 56
+      x: 50
       y: 79
       width: 37
       height: 67
@@ -198,15 +198,15 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 56, y: 79}
+    uvTransform: {x: 50, y: 79}
   - name: Idle Front SpriteSheet_Frame_4
     originalName: 
-    pivot: {x: 0.5675675, y: -0.41791043}
+    pivot: {x: 0.4864865, y: 0.5074627}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 56
+      x: 50
       y: 154
       width: 37
       height: 67
@@ -218,15 +218,15 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 56, y: 154}
+    uvTransform: {x: 50, y: 154}
   - name: Idle Front SpriteSheet_Frame_5
     originalName: 
-    pivot: {x: 0.5675675, y: -0.41791043}
+    pivot: {x: 0.4864865, y: 0.5074627}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 101
+      x: 95
       y: 4
       width: 37
       height: 67
@@ -238,16 +238,16 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 101, y: 4}
+    uvTransform: {x: 95, y: 4}
   - name: Idle Front SpriteSheet_Frame_6
     originalName: 
-    pivot: {x: 0.5789474, y: -0.41176468}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 162
+      y: 156
       width: 38
       height: 68
     spriteID: 42001cdd57128434eb99218998e2d7d8
@@ -258,7 +258,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 162}
+    uvTransform: {x: 4, y: 156}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -271,56 +271,56 @@ ScriptedImporter:
     - name: Idle Front SpriteSheet_Frame_0
       frameIndex: 0
       cellRect:
-        x: 36
-        y: 28
+        x: 20
+        y: 12
         width: 38
         height: 68
       spriteId: f4a0e4ad0d14aee48b97158c13ad0e88
     - name: Idle Front SpriteSheet_Frame_1
       frameIndex: 1
       cellRect:
-        x: 33
-        y: 22
-        width: 44
-        height: 74
+        x: 20
+        y: 12
+        width: 38
+        height: 68
       spriteId: c97d6ad75dc7edf48b8c8d8cd497aa0f
     - name: Idle Front SpriteSheet_Frame_2
       frameIndex: 2
       cellRect:
-        x: 37
-        y: 28
+        x: 21
+        y: 12
         width: 37
         height: 67
       spriteId: 96a456b19202fa646b939d0b6f0acb9d
     - name: Idle Front SpriteSheet_Frame_3
       frameIndex: 3
       cellRect:
-        x: 37
-        y: 28
+        x: 21
+        y: 12
         width: 37
         height: 67
       spriteId: b2a0edb69dd984648ab2f92dca44fd20
     - name: Idle Front SpriteSheet_Frame_4
       frameIndex: 4
       cellRect:
-        x: 37
-        y: 28
+        x: 21
+        y: 12
         width: 37
         height: 67
       spriteId: 12381c25d80968a45bc654c9999efce8
     - name: Idle Front SpriteSheet_Frame_5
       frameIndex: 5
       cellRect:
-        x: 37
-        y: 28
+        x: 21
+        y: 12
         width: 37
         height: 67
       spriteId: 2d6e06e67d096c644a6c3ff934657fc9
     - name: Idle Front SpriteSheet_Frame_6
       frameIndex: 6
       cellRect:
-        x: 36
-        y: 28
+        x: 20
+        y: 12
         width: 38
         height: 68
       spriteId: 42001cdd57128434eb99218998e2d7d8
@@ -377,4 +377,4 @@ ScriptedImporter:
     androidETC2FallbackOverride: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 116, y: 116}
+  canvasSize: {x: 84, y: 84}
