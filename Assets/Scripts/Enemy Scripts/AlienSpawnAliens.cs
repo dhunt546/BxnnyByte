@@ -26,7 +26,7 @@ public class AlienSpawnAliens : MonoBehaviour
 
     void Update()
     {
-        wandering = enemyAi.wanderTimer;
+
 
         if (isAble == true)
         {

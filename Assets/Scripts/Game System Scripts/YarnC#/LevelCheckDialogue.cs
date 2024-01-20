@@ -45,17 +45,17 @@ public class LevelCheckDialogue : MonoBehaviour
 
             dialogueRunner.StartDialogue(conversationStartNode);
 
-            GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = false;
+            GameObject.Find("Player").GetComponent<PlayerController>().enabled = false;
         }
     }
 
     private void EndConversation()
     {
-        if (isCurrentConversation)
+        if (isCurrentConversation) 
         {
             isCurrentConversation = false;
 
-            GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = true;
+            GameObject.Find("Player").GetComponent<PlayerController>().enabled = true;
         }
     }
 

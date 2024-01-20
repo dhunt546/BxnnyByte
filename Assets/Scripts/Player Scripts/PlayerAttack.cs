@@ -7,8 +7,8 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    //Cooldown by Regan Ly
-
+    // by Regan Ly
+    private PlayerAnimation animator;
     RaycastHit2D[] hits;
 
     [SerializeField] private Transform attackTransform;
@@ -18,9 +18,9 @@ public class PlayerAttack : MonoBehaviour
     public LayerMask layer2;
 
     //range of abilities
-    [SerializeField] private float basicAttackRange = 1.5f;
-    [SerializeField] private float powerAttackRange = 2.0f;
-    [SerializeField] private float spinAttackRange = 0.5f;
+   [SerializeField] private float basicAttackRange = 1.5f;
+
+   // [SerializeField] private float spinAttackRange = 0.5f;
     //dodge doesnt need a range. just degate incoming damage
 
     [SerializeField] private AudioSource attackSource;
@@ -50,6 +50,7 @@ public class PlayerAttack : MonoBehaviour
     private float powerCooldown = 10.0f;
     private float dodgeCooldown = 2.0f;
 
+    public string TypeOfAttack;
     void Awake()
     {
         //keybinds
@@ -64,6 +65,7 @@ public class PlayerAttack : MonoBehaviour
        InitializeCooldowns();
         _isPlayerAttacking = false;
         attackableLayer = layer1 | layer2;
+        animator = GetComponent<PlayerAnimation>();
     }
  
     void Update()
@@ -86,6 +88,8 @@ public class PlayerAttack : MonoBehaviour
 
     void Attacking(string attackName)
     {
+        TypeOfAttack = attackName;
+        animator.isPlayerAttacking = true;
         SetAttacking(true);
         Attack(attackName);
         StartCooldown(attackName, GetCooldownTime(attackName));
@@ -169,11 +173,11 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(attackTransform.position, basicAttackRange);   
-    }
+   //void OnDrawGizmos()
+   //{
+   //    Gizmos.color = Color.red;
+   //    Gizmos.DrawWireSphere(attackTransform.position, basicAttackRange);   
+   //}
 
     //cooldown math
     //checks if they have a cooldown of if their cooldown is not done yet

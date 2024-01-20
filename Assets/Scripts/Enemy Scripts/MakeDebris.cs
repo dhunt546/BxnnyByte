@@ -25,7 +25,6 @@ public class MakeDebris : MonoBehaviour
   
     void Update()
     {  
-         wandering = enemyAi.wanderTimer;
 
         if (isAble == true)
         {
