@@ -1,32 +1,26 @@
 title: Intro
 tags:
 ---
-Player: "What are we doing with ours life..?" 
-Player: "On this ship, in this dead end job...?"
-Ol Jan: "What are you goin on about Kid..? 
-Ol Jan: "Listen, the boss is always watching..." 
-Ol Jan: "Let's get to it and finish your training."
-Player: "That damn A.I Supervisor is always hounding us. 
+Ol Jan: "Listen, the Boss is always watching..." 
+Ol Jan: "Let's finish your training..."
 Tutorial: Press *E* to Attack and Interact 
 Tutorial: Press *Arrow Keys* or W,A,S,D to move 
-Ol Jan: "I need you to attack those puddles over there behind you."
+Ol Jan: "You see that pile of junk to the right..."
 Ol Jan: "The Boss calls them Clean-Up Objectives"
-Ol Jan: "Now get at it before he yells at us."
+Ol Jan: "Attack them to get rig of it."
+Ol Jan: "Now, get at it..."
 ===
 
 title: Ai_Intro
 ---
-A.I. Supervisor: Attention, New Recruit, This is you Supervisor. Work cessation is not authorized... Commence cleanup immediately.
+A.I. Supervisor: Attention, this is you Supervisor. Work cessation is not authorized... Commence cleanup immediately.
 ===
 
 title: Ai_Cutscene1
 ---
-A.I. Supervisor: New Recruit...
-A.I. Supervisor: Commence cleanup immediately.
 A.I. Supervisor: Dead bodies are not premitted...
 A.I. Supervisor: New Clean-Up Objective added...
-A.I. Supervisor: Failure will lead to deductions of pay...
-A.I. Supervisor: And restriced access throughout the entire vessel... 
+A.I. Supervisor: Failure will result in restriced access... 
 ===
 
 title: Ai_Cutscene2
