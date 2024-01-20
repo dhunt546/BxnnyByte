@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,10 +15,5 @@ public class HPBar : MonoBehaviour //By Jacob Foran (https://www.youtube.com/wat
         {
             Debug.Log("HPBar slider not found");
         }
-    }
-    
-    void Update()
-    {
-        
     }
 }
