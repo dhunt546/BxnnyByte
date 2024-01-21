@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBar : MonoBehaviour  //Edited by Regan Ly   Source: ChatGPT
+public class HealthBar : MonoBehaviour  //Edited by Regan Ly  
 
 {
         public Slider healthSlider;
@@ -14,11 +14,6 @@ public class HealthBar : MonoBehaviour  //Edited by Regan Ly   Source: ChatGPT
         {
             currentHealth = maxHealth;
             UpdateHealthBar();
-        }
-
-        void Update()
-        {
-                    
         }
 
         // Function to reduce health

@@ -13,7 +13,7 @@ public class debris : MonoBehaviour
     }
     public void CleanDebris()
     {       
-        score.IncrementScore();
+        score.AddToScore(1,0.1f);
         Destroy(gameObject);
     }
 }

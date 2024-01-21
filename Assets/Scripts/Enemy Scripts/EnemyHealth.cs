@@ -49,7 +49,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
     void Die()
     {
-        score.IncrementScore();
+        score.AddToScore(1, 0.3f);
         Destroy(gameObject);      
     }
 }

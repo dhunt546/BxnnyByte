@@ -3,8 +3,8 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-public class Spawner : MonoBehaviour
-    //By Regan Ly!
+public class Spawner : ObjectHealth
+//By Regan Ly!
 {
     [SerializeField] private GameObject[] Spawners;
     [SerializeField] private GameObject[] GlowingVeins;
@@ -28,8 +28,23 @@ public class Spawner : MonoBehaviour
         StartGlowing(GlowingVeins);
         //Start pulse for each
         StartBreathing(Spawners);
-        
+        SetObjectDefaultHealth(2f);
+
     }
+
+    public override void ObjectTakeVisualDamage()
+    {
+        StartCoroutine(ShakeSprite(transform));
+        foreach (var spawner in Spawners)
+        {
+            SpriteRenderer spawnerRenderer = spawner.GetComponent<SpriteRenderer>();
+            StartCoroutine(ObjectFlashDamage(spawnerRenderer));
+        }
+
+    }
+
+
+
     public void StartSpawningEggs()
     {
         StartCoroutine(SpawnTimer());

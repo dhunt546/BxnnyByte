@@ -9,6 +9,7 @@ TagManager:
   - RoomBoundary
   - Debris
   - Spawner
+  - Destructable
   layers:
   - Default
   - TransparentFX

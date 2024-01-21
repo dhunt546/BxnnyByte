@@ -9,6 +9,7 @@ public class PlayerAttack : MonoBehaviour
 {
     // by Regan Ly
     private PlayerAnimation animator;
+    PlayerStats playerStats;
     RaycastHit2D[] hits;
 
     [SerializeField] private Transform attackTransform;
@@ -138,6 +139,16 @@ public class PlayerAttack : MonoBehaviour
                 }
             }
             else if (hits[i].collider.gameObject.CompareTag("Spawner"))
+            {
+                IDamageable iDamageable = hits[i].collider.gameObject.GetComponent<IDamageable>();
+                if (iDamageable != null)
+                {
+                    iDamageable.Damage(attackDamage);
+                    //Change sounds
+                    attackSource.Play();
+                }
+            }
+            else if (hits[i].collider.gameObject.CompareTag("Destructable"))
             {
                 IDamageable iDamageable = hits[i].collider.gameObject.GetComponent<IDamageable>();
                 if (iDamageable != null)
