@@ -2450,7 +2450,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7995739831956178138, guid: a8fea26e0bf79974cbccebb34642108e, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8555269574736865976, guid: a8fea26e0bf79974cbccebb34642108e, type: 3}
       propertyPath: m_Name
@@ -2458,7 +2458,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8555269574736865976, guid: a8fea26e0bf79974cbccebb34642108e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2838,11 +2838,6 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
---- !u!1 &257578861 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5056935234655950111, guid: c6307712320039a419b6175976c3c4f6, type: 3}
-  m_PrefabInstance: {fileID: 4360471335963321661}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &268254625
 GameObject:
   m_ObjectHideFlags: 0
@@ -3055,7 +3050,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 215538594}
-  scoreAdded: 0
+  playerStats: {fileID: 11400000, guid: 5405ee32fe6f3c143b295d087aa3db8d, type: 2}
 --- !u!1 &343990898
 GameObject:
   m_ObjectHideFlags: 0
@@ -74634,6 +74629,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentObjectHealth: 2
+  maxHealth: 0
 --- !u!60 &1547501582
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -75768,6 +75764,10 @@ PrefabInstance:
     - target: {fileID: 170340954237928694, guid: 3cd7daf9268a77b498294009bec75d65, type: 3}
       propertyPath: m_Name
       value: Toilet (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 453060636314724581, guid: 3cd7daf9268a77b498294009bec75d65, type: 3}
+      propertyPath: maxHealth
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6071218840332244717, guid: 3cd7daf9268a77b498294009bec75d65, type: 3}
       propertyPath: m_LocalPosition.x
@@ -78433,24 +78433,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentObjectHealth: 0
+  maxHealth: 0
 --- !u!4 &2099437307 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4142344841238347440, guid: c6307712320039a419b6175976c3c4f6, type: 3}
   m_PrefabInstance: {fileID: 4360471335963321661}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2099437319
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 257578861}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5a76ecb080f3fb46bf07b92f8f0d2f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentObjectHealth: 0
 --- !u!4 &2121140428 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8659630483954656793, guid: 0cfcbcac372fa1442979f873707db2ad, type: 3}
@@ -78565,21 +78553,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ol_Jan
       objectReference: {fileID: 0}
-    - target: {fileID: 5056935234655950111, guid: c6307712320039a419b6175976c3c4f6, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5056935234655950111, guid: c6307712320039a419b6175976c3c4f6, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5056935234655950111, guid: c6307712320039a419b6175976c3c4f6, type: 3}
-      insertIndex: 2
-      addedObject: {fileID: 2099437319}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6307712320039a419b6175976c3c4f6, type: 3}
 --- !u!1001 &6641251062723409083
 PrefabInstance:

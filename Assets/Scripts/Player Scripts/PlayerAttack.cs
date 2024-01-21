@@ -9,6 +9,7 @@ public class PlayerAttack : MonoBehaviour
 {
     // by Regan Ly
     private PlayerAnimation animator;
+    PlayerStats playerStats;
     RaycastHit2D[] hits;
 
     [SerializeField] private Transform attackTransform;

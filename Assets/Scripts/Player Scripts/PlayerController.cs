@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class PlayerController : MonoBehaviour
 {
     //by Devin Hunt and Regan Ly
     private float moveSpeed = 5.0f;
     private Rigidbody2D rb;
-
+    public PlayerStats playerStats;
     private PlayerAnimation animator;
     [SerializeField]private float slowedSpeed;
     [SerializeField]private float normalSpeed;
@@ -19,6 +20,7 @@ public class PlayerController : MonoBehaviour
     //public int PlayerHealth = 5;
     private void Start()
     {
+
         moveSpeed = normalSpeed;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<PlayerAnimation>();

@@ -10,29 +10,16 @@ public class ScoreManager : MonoBehaviour
     public static int score;
     
     public TextMeshProUGUI scoreText;
-  
-    public int scoreAdded;
-
- //   public GameObject debris;
- //   public GameObject Swarmer;
- //   public GameObject Brute;
- //   public GameObject PossessedHost;
- //   public GameObject HostMother;
-
+    public PlayerStats playerStats;
     void Start()
     {
         UpdateScoreDisplay();
     }
 
-    public void IncrementScore()
+    public void AddToScore(int newScore, float playerExperience)
     {
-       scoreAdded++;
-        SetScore(scoreAdded);
-    }
-
-    public void SetScore(int newScore)
-    {
-        score = newScore;
+        playerStats.PlayerLevel += playerExperience;
+        score += newScore;
         UpdateScoreDisplay();
     }
 
@@ -42,10 +29,5 @@ public class ScoreManager : MonoBehaviour
         {
             scoreText.text = score.ToString();
         }
-    }
-
-    public int GetScore()
-    {
-        return scoreAdded;
     }
 }

@@ -34,9 +34,10 @@ public class EnemyAbstract: MonoBehaviour , IDamageable
         healthBar = GetComponentInChildren<HPBar>();
     }
 
-    public float CalculateEnemyAttackDmg(int maxAttackDmg, int minAttackDmg, float dmgMultiplyer)
+    public float CalculateEnemyAttackDmg(float dmgMultiplyer)
     {
-        float damage = Random.Range(minAttackDmg, maxAttackDmg);
+
+        float damage = (((((2 * 2000)/ 5)+2)*Strength)/ 50)+2;
         if (dmgMultiplyer != 1)
             damage *= dmgMultiplyer;  
         return damage;
@@ -63,7 +64,7 @@ public class EnemyAbstract: MonoBehaviour , IDamageable
     }
     public void EnemyDie()
     {
-        score.IncrementScore();
+        score.AddToScore(1, 0.22f);
         Destroy(gameObject);
     }
 
