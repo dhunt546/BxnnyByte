@@ -46,7 +46,7 @@ public class EnemyAnimator : MonoBehaviour
 
         float flashDuration = 0.2f;
 
-        if (spriteRenderer == null)
+        if (spriteRenderer != null)
         {
             Color originalColor = spriteRenderer.color;
             // Flash red

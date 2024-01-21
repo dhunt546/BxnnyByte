@@ -28,7 +28,7 @@ public class EnemyAI : MonoBehaviour
     private NavMeshAgent navMeshAgent;
     private float previousDistanceToPlayer;
     private bool wasPlayerInVisionRange = false;
-    private EnemyStates currentState;
+    EnemyStates currentState;
     public LayerMask playerLayer;
 
 
@@ -57,7 +57,7 @@ public class EnemyAI : MonoBehaviour
     void Update()
     {
         //Debug.Log(cooldownTimer);
-
+        if (currentState == EnemyStates.Wandering) { }
         
 
         // Check if player is in vision range and seek. Start seeking cooldown

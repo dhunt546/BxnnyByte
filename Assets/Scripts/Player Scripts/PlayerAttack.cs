@@ -147,6 +147,16 @@ public class PlayerAttack : MonoBehaviour
                     attackSource.Play();
                 }
             }
+            else if (hits[i].collider.gameObject.CompareTag("Destructable"))
+            {
+                IDamageable iDamageable = hits[i].collider.gameObject.GetComponent<IDamageable>();
+                if (iDamageable != null)
+                {
+                    iDamageable.Damage(attackDamage);
+                    //Change sounds
+                    attackSource.Play();
+                }
+            }
         }
     }
     void Attack(string attackName)

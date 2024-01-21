@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class EnemyAbstract: MonoBehaviour , IDamageable
@@ -9,10 +10,12 @@ public class EnemyAbstract: MonoBehaviour , IDamageable
     [Range(5f, 300f)]
     public float enemyMaxHealth;
     public float enemyDefaultMovementSpeed;
-    public float Strength;
+
     public float AttackSpeed;
     public float currentEnemyHealth;
 
+    [Range(1,15)]
+    public float Strength;
     private float enemyMaxAttackDmg;
     private float enemyMinAttackDmg;
 
@@ -20,6 +23,16 @@ public class EnemyAbstract: MonoBehaviour , IDamageable
     ParticleSystem enemyPS;
     EnemyAnimator animatorScript;
     ScoreManager score;
+    HPBar healthBar;
+
+    public void EnemyGetComponents()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        enemyPS = GetComponentInChildren<ParticleSystem>();
+        animatorScript = GetComponentInChildren<EnemyAnimator>();
+        score = FindObjectOfType<ScoreManager>();
+        healthBar = GetComponentInChildren<HPBar>();
+    }
 
     public float CalculateEnemyAttackDmg(int maxAttackDmg, int minAttackDmg, float dmgMultiplyer)
     {
@@ -29,23 +42,11 @@ public class EnemyAbstract: MonoBehaviour , IDamageable
         return damage;
     }
 
-    public Slider enemyHBar;
-    public void UpdateHBar(float currentEnemyHealth, float maxEnemyHealth)
-    {
-        if (enemyHBar != null)
-        {
-            enemyHBar.value = currentEnemyHealth / maxEnemyHealth;
-        }
-        else
-        {
-            Debug.Log("HPBar slider not found");
-        }
-    }
      void IDamageable.Damage(float damageAmount)
     {
         currentEnemyHealth -= damageAmount;
 
-        UpdateHBar(currentEnemyHealth, enemyMaxHealth);
+        healthBar.UpdateHBar(currentEnemyHealth, enemyMaxHealth);
         if (animatorScript != null)
         {
             animatorScript.EnemyVisualDamageTaken();
@@ -57,7 +58,7 @@ public class EnemyAbstract: MonoBehaviour , IDamageable
 
         if (currentEnemyHealth <= 0)
         {
-            Die();
+            EnemyDie();
         }
     }
     public void EnemyDie()
@@ -68,7 +69,6 @@ public class EnemyAbstract: MonoBehaviour , IDamageable
 
     public void EnemyVisualDamageTaken()
     {
-        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         if (spriteRenderer != null)
         {
             StartCoroutine(EnemyFlash(spriteRenderer));
@@ -83,7 +83,7 @@ public class EnemyAbstract: MonoBehaviour , IDamageable
 
         float flashDuration = 0.2f;
 
-        if (spriteRenderer == null)
+        if (spriteRenderer != null)
         {
             Color originalColor = spriteRenderer.color;
 

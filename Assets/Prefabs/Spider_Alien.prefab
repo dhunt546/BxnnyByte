@@ -5235,6 +5235,7 @@ GameObject:
   - component: {fileID: 1554144711429746060}
   - component: {fileID: 7808414028776961750}
   - component: {fileID: 4439582175091747597}
+  - component: {fileID: 3212740079404640009}
   - component: {fileID: 6454608014699158199}
   - component: {fileID: 4591545311294182599}
   - component: {fileID: -7944934520578893350}
@@ -5334,6 +5335,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 457bc4bd27485e343b503673ab33ea6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3212740079404640009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8655144454707207289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 575e4961e1b0a4b4d8cdb2a4a52514a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyMaxHealth: 0
+  enemyDefaultMovementSpeed: 0
+  AttackSpeed: 0
+  currentEnemyHealth: 0
+  Strength: 0
+  enemyHBar: {fileID: 8384150956852375636}
 --- !u!50 &6454608014699158199
 Rigidbody2D:
   serializedVersion: 4
@@ -5507,9 +5526,11 @@ MonoBehaviour:
   huntingvisionRange: 20
   wanderRadius: 3.2
   wanderTime: 2.58
-  wanderTimer: 0
   groupSeekRange: 6
   seekCooldown: 6
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &5171477215520992585
 MonoBehaviour:
   m_ObjectHideFlags: 0
