@@ -2553,7 +2553,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7995739831956178138, guid: a8fea26e0bf79974cbccebb34642108e, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8295436131232754500, guid: a8fea26e0bf79974cbccebb34642108e, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -2566,6 +2566,10 @@ PrefabInstance:
     - target: {fileID: 8555269574736865976, guid: a8fea26e0bf79974cbccebb34642108e, type: 3}
       propertyPath: m_Name
       value: HUD
+      objectReference: {fileID: 0}
+    - target: {fileID: 8555269574736865976, guid: a8fea26e0bf79974cbccebb34642108e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8555269574736865976, guid: a8fea26e0bf79974cbccebb34642108e, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -39425,7 +39429,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4502040451394494555, guid: e69d1735cc330554182758c143ed6df9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.02
       objectReference: {fileID: 0}
     - target: {fileID: 4502040451394494555, guid: e69d1735cc330554182758c143ed6df9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -52488,6 +52492,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2500445251268525160, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
+      propertyPath: m_Color.b
+      value: 0.17167594
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500445251268525160, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
+      propertyPath: m_Color.g
+      value: 0.16642933
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500445251268525160, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
+      propertyPath: m_Color.r
+      value: 0.41509432
+      objectReference: {fileID: 0}
     - target: {fileID: 4537870478123677205, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -52496,26 +52512,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7808414028776961750, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7808414028776961750, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7808414028776961750, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8655144454707207289, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
       propertyPath: m_Name
       value: Spider_Alien
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: -7944934520578893350, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
-    - {fileID: 88079909732944653, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
-    - {fileID: 7781362560401265051, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -72191,6 +72192,10 @@ PrefabInstance:
     - target: {fileID: 8157320500510726284, guid: 22623b78962e5704cab5173fdb6813fe, type: 3}
       propertyPath: m_Name
       value: Walls
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157320500510726284, guid: 22623b78962e5704cab5173fdb6813fe, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

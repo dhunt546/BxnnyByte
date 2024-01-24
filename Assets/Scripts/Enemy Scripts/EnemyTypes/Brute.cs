@@ -16,8 +16,8 @@ public class Brute : EnemyAbstract
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            EnemyVisualDamageTaken();
+            EnemyState = EnemyStates.Wandering;
+            StartCoroutine(WanderTimer());
         }
-           
     }
 }

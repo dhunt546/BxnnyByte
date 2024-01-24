@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
  public enum EnemyStates
 {
-    Wander,
+    Wandering,
     Hunting,
     Attacking,
     Fleeing,
@@ -15,14 +16,14 @@ using UnityEngine.UI;
 }
 public class EnemyAbstract: MonoBehaviour, IDamageable
 {
-    public EnemyStates State;
+    public EnemyStates EnemyState;
     [Range(5f, 300f)]
     public float enemyMaxHealth;
     public float enemyDefaultMovementSpeed;
-
+    private float huntingvisionRange = 8f;
     public float AttackSpeed;
     public float currentEnemyHealth;
-
+    private LayerMask playerLayer = 12;
     [Range(1,15)]
     public float Strength;
     private float enemyMaxAttackDmg;
@@ -32,6 +33,7 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
     ParticleSystem enemyPS;
     ScoreManager score;
     HPBar healthBar;
+    NavMeshAgent navMeshAgent;
 
     public void EnemyGetComponents()
     {
@@ -39,6 +41,7 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
         enemyPS = GetComponentInChildren<ParticleSystem>();
         score = FindObjectOfType<ScoreManager>();
         healthBar = GetComponentInChildren<HPBar>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
     public float CalculateEnemyAttackDmg(float dmgMultiplyer)
@@ -61,13 +64,13 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
         if (currentEnemyHealth <= 0)
             EnemyDie();      
     }
-    public void EnemyDie()
+    void EnemyDie()
     {
         score.AddToScore(1, 0.22f);
         Destroy(gameObject);
     }
 
-    public void EnemyVisualDamageTaken()
+    void EnemyVisualDamageTaken()
     {
         if (spriteRenderer != null)
         {
@@ -78,7 +81,7 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
             Debug.LogError("SpriteRenderer is null. Make sure the object has a SpriteRenderer component.");
         }
     }
-    public IEnumerator EnemyFlash(SpriteRenderer spriteRenderer)
+    IEnumerator EnemyFlash(SpriteRenderer spriteRenderer)
     {
 
         float flashDuration = 0.2f;
@@ -96,6 +99,102 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
         }
     }
 
+    public void UpdateEnemyState()
+    {
+        switch (EnemyState)
+        {
+            case EnemyStates.Wandering:
+                StartCoroutine(WanderTimer());
+                break;
+            case EnemyStates.Attacking:
+                //Attack player
+                break;
+            case EnemyStates.Hunting:
+                //hunt player
+                break;
+            case EnemyStates.Fleeing:
+                //stuff
+                break;
+            case EnemyStates.Dodging:
+                //Stuff
+                break;
+        }
+    }
+    public void SetEnemyStates()
+    {
+        if (isAttacking())
+        {
+            EnemyState = EnemyStates.Attacking;
+        }
+    }
+    private bool isHunting()
+    {
+       Physics2D.CircleCastAll(transform.position, huntingvisionRange, Vector2.zero, 1f, playerLayer);
+     //  if ()
+        return false;
+    }
+    private bool isAttacking()
+    {
+        //if in a small radius of the player
+        return false;
+    }
+     public IEnumerator WanderTimer()
+    {
+        while (EnemyState == EnemyStates.Wandering)
+        {
+            yield return new WaitForSeconds(5f);
+            SetRandomDestination();
 
+            if (EnemyState != EnemyStates.Wandering)
+                break;
+        }
+        
+    }
+    void SetRandomDestination()
+    {
+        float wandervisionRange = 5f;
+        if (navMeshAgent != null)
+        {
+
+            Vector3 RndPosition = Random.insideUnitCircle * wandervisionRange;
+            
+            NavMeshHit hit;
+            RaycastHit raycastHit;
+            
+            if (!Physics.Raycast(transform.position, RndPosition, out raycastHit, wandervisionRange))
+            {
+                if (NavMesh.SamplePosition(RndPosition + transform.position, out hit, wandervisionRange, 1))
+                {
+                    navMeshAgent.SetDestination(hit.position);
+                }
+            }
+
+        }
+        else
+        {
+            Debug.LogWarning("Navmesh Agent null on enemy: " + gameObject.name);
+        }
+
+    }
+    bool IsCheckForObstacle(RaycastHit2D hit)
+    {
+        Vector2 hitPoint = hit.point;
+        Vector2 hitNormal = hit.normal;
+        
+        // Cast a ray from the hit point in the direction of the hit normal
+        RaycastHit2D obstacleHit = Physics2D.Raycast(hitPoint, hitNormal, huntingvisionRange, playerLayer);
+
+        // Check if there's an obstacle in front
+        if (obstacleHit.collider != null)
+        {
+            // Do something with the obstacle hit
+            Debug.Log("Obstacle in front: " + obstacleHit.collider.gameObject.name);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
 }
