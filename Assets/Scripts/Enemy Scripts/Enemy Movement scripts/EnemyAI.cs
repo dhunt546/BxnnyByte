@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using Unity.VisualScripting;
 
-public class EnemyAI : MonoBehaviour
+public class EnemyAI
 
 {
     //Regan Ly
@@ -121,44 +121,6 @@ public class EnemyAI : MonoBehaviour
             currentVision = huntingvisionRange;
          
         }
-    }
-    void StartCooldown()
-    {
-        //stop the cooldown timer first to restart it.
-        if (isCooldown)
-        {
-            StopCoroutine(CooldownTimer());
-        }
-        // Start the cooldown timer
-        isCooldown = true;
-        cooldownTimer = seekCooldown;
-        StartCoroutine(CooldownTimer());
-    }
-
-    IEnumerator CooldownTimer()
-    {
-        while (cooldownTimer > 0)
-        {
-            cooldownTimer -= Time.deltaTime;
-            yield return null;
-            if (cooldownTimer < 0)
-            {
-                cooldownTimer = 0;
-            }
-        }
-
-        // End the cooldown timer
-        isCooldown = false;
-        currentVision = defaultvisionRange;
-    }
-
-
-    void WanderOrIdle()
-    {
-
-        currentVision = defaultvisionRange;
-        if (!isWandering)
-        StartCoroutine(WanderTimer());
     }
     private IEnumerator WanderTimer()
     {

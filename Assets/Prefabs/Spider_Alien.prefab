@@ -354,7 +354,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e8b10b3daea8ba47b1104eac56f19c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHBar: {fileID: 8384150956852375636}
 --- !u!1 &6155905295580524346
 GameObject:
   m_ObjectHideFlags: 0
@@ -5234,19 +5233,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1554144711429746060}
   - component: {fileID: 7808414028776961750}
-  - component: {fileID: 4439582175091747597}
   - component: {fileID: 3212740079404640009}
   - component: {fileID: 6454608014699158199}
   - component: {fileID: 4591545311294182599}
-  - component: {fileID: -7944934520578893350}
-  - component: {fileID: 8006339205974105129}
   - component: {fileID: 694915010931144503}
   - component: {fileID: 7671339838900656438}
-  - component: {fileID: 88079909732944653}
-  - component: {fileID: 5171477215520992585}
   - component: {fileID: 1985451277286373852}
   - component: {fileID: 2098471477766253589}
-  - component: {fileID: 7781362560401265051}
   m_Layer: 7
   m_Name: Spider_Alien
   m_TagString: Enemy
@@ -5323,18 +5316,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4439582175091747597
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8655144454707207289}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 457bc4bd27485e343b503673ab33ea6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3212740079404640009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5352,7 +5333,6 @@ MonoBehaviour:
   AttackSpeed: 0
   currentEnemyHealth: 0
   Strength: 0
-  enemyHBar: {fileID: 8384150956852375636}
 --- !u!50 &6454608014699158199
 Rigidbody2D:
   serializedVersion: 4
@@ -5415,34 +5395,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0.06117344, y: 0.14037412}
   m_Size: {x: 0.7103758, y: 1.2505852}
   m_Direction: 0
---- !u!114 &-7944934520578893350
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8655144454707207289}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77ad4c4f07693a543a4bb25f4fa5ba42, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxEnemyHealth: 10
-  healthBar: {fileID: 7476239168147254348}
---- !u!114 &8006339205974105129
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8655144454707207289}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f21f8fd3846689b4d9ccbed2ecf20a53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackDamage: 1
-  enemyAttackCooldown: 1
 --- !u!61 &694915010931144503
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5510,41 +5462,6 @@ NavMeshAgent:
   m_BaseOffset: 0.56
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 1
---- !u!114 &88079909732944653
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8655144454707207289}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6773ab104812a2f41a4ae2842d01c69b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultvisionRange: 8
-  huntingvisionRange: 20
-  wanderRadius: 3.2
-  wanderTime: 2.58
-  groupSeekRange: 6
-  seekCooldown: 6
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 64
---- !u!114 &5171477215520992585
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8655144454707207289}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e10afdead272da4580a384bd010c721, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thrust: 1
-  knocktime: 0.5
 --- !u!114 &1985451277286373852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5578,16 +5495,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7781362560401265051
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8655144454707207289}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf8e3fe843a30174fa5591bcf0f44636, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  debris: {fileID: 6019559658868206967, guid: e2dc3a64a9aae4848a827139f54da9c9, type: 3}

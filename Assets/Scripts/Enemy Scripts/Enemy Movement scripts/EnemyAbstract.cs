@@ -5,8 +5,17 @@ using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
-public class EnemyAbstract: MonoBehaviour , IDamageable
+ public enum EnemyStates
 {
+    Wander,
+    Hunting,
+    Attacking,
+    Fleeing,
+    Dodging
+}
+public class EnemyAbstract: MonoBehaviour, IDamageable
+{
+    public EnemyStates State;
     [Range(5f, 300f)]
     public float enemyMaxHealth;
     public float enemyDefaultMovementSpeed;
@@ -21,7 +30,6 @@ public class EnemyAbstract: MonoBehaviour , IDamageable
 
     SpriteRenderer spriteRenderer;
     ParticleSystem enemyPS;
-    EnemyAnimator animatorScript;
     ScoreManager score;
     HPBar healthBar;
 
@@ -29,7 +37,6 @@ public class EnemyAbstract: MonoBehaviour , IDamageable
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         enemyPS = GetComponentInChildren<ParticleSystem>();
-        animatorScript = GetComponentInChildren<EnemyAnimator>();
         score = FindObjectOfType<ScoreManager>();
         healthBar = GetComponentInChildren<HPBar>();
     }
@@ -46,21 +53,13 @@ public class EnemyAbstract: MonoBehaviour , IDamageable
      void IDamageable.Damage(float damageAmount)
     {
         currentEnemyHealth -= damageAmount;
-
         healthBar.UpdateHBar(currentEnemyHealth, enemyMaxHealth);
-        if (animatorScript != null)
-        {
-            animatorScript.EnemyVisualDamageTaken();
-        }
-        if (enemyPS != null)
-        {
+        EnemyVisualDamageTaken();
+        
+        if (enemyPS != null)       
             enemyPS.Play();
-        }
-
         if (currentEnemyHealth <= 0)
-        {
-            EnemyDie();
-        }
+            EnemyDie();      
     }
     public void EnemyDie()
     {
@@ -96,5 +95,7 @@ public class EnemyAbstract: MonoBehaviour , IDamageable
 
         }
     }
+
+
 
 }
