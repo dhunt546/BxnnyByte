@@ -20,14 +20,19 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
     [Range(5f, 300f)]
     public float enemyMaxHealth;
     public float enemyDefaultMovementSpeed;
+
     private float huntingvisionRange = 8f;
+    private bool isWandering = false;
+
     public float AttackSpeed;
     public float currentEnemyHealth;
-    private LayerMask playerLayer = 12;
+    [SerializeField] private LayerMask playerLayer;
+    [SerializeField] private LayerMask Walls;
     [Range(1,15)]
     public float Strength;
     private float enemyMaxAttackDmg;
     private float enemyMinAttackDmg;
+
 
     SpriteRenderer spriteRenderer;
     ParticleSystem enemyPS;
@@ -99,17 +104,36 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
         }
     }
 
+    public void EnemyUpdate()
+    {
+        SetEnemyStates();
+        UpdateEnemyState();
+    }
+
+    void SetEnemyStates()
+    {
+        if (IsAttacking())
+        {
+            EnemyState = EnemyStates.Attacking;
+        }
+        else if (IsHunting())
+        {
+            EnemyState = EnemyStates.Hunting;
+        }
+        else
+        {
+            EnemyState = EnemyStates.Wandering;
+        }
+    }
     public void UpdateEnemyState()
     {
         switch (EnemyState)
-        {
-            case EnemyStates.Wandering:
-                StartCoroutine(WanderTimer());
-                break;
+        {    
             case EnemyStates.Attacking:
                 //Attack player
                 break;
             case EnemyStates.Hunting:
+                Debug.Log("Enemy Hunting state");
                 //hunt player
                 break;
             case EnemyStates.Fleeing:
@@ -118,35 +142,62 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
             case EnemyStates.Dodging:
                 //Stuff
                 break;
+            case EnemyStates.Wandering:
+                if (!isWandering)
+                {
+                    StartCoroutine(WanderTimer());
+                }
+                break;
         }
     }
-    public void SetEnemyStates()
+
+    private bool IsHunting()
     {
-        if (isAttacking())
+       if (Physics2D.CircleCast(transform.position, huntingvisionRange, Vector2.zero, huntingvisionRange, playerLayer))
         {
-            EnemyState = EnemyStates.Attacking;
+            if (!IsCheckForObstacle(Physics2D.CircleCast(transform.position, huntingvisionRange, Vector2.zero, huntingvisionRange, playerLayer)))
+            {
+                Debug.Log("is hunting true");
+                return true;
+            }
+            else
+            {
+                return false;
+                //obstacle in front of player (cant see)
+            }
         }
-    }
-    private bool isHunting()
-    {
-       Physics2D.CircleCastAll(transform.position, huntingvisionRange, Vector2.zero, 1f, playerLayer);
-     //  if ()
         return false;
     }
-    private bool isAttacking()
+    private bool IsAttacking()
     {
-        //if in a small radius of the player
+        if (Physics2D.CircleCast(transform.position, 2f, Vector2.zero, 2f, playerLayer))
+        {
+            return true;
+        } 
+        else
         return false;
     }
-     public IEnumerator WanderTimer()
+
+    void Hunting()
     {
+        navMeshAgent.SetDestination();
+    }
+    public IEnumerator WanderTimer()
+    {
+        Debug.Log("Start Wander Time");
+        isWandering = true;
         while (EnemyState == EnemyStates.Wandering)
         {
             yield return new WaitForSeconds(5f);
             SetRandomDestination();
 
             if (EnemyState != EnemyStates.Wandering)
+            {
+                isWandering = false;
                 break;
+            }
+
+               
         }
         
     }
@@ -176,19 +227,26 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
         }
 
     }
+
+    //This is only for gizmos visuals
+    private Vector2 storedHitPoint;
+    private Vector2 storedHitNormal;
+    private RaycastHit2D storedObstacleHit;
     bool IsCheckForObstacle(RaycastHit2D hit)
     {
         Vector2 hitPoint = hit.point;
         Vector2 hitNormal = hit.normal;
         
         // Cast a ray from the hit point in the direction of the hit normal
-        RaycastHit2D obstacleHit = Physics2D.Raycast(hitPoint, hitNormal, huntingvisionRange, playerLayer);
+        RaycastHit2D obstacleHit = Physics2D.Raycast(hitPoint, hitNormal, huntingvisionRange, Walls);
+
+        storedHitPoint = hitPoint;
+        storedHitNormal = hitNormal;
+        storedObstacleHit = obstacleHit;
 
         // Check if there's an obstacle in front
         if (obstacleHit.collider != null)
         {
-            // Do something with the obstacle hit
-            Debug.Log("Obstacle in front: " + obstacleHit.collider.gameObject.name);
             return true;
         }
         else
@@ -196,5 +254,22 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
             return false;
         }
     }
+    void OnDrawGizmosSelected()
+    {
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(transform.position, huntingvisionRange);
 
+        
+        // Draw the ray from the stored hit point in the direction of the stored hit normal
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(storedHitPoint, storedHitPoint + storedHitNormal * huntingvisionRange);
+
+        // Draw the result of the stored obstacle raycast
+        if (storedObstacleHit.collider != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(transform.position, storedObstacleHit.point);
+            Gizmos.DrawWireSphere(storedObstacleHit.point, 0.1f); // Draw a small sphere at the hit point
+        }
+    }
 }
