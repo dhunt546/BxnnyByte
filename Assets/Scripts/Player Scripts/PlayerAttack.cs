@@ -119,14 +119,7 @@ public class PlayerAttack : MonoBehaviour
                     iDamageable.Damage(attackDamage);
                     attackSource.Play();
                 }
-                //apply knockback
-                Rigidbody2D enemyRb = hits[i].collider.gameObject.GetComponent<Rigidbody2D>();
-                if (enemyRb != null)
-                {
-                    //Debug.Log("got the rigitbody of the enemy");
-                    // call the Knockback function on the enemy Rigidbody
-                    enemyRb.GetComponent<KnockBack>().Knockback();
-                }
+               
             }
             else if (hits[i].collider.gameObject.CompareTag("Debris"))
             {

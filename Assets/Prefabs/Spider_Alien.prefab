@@ -5329,11 +5329,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyState: 0
-  enemyMaxHealth: 0
+  enemyMaxHealth: 13
   enemyDefaultMovementSpeed: 0
   AttackSpeed: 0
   currentEnemyHealth: 0
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  Walls:
+    serializedVersion: 2
+    m_Bits: 4096
   Strength: 0
+  enemyThrust: 0.58
+  enemyKnocktime: 0.81
 --- !u!50 &6454608014699158199
 Rigidbody2D:
   serializedVersion: 4

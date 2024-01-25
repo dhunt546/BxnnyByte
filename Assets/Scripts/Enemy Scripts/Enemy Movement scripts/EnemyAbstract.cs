@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.SocialPlatforms.Impl;
-using UnityEngine.UI;
+
 
  public enum EnemyStates
 {
@@ -40,15 +39,18 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
     ScoreManager score;
     HPBar healthBar;
     NavMeshAgent navMeshAgent;
+    Rigidbody2D enemyRb;
 
     public void EnemyGetComponents()
     {
+        currentEnemyHealth = enemyMaxHealth;
         player = GameObject.Find("Player");
         spriteRenderer = GetComponent<SpriteRenderer>();
         enemyPS = GetComponentInChildren<ParticleSystem>();
         score = FindObjectOfType<ScoreManager>();
         healthBar = GetComponentInChildren<HPBar>();
         navMeshAgent = GetComponent<NavMeshAgent>();
+        enemyRb = GetComponent<Rigidbody2D>();
     }
 
     public float CalculateEnemyAttackDmg(float dmgMultiplyer)
@@ -81,6 +83,7 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
     {
         if (spriteRenderer != null)
         {
+            EnemyKnockBack();
             StartCoroutine(EnemyFlash(spriteRenderer));
         }
         else
@@ -90,19 +93,16 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
     }
     IEnumerator EnemyFlash(SpriteRenderer spriteRenderer)
     {
+      float flashDuration = 0.2f;
+      Color originalColor = spriteRenderer.color;
 
-        float flashDuration = 0.2f;
-
-        if (spriteRenderer != null)
+        if (spriteRenderer != null && spriteRenderer.gameObject != null && spriteRenderer.gameObject.activeSelf)
         {
-            Color originalColor = spriteRenderer.color;
-
-            // Flash red
             spriteRenderer.color = Color.red;
-            yield return new WaitForSeconds(flashDuration);
-            spriteRenderer.color = originalColor;
-            Debug.Log(spriteRenderer);
 
+            yield return new WaitForSeconds(flashDuration);
+            if (spriteRenderer != null && spriteRenderer.gameObject != null && spriteRenderer.gameObject.activeSelf)
+            { spriteRenderer.color = new Color(1f, 1f, 1f);}    
         }
     }
 
@@ -291,6 +291,29 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
             Gizmos.color = Color.red;
             Gizmos.DrawLine(storedObstacleHit.point, storedObstacleHit.point + storedObstacleHit.normal * 0.1f); // Draw a small line along the normal at the hit point
             Gizmos.DrawWireSphere(storedObstacleHit.point, 0.1f); // Draw a small sphere at the hit point
+        }
+    }
+
+    public float enemyThrust;
+    public float enemyKnocktime;
+    public virtual void EnemyKnockBack()
+    {
+        if (enemyRb != null)
+        {
+            enemyRb.isKinematic = false;
+            Vector2 difference = transform.position - player.transform.position;
+            difference = difference.normalized * enemyThrust;
+            enemyRb.AddForce(difference, ForceMode2D.Impulse);
+            StartCoroutine(KnockCo());
+        }
+    }
+    IEnumerator KnockCo()
+    {
+        if (enemyRb != null)
+        {
+            yield return new WaitForSeconds(enemyKnocktime);
+            enemyRb.velocity = Vector2.zero;
+            enemyRb.isKinematic = true;
         }
     }
 }

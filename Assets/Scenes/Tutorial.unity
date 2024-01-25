@@ -52492,14 +52492,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3212740079404640009, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
-      propertyPath: Walls.m_Bits
-      value: 4096
-      objectReference: {fileID: 0}
-    - target: {fileID: 3212740079404640009, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
-      propertyPath: playerLayer.m_Bits
-      value: 64
-      objectReference: {fileID: 0}
     - target: {fileID: 4537870478123677205, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -76710,6 +76702,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 587657636343756053, guid: f446d32d945ae8a4ca568dcdc20d87ad, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2335019052630451878, guid: f446d32d945ae8a4ca568dcdc20d87ad, type: 3}
       propertyPath: m_Name
       value: Player
