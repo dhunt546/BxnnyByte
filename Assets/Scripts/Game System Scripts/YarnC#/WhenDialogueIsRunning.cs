@@ -49,7 +49,7 @@ public class WhenDialogueIsRunning : MonoBehaviour
             }
             if (enemy != null)
             {
-                enemy.GetComponent<EnemyAI>().enabled = true;
+               // enemy.GetComponent<EnemyAI>().enabled = true;
             }
         }
     }

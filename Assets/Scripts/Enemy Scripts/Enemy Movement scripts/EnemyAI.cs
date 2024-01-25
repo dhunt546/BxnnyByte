@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using Unity.VisualScripting;
 
-public class EnemyAI : MonoBehaviour
+public class EnemyAI: MonoBehaviour
 
 {
     //Regan Ly
@@ -17,16 +17,13 @@ public class EnemyAI : MonoBehaviour
     public float wanderTime;
     public float groupSeekRange;
 
-    private bool isWandering;
 
     public float seekCooldown;
-    private float cooldownTimer = 0;
     private bool isCooldown;
 
     private Transform player;
     private Vector3 lastKnownPlayerPosition;
     private NavMeshAgent navMeshAgent;
-    private float previousDistanceToPlayer;
     private bool wasPlayerInVisionRange = false;
     EnemyStates currentState;
     public LayerMask playerLayer;
@@ -70,15 +67,13 @@ public class EnemyAI : MonoBehaviour
         else
         {
             currentState = EnemyStates.Wandering;
-            if (!isWandering)
-                WanderOrIdle(); 
+               // WanderOrIdle(); 
         }
 
         if (!IsPlayerInVisionRange() && wasPlayerInVisionRange)
         {
             // Player has just left the vision range, perform any necessary actions
             Debug.Log("Player just left vision range");
-            StartCooldown();
             // For example, start a cooldown or trigger some behavior
         }
 
@@ -102,7 +97,7 @@ public class EnemyAI : MonoBehaviour
     void UpdatePreviousDistance()
     {
         // Update the previous distance between AI and player for the next frame
-        previousDistanceToPlayer = player != null ? Vector3.Distance(transform.position, player.position) : float.MaxValue;
+       // previousDistanceToPlayer = player != null ? Vector3.Distance(transform.position, player.position) : float.MaxValue;
 
         // Update the flag indicating whether the player was previously in vision range
         wasPlayerInVisionRange = IsPlayerInVisionRange();
@@ -122,50 +117,11 @@ public class EnemyAI : MonoBehaviour
          
         }
     }
-    void StartCooldown()
-    {
-        //stop the cooldown timer first to restart it.
-        if (isCooldown)
-        {
-            StopCoroutine(CooldownTimer());
-        }
-        // Start the cooldown timer
-        isCooldown = true;
-        cooldownTimer = seekCooldown;
-        StartCoroutine(CooldownTimer());
-    }
-
-    IEnumerator CooldownTimer()
-    {
-        while (cooldownTimer > 0)
-        {
-            cooldownTimer -= Time.deltaTime;
-            yield return null;
-            if (cooldownTimer < 0)
-            {
-                cooldownTimer = 0;
-            }
-        }
-
-        // End the cooldown timer
-        isCooldown = false;
-        currentVision = defaultvisionRange;
-    }
-
-
-    void WanderOrIdle()
-    {
-
-        currentVision = defaultvisionRange;
-        if (!isWandering)
-        StartCoroutine(WanderTimer());
-    }
     private IEnumerator WanderTimer()
     {
-        isWandering = true;
         SetRandomDestination();
         yield return new WaitForSeconds(wanderTime);
-        isWandering = false;
+
     }
     void SetLastPosition()
     {

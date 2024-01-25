@@ -8,16 +8,16 @@ public class ObjectHealth : MonoBehaviour, IDamageable
 {
     //Breakable Objects
     SpriteRenderer objectSpriteRenderer;
-    public float currentObjectHealth;
+    [SerializeField]private float currentObjectHealth;
 
     public void SetObjectDefaultHealth(float maxHealth)
     {
         currentObjectHealth = maxHealth;
 
     }
-    void Update()
+    void CheckHealth(float currentObjectHealth)
     {
-        if (currentObjectHealth == 0)
+        if (currentObjectHealth <= 0)
         {
             ObjectDestroyed();
         }
@@ -33,10 +33,12 @@ public class ObjectHealth : MonoBehaviour, IDamageable
         Destroy(this.gameObject);
     }
 
-        void IDamageable.Damage(float damageAmount)
+    void IDamageable.Damage(float damageAmount)
     {
+        
         ObjectTakeVisualDamage();
         currentObjectHealth -= damageAmount;
+        CheckHealth(currentObjectHealth);
     }
 
     public virtual void ObjectTakeVisualDamage()

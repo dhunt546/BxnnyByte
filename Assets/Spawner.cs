@@ -154,7 +154,7 @@ public class Spawner : ObjectHealth
     {
         Vector3 newAlienOriginalScale = newAlien.transform.localScale;
         newAlien.transform.localScale = new Vector3(0, 0, 0);
-        StartCoroutine(ScaleObject(newAlien.transform, newAlienOriginalScale, 200f));
+        StartCoroutine(ScaleObject(newAlien.transform, newAlienOriginalScale, 0.5f));
     
     }
     IEnumerator ScaleObject(Transform objTransform, Vector3 targetScale, float duration)
