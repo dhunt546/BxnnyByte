@@ -52492,17 +52492,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2500445251268525160, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
-      propertyPath: m_Color.b
-      value: 0.17167594
+    - target: {fileID: 3212740079404640009, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
+      propertyPath: Walls.m_Bits
+      value: 4096
       objectReference: {fileID: 0}
-    - target: {fileID: 2500445251268525160, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
-      propertyPath: m_Color.g
-      value: 0.16642933
-      objectReference: {fileID: 0}
-    - target: {fileID: 2500445251268525160, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
-      propertyPath: m_Color.r
-      value: 0.41509432
+    - target: {fileID: 3212740079404640009, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
+      propertyPath: playerLayer.m_Bits
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 4537870478123677205, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
       propertyPath: m_AnchorMax.x

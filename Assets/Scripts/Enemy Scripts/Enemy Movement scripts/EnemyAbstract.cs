@@ -10,6 +10,7 @@ using UnityEngine.UI;
 {
     Wandering,
     Hunting,
+    Seeking,
     Attacking,
     Fleeing,
     Dodging
@@ -21,7 +22,7 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
     public float enemyMaxHealth;
     public float enemyDefaultMovementSpeed;
 
-    private float huntingvisionRange = 8f;
+    private float huntingvisionRange = 15f;
     private bool isWandering = false;
 
     public float AttackSpeed;
@@ -33,7 +34,7 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
     private float enemyMaxAttackDmg;
     private float enemyMinAttackDmg;
 
-
+    GameObject player;
     SpriteRenderer spriteRenderer;
     ParticleSystem enemyPS;
     ScoreManager score;
@@ -42,6 +43,7 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
 
     public void EnemyGetComponents()
     {
+        player = GameObject.Find("Player");
         spriteRenderer = GetComponent<SpriteRenderer>();
         enemyPS = GetComponentInChildren<ParticleSystem>();
         score = FindObjectOfType<ScoreManager>();
@@ -120,6 +122,10 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
         {
             EnemyState = EnemyStates.Hunting;
         }
+        else if (IsSeeking())
+        {
+            EnemyState = EnemyStates.Seeking;
+        }
         else
         {
             EnemyState = EnemyStates.Wandering;
@@ -128,13 +134,15 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
     public void UpdateEnemyState()
     {
         switch (EnemyState)
-        {    
+        {
             case EnemyStates.Attacking:
                 //Attack player
                 break;
             case EnemyStates.Hunting:
-                Debug.Log("Enemy Hunting state");
-                //hunt player
+                Hunting();
+                break;
+            case EnemyStates.Seeking:
+                StartCoroutine(Seeking());
                 break;
             case EnemyStates.Fleeing:
                 //stuff
@@ -150,14 +158,14 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
                 break;
         }
     }
-
+    private bool wasSeen;
     private bool IsHunting()
     {
        if (Physics2D.CircleCast(transform.position, huntingvisionRange, Vector2.zero, huntingvisionRange, playerLayer))
         {
             if (!IsCheckForObstacle(Physics2D.CircleCast(transform.position, huntingvisionRange, Vector2.zero, huntingvisionRange, playerLayer)))
-            {
-                Debug.Log("is hunting true");
+            {   
+                wasSeen = true;
                 return true;
             }
             else
@@ -168,6 +176,7 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
         }
         return false;
     }
+    
     private bool IsAttacking()
     {
         if (Physics2D.CircleCast(transform.position, 2f, Vector2.zero, 2f, playerLayer))
@@ -177,10 +186,28 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
         else
         return false;
     }
-
+    bool IsSeeking()
+    {
+        if (wasSeen && !IsHunting())
+        {      
+            return true;
+        }
+        return false;
+    }
+    IEnumerator Seeking()
+    {       
+        navMeshAgent.SetDestination(player.transform.position);
+        yield return new WaitForSeconds(12f);
+        if (!Physics2D.CircleCast(transform.position, huntingvisionRange, Vector2.zero, 8f, playerLayer))
+        wasSeen = false;
+    }
     void Hunting()
     {
-        navMeshAgent.SetDestination();
+        StopCoroutine(WanderTimer());
+        RaycastHit2D PlayerLastHit = Physics2D.CircleCast(transform.position, huntingvisionRange, Vector2.zero, huntingvisionRange, playerLayer);
+        navMeshAgent.SetDestination(PlayerLastHit.transform.position);
+        wasSeen = true;
+
     }
     public IEnumerator WanderTimer()
     {
@@ -195,11 +222,8 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
             {
                 isWandering = false;
                 break;
-            }
-
-               
-        }
-        
+            }         
+        }      
     }
     void SetRandomDestination()
     {
@@ -229,19 +253,17 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
     }
 
     //This is only for gizmos visuals
-    private Vector2 storedHitPoint;
-    private Vector2 storedHitNormal;
+    private Vector3 storedHitPoint;
     private RaycastHit2D storedObstacleHit;
     bool IsCheckForObstacle(RaycastHit2D hit)
     {
-        Vector2 hitPoint = hit.point;
-        Vector2 hitNormal = hit.normal;
-        
+        Vector3 hitPoint = hit.point;
+        float distance = Vector2.Distance(transform.position, hitPoint);
+
         // Cast a ray from the hit point in the direction of the hit normal
-        RaycastHit2D obstacleHit = Physics2D.Raycast(hitPoint, hitNormal, huntingvisionRange, Walls);
+        RaycastHit2D obstacleHit = Physics2D.Raycast(transform.position, hitPoint - transform.position, distance, Walls);
 
         storedHitPoint = hitPoint;
-        storedHitNormal = hitNormal;
         storedObstacleHit = obstacleHit;
 
         // Check if there's an obstacle in front
@@ -259,16 +281,15 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(transform.position, huntingvisionRange);
 
-        
-        // Draw the ray from the stored hit point in the direction of the stored hit normal
+        // Draw a line from transform.position to the storedHitPoint
         Gizmos.color = Color.blue;
-        Gizmos.DrawLine(storedHitPoint, storedHitPoint + storedHitNormal * huntingvisionRange);
+        Gizmos.DrawLine(transform.position, storedHitPoint);
 
         // Draw the result of the stored obstacle raycast
         if (storedObstacleHit.collider != null)
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawLine(transform.position, storedObstacleHit.point);
+            Gizmos.DrawLine(storedObstacleHit.point, storedObstacleHit.point + storedObstacleHit.normal * 0.1f); // Draw a small line along the normal at the hit point
             Gizmos.DrawWireSphere(storedObstacleHit.point, 0.1f); // Draw a small sphere at the hit point
         }
     }
