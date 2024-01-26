@@ -35,7 +35,6 @@ public class WhenDialogueIsRunning : MonoBehaviour
             {
                 player.GetComponent<PlayerAttack>().enabled = false;
                 rb.constraints = RigidbodyConstraints2D.FreezeAll;
-                PlayerAnimation playerAnimater = player.GetComponent<PlayerAnimation>();
                 //set up a is paused bool to stop animation
 
             }

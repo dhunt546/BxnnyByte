@@ -37,7 +37,6 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
     GameObject player;
     SpriteRenderer spriteRenderer;
     ParticleSystem enemyPS;
-    ScoreManager score;
     HPBar healthBar;
     NavMeshAgent navMeshAgent;
     Rigidbody2D enemyRb;
@@ -48,7 +47,6 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
         player = GameObject.Find("Player");
         spriteRenderer = GetComponent<SpriteRenderer>();
         enemyPS = GetComponentInChildren<ParticleSystem>();
-        score = FindObjectOfType<ScoreManager>();
         healthBar = GetComponentInChildren<HPBar>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         enemyRb = GetComponent<Rigidbody2D>();
@@ -76,7 +74,7 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
     }
     void EnemyDie()
     {
-        score.AddToScore(1, 0.22f);
+        ScoreManager.AddToScore(1, 0.22f);
         Destroy(gameObject);
     }
 

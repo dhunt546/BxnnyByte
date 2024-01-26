@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class ObjectHealth : MonoBehaviour, IDamageable
 {
+    public bool isAddToScore;
+    public int pointsWorth;
     //Breakable Objects
     SpriteRenderer objectSpriteRenderer;
     [SerializeField]private float currentObjectHealth;
@@ -30,6 +33,11 @@ public class ObjectHealth : MonoBehaviour, IDamageable
     }
     void ObjectDestroyed()
     {
+        if (isAddToScore)
+        {
+            ScoreManager.AddToScore(pointsWorth,0.1f);
+        }
+        
         Destroy(this.gameObject);
     }
 
@@ -84,5 +92,7 @@ public class ObjectHealth : MonoBehaviour, IDamageable
 
         }
     }
+
+       
 }
 
