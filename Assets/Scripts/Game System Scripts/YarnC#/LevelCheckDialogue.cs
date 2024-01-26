@@ -11,11 +11,10 @@ public class LevelCheckDialogue : MonoBehaviour
     DialogueRunner dialogueRunner;
 
     public string conversationStartNode;
-
     bool isCurrentConversation = false;
 
     int enemyCount;
-    int debrisCount;
+
 
     public int enemyRequiredPass;
     public int debrisRequiredPass;
@@ -29,13 +28,11 @@ public class LevelCheckDialogue : MonoBehaviour
         dialogueRunner.onDialogueComplete.AddListener(EndConversation);
 
         enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
-        debrisCount = GameObject.FindGameObjectsWithTag("Debris").Length;
     }
 
     private void Update()
     {
         enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
-        debrisCount = GameObject.FindGameObjectsWithTag("Debris").Length;
     }
     private void StartConversation()
     {
@@ -61,11 +58,11 @@ public class LevelCheckDialogue : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && enemyCount >= enemyRequiredFail && debrisCount >= debrisRequiredFail)
+        if (other.CompareTag("Player") && enemyCount >= enemyRequiredFail && LevelFinishDoor.debrisCount >= debrisRequiredFail)
         {
             StartConversation();         
         }
-        if (other.CompareTag("Player") && enemyCount <= enemyRequiredPass && debrisCount <= debrisRequiredPass)
+        if (other.CompareTag("Player") && enemyCount <= enemyRequiredPass && LevelFinishDoor.debrisCount <= debrisRequiredPass)
         {
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
         }

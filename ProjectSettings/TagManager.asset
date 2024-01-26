@@ -7,9 +7,11 @@ TagManager:
   - Finish Level
   - Enemy
   - RoomBoundary
-  - Debris
   - Spawner
   - Destructable
+  - Grenade
+  - Shotgun
+  - Rifle
   layers:
   - Default
   - TransparentFX

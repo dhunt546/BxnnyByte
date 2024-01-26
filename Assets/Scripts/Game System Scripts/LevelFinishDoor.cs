@@ -8,18 +8,13 @@ public class LevelFinishDoor : MonoBehaviour
     public Sprite openDoor;
 
     int enemyCount;
-    int debrisCount;
-
-    private void Start()
-    {        
-        enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
-        debrisCount = GameObject.FindGameObjectsWithTag("Debris").Length;
-    }
-  
+    public static int debrisCount;
     private void Update()
-    {     
+    {
+        Debris[] debrisObjects = GameObject.FindObjectsOfType<Debris>();
         enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
-        debrisCount = GameObject.FindGameObjectsWithTag("Debris").Length;
+        debrisCount = debrisObjects.Length;
+        
         
         if (enemyCount == 0 && debrisCount == 0)
         {

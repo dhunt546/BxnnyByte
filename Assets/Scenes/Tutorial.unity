@@ -2584,17 +2584,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8fea26e0bf79974cbccebb34642108e, type: 3}
---- !u!114 &215538594 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4064001081774344445, guid: a8fea26e0bf79974cbccebb34642108e, type: 3}
-  m_PrefabInstance: {fileID: 215538593}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &218039463
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3168,8 +3157,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8b8efedf312f51418f65012356596d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 215538594}
-  playerStats: {fileID: 11400000, guid: 5405ee32fe6f3c143b295d087aa3db8d, type: 2}
 --- !u!1 &343990898
 GameObject:
   m_ObjectHideFlags: 0
@@ -72666,79 +72653,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.8704624, y: 0.8930321}
   m_EdgeRadius: 0
---- !u!1001 &1295522931
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4176311971727886424, guid: 15c451bc82c53ba439cba70c0293a908, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 31.509598
-      objectReference: {fileID: 0}
-    - target: {fileID: 4176311971727886424, guid: 15c451bc82c53ba439cba70c0293a908, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.3824399
-      objectReference: {fileID: 0}
-    - target: {fileID: 4176311971727886424, guid: 15c451bc82c53ba439cba70c0293a908, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4176311971727886424, guid: 15c451bc82c53ba439cba70c0293a908, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4176311971727886424, guid: 15c451bc82c53ba439cba70c0293a908, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4176311971727886424, guid: 15c451bc82c53ba439cba70c0293a908, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4176311971727886424, guid: 15c451bc82c53ba439cba70c0293a908, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4176311971727886424, guid: 15c451bc82c53ba439cba70c0293a908, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4176311971727886424, guid: 15c451bc82c53ba439cba70c0293a908, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4176311971727886424, guid: 15c451bc82c53ba439cba70c0293a908, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5568819609839955189, guid: 15c451bc82c53ba439cba70c0293a908, type: 3}
-      propertyPath: m_Name
-      value: Spider_Alien_Spawnling
-      objectReference: {fileID: 0}
-    - target: {fileID: 5568819609839955189, guid: 15c451bc82c53ba439cba70c0293a908, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6723459682462247379, guid: 15c451bc82c53ba439cba70c0293a908, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6723459682462247379, guid: 15c451bc82c53ba439cba70c0293a908, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8364393888022223711, guid: 15c451bc82c53ba439cba70c0293a908, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 15c451bc82c53ba439cba70c0293a908, type: 3}
 --- !u!1 &1309871765
 GameObject:
   m_ObjectHideFlags: 0
@@ -75111,6 +75025,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5a76ecb080f3fb46bf07b92f8f0d2f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isAddToScore: 0
+  pointsWorth: 0
   currentObjectHealth: 2
   maxHealth: 2
 --- !u!60 &1547501582
@@ -77210,7 +77126,6 @@ SceneRoots:
   - {fileID: 7694694193210209700}
   - {fileID: 1953866675}
   - {fileID: 1186524763}
-  - {fileID: 1295522931}
   - {fileID: 411682220}
   - {fileID: 697152537}
   - {fileID: 242745026}

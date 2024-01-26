@@ -25,8 +25,6 @@ public class ObjectHealth : MonoBehaviour, IDamageable
             ObjectDestroyed();
         }
     }
-
-
     public void ObjectGetComponents()
     {
         objectSpriteRenderer = GetComponent<SpriteRenderer>();
@@ -74,8 +72,6 @@ public class ObjectHealth : MonoBehaviour, IDamageable
         }
         transform.localScale = originalScale;
         transform.position = originalPosition;
-
-
     }
     public IEnumerator ObjectFlashDamage(SpriteRenderer spriteRenderer)
     {
@@ -91,8 +87,6 @@ public class ObjectHealth : MonoBehaviour, IDamageable
             spriteRenderer.color = originalColor;
 
         }
-    }
-
-       
+    }   
 }
 

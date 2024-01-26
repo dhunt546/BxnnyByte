@@ -240,7 +240,6 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
     }
     public IEnumerator WanderTimer()
     {
-        Debug.Log("Start Wander Time");
         isWandering = true;
         while (EnemyState == EnemyStates.Wandering)
         {
