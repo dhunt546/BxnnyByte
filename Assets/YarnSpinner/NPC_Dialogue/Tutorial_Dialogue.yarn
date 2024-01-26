@@ -1,14 +1,10 @@
 title: Intro
 tags:
 ---
-Ol Jan: "Listen, the Boss is always watching..." 
-Ol Jan: "Let's finish your training..."
-Tutorial: Press *E* to Attack and Interact 
-Tutorial: Press *Arrow Keys* or W,A,S,D to move 
-Ol Jan: "You see that pile of junk to the right..."
-Ol Jan: "The Boss calls them Clean-Up Objectives"
-Ol Jan: "Attack them to get rig of it."
-Ol Jan: "Now, get at it..."
+Ol Jan: Listen, the Boss is always watching...Let's finish your training... 
+Tutorial: Press *E* to Attack and Interact. 
+Tutorial: Press *Arrow Keys* or W,A,S,D to move.
+Ol Jan: You see that pile of junk to the right? The boss wants you to clean it all up. Chop Chop.
 ===
 
 title: Ai_Intro
@@ -25,8 +21,6 @@ A.I. Supervisor: Failure will result in restriced access...
 
 title: Ai_Cutscene2
 ---
-A.I. Supervisor: New Recruit...
-A.I. Supervisor: You have not finshed your work here...
+A.I. Supervisor: New Recruit...You have not finshed your work here...
 A.I. Supervisor: I will not let you processed further into the ship...
-A.I. Supervisor: Go back and find all the Clean-Up Objectives.
 ===

@@ -23,6 +23,7 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
 
     private float huntingvisionRange = 15f;
     private bool isWandering = false;
+    private bool isAttacking = false;
 
     public float AttackSpeed;
     public float currentEnemyHealth;
@@ -136,7 +137,8 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
         switch (EnemyState)
         {
             case EnemyStates.Attacking:
-                //Attack player
+                if (!isAttacking)
+                EnemyAttacking();
                 break;
             case EnemyStates.Hunting:
                 Hunting();
@@ -176,7 +178,8 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
         }
         return false;
     }
-    
+    private float originalSpeed, originalAcc, originalStoppingDistance;
+    [SerializeField] private float circlingSpeed, newSpeed, newAcc;
     private bool IsAttacking()
     {
         if (Physics2D.CircleCast(transform.position, 2f, Vector2.zero, 2f, playerLayer))
@@ -185,6 +188,30 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
         } 
         else
         return false;
+    }
+    void EnemyAttacking()
+    {
+        originalSpeed = navMeshAgent.speed;
+        originalAcc = navMeshAgent.acceleration;
+        originalStoppingDistance = navMeshAgent.stoppingDistance;
+
+        isAttacking = true;
+        StartCoroutine(CirclePlayer());
+    }
+    public float circleRadius;
+    IEnumerator CirclePlayer()
+    {
+        navMeshAgent.speed = newSpeed; navMeshAgent.acceleration = newAcc;
+        navMeshAgent.stoppingDistance = 0f;
+        while (true) 
+        {
+            float angle = Time.time * circlingSpeed;
+            Vector3 circlePosition = player.transform.position + new Vector3(Mathf.Cos(angle) * circleRadius, Mathf.Sin(angle) * circleRadius, 0f);
+            if (navMeshAgent.enabled)
+            navMeshAgent.SetDestination(circlePosition);
+
+            yield return null;
+        }
     }
     bool IsSeeking()
     {
@@ -196,15 +223,19 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
     }
     IEnumerator Seeking()
     {       
-        navMeshAgent.SetDestination(player.transform.position);
+        if(navMeshAgent.enabled)
+            navMeshAgent.SetDestination(player.transform.position);
+
         yield return new WaitForSeconds(12f);
         if (!Physics2D.CircleCast(transform.position, huntingvisionRange, Vector2.zero, 8f, playerLayer))
         wasSeen = false;
     }
+    
     void Hunting()
     {
         StopCoroutine(WanderTimer());
         RaycastHit2D PlayerLastHit = Physics2D.CircleCast(transform.position, huntingvisionRange, Vector2.zero, huntingvisionRange, playerLayer);
+       if (navMeshAgent.enabled)
         navMeshAgent.SetDestination(PlayerLastHit.transform.position);
         wasSeen = true;
 
@@ -240,6 +271,7 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
             {
                 if (NavMesh.SamplePosition(RndPosition + transform.position, out hit, wandervisionRange, 1))
                 {
+                    if (navMeshAgent.enabled)
                     navMeshAgent.SetDestination(hit.position);
                 }
             }
