@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 6435491060515392654}
   - component: {fileID: 4603521606417542203}
   - component: {fileID: 2808913073359944032}
-  - component: {fileID: 6441612045191934525}
+  - component: {fileID: 1189110548789542387}
   m_Layer: 11
   m_Name: Debris
-  m_TagString: Debris
+  m_TagString: Destructable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -149,7 +149,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 7
---- !u!114 &6441612045191934525
+--- !u!114 &1189110548789542387
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,3 +161,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75f79f6d2b8c46d40abbaf41fb31feeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isAddToScore: 1
+  pointsWorth: 1
+  currentObjectHealth: 0

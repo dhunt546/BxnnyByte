@@ -5,29 +5,24 @@ using TMPro;
 using UnityEngine.SocialPlatforms.Impl;
 using Unity.VisualScripting;
 
-public class ScoreManager : MonoBehaviour
+ public static class ScoreManager
 {
-    public static int score;
-    
-    public TextMeshProUGUI scoreText;
-    public PlayerStats playerStats;
-    void Start()
+    private static Score scoreInstance;
+    public static void Initialize(Score score)
     {
-        UpdateScoreDisplay();
+        scoreInstance = score;
     }
-
-    public void AddToScore(int newScore, float playerExperience)
+    public static void AddToScore(int pointsAdded, float playerExperience)
     {
-        playerStats.PlayerLevel += playerExperience;
-        score += newScore;
-        UpdateScoreDisplay();
-    }
+        PlayerStats.PlayerLevel += playerExperience;
+        PlayerStats.Score += pointsAdded;
+       
 
-    public void UpdateScoreDisplay()
-    {
-        if (scoreText != null)
+        if (scoreInstance != null)
         {
-            scoreText.text = score.ToString();
+            
+            scoreInstance.UpdateScoreDisplay();
         }
+        
     }
 }

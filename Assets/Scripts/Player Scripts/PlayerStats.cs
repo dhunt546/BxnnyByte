@@ -9,10 +9,12 @@ public class PlayerStats : ScriptableObject
 {
     public float playerHealth;
 
-    [SerializeField]
-    private float playerLevel;
+    public static int Score { get; set; }
 
-    public float PlayerLevel
+   [SerializeField]
+    private static float playerLevel;
+
+    public static float PlayerLevel
     {
         get { return playerLevel; }
         set { playerLevel = Mathf.Clamp(value, 1, 8); }

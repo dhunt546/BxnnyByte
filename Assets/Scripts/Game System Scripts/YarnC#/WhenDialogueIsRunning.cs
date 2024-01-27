@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using Yarn.Unity;
 
 public class WhenDialogueIsRunning : MonoBehaviour
@@ -9,12 +10,15 @@ public class WhenDialogueIsRunning : MonoBehaviour
 
     GameObject player;
     GameObject enemy;
+    Rigidbody2D rb;
 
     void Start()
     {
+         
         dialogueRunner = FindObjectOfType<Yarn.Unity.DialogueRunner>();
         player = GameObject.FindWithTag("Player");
         enemy = GameObject.FindWithTag("Enemy");
+        rb = player.GetComponent<Rigidbody2D>();
     }
 
   
@@ -25,31 +29,31 @@ public class WhenDialogueIsRunning : MonoBehaviour
 
     void Conversing()
     {
-        player = GameObject.FindWithTag("Player");
-        enemy = GameObject.FindWithTag("Enemy");
-
         if (dialogueRunner.IsDialogueRunning == true)
         {
             if (player != null)
             {
-                player.GetComponent<PlayerController>().enabled = false;
                 player.GetComponent<PlayerAttack>().enabled = false;
+                rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                //set up a is paused bool to stop animation
+
             }
             if (enemy != null)
             {
-                enemy.GetComponent<EnemyAI>().enabled = false;
+                enemy.GetComponent<NavMeshAgent>().enabled = false;
             }
         }
         else if (dialogueRunner.IsDialogueRunning == false)
         {
             if (player != null)
             {
-                player.GetComponent<PlayerController>().enabled = true;
                 player.GetComponent<PlayerAttack>().enabled = true;
+                rb.constraints &= ~RigidbodyConstraints2D.FreezePosition;
+
             }
             if (enemy != null)
             {
-               // enemy.GetComponent<EnemyAI>().enabled = true;
+                enemy.GetComponent<NavMeshAgent>().enabled = true;
             }
         }
     }

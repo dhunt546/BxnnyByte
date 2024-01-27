@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class ObjectHealth : MonoBehaviour, IDamageable
 {
+    public bool isAddToScore;
+    public int pointsWorth;
     //Breakable Objects
     SpriteRenderer objectSpriteRenderer;
     [SerializeField]private float currentObjectHealth;
@@ -22,14 +25,17 @@ public class ObjectHealth : MonoBehaviour, IDamageable
             ObjectDestroyed();
         }
     }
-
-
     public void ObjectGetComponents()
     {
         objectSpriteRenderer = GetComponent<SpriteRenderer>();
     }
     void ObjectDestroyed()
     {
+        if (isAddToScore)
+        {
+            ScoreManager.AddToScore(pointsWorth,0.1f);
+        }
+        
         Destroy(this.gameObject);
     }
 
@@ -66,8 +72,6 @@ public class ObjectHealth : MonoBehaviour, IDamageable
         }
         transform.localScale = originalScale;
         transform.position = originalPosition;
-
-
     }
     public IEnumerator ObjectFlashDamage(SpriteRenderer spriteRenderer)
     {
@@ -83,6 +87,6 @@ public class ObjectHealth : MonoBehaviour, IDamageable
             spriteRenderer.color = originalColor;
 
         }
-    }
+    }   
 }
 

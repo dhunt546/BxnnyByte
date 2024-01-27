@@ -166,7 +166,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e920f546a9cee4429456aca80570d0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 2
+  isAddToScore: 1
+  pointsWorth: 5
+  currentObjectHealth: 0
   Spawners:
   - {fileID: 2377817158204443439}
   - {fileID: 52753369503059077}

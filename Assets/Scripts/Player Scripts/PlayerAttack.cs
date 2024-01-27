@@ -119,17 +119,6 @@ public class PlayerAttack : MonoBehaviour
                     iDamageable.Damage(attackDamage);
                     attackSource.Play();
                 }
-               
-            }
-            else if (hits[i].collider.gameObject.CompareTag("Debris"))
-            {
-                Rigidbody2D debrisRb = hits[i].collider.gameObject.GetComponent<Rigidbody2D>();
-                if (debrisRb != null)
-                {
-                    // Debug.Log("debris detected");
-                    // Destroy the debris object
-                    debrisRb.GetComponent<debris>().CleanDebris();
-                }
             }
             else if (hits[i].collider.gameObject.CompareTag("Spawner"))
             {
