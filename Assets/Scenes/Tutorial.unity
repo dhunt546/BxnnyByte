@@ -40673,7 +40673,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 730170647}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -76504,6 +76504,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1813715489}
   - component: {fileID: 1813715488}
+  - component: {fileID: 1813715490}
   m_Layer: 0
   m_Name: Virtual Camera
   m_TagString: Untagged
@@ -76566,6 +76567,21 @@ Transform:
   - {fileID: 1211961430}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1813715490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1813715487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f453f694addf4275988fac205bc91968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BoundingShape2D: {fileID: 730170648}
+  m_Damping: 0.5
+  m_MaxWindowSize: -1
 --- !u!4 &1856232740 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8181885900660533621, guid: c73bd0a9424345b42b79ee42375a8ec4, type: 3}
