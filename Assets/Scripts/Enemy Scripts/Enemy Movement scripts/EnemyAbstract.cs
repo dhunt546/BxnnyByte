@@ -16,6 +16,7 @@ using UnityEngine.AI;
 }
 public class EnemyAbstract: MonoBehaviour, IDamageable
 {
+    [Header("Enemy States")]
     public EnemyStates EnemyState;
     [Range(5f, 300f)]
     public float enemyMaxHealth;
@@ -134,9 +135,6 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
             { spriteRenderer.color = new Color(1f, 1f, 1f);}    
         }
     }
-
-
-
     void SetEnemyStates()
     {
         if (IsInAttackingRange())
