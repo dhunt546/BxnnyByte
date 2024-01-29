@@ -47,7 +47,7 @@ public class LevelCheckDialogue : MonoBehaviour
 
     void CheckForEnemies()
     {
-        Collider2D collider = GetComponentInChildren<PolygonCollider2D>();
+        Collider2D collider = GetComponent<PolygonCollider2D>();
 
         if (collider != null)
         {
@@ -67,7 +67,9 @@ public class LevelCheckDialogue : MonoBehaviour
     
     void CheckForDebris()
     {
-        Collider2D collider = GetComponentInChildren<PolygonCollider2D>();
+
+        HashSet<Debris> uniqueDebrisSet = new HashSet<Debris>();
+        Collider2D collider = GetComponent<PolygonCollider2D>();
         //Debug.Log(collider.name);
         if (collider != null)
         {
@@ -78,13 +80,14 @@ public class LevelCheckDialogue : MonoBehaviour
             for (int i = 0; i < count; i++)
             {
                 // Check if the current collider has a specific script attached.
-                Debris debrisScript = overlappingColliders[i].GetComponent<Debris>();
+                 Debris debrisScript = overlappingColliders[i].GetComponent<Debris>();
                 //Debug.Log("collider " + overlappingColliders[i].name);
                 if (debrisScript != null)
                 {
                     // Increment the count if the specific script is found.
-                    debrisLeftInArea++;
-                   // Debug.Log("Debris left" + debrisLeftInArea);
+                    uniqueDebrisSet.Add(debrisScript);
+
+                    Debug.Log("Debris left" + uniqueDebrisSet);
                 }
             }
         }
@@ -97,7 +100,7 @@ public class LevelCheckDialogue : MonoBehaviour
         
         Vector3 currentPosition = transform.position;
         Vector3 newPosition = currentPosition + moveDirection;
-        if (other.CompareTag("Player") && enemiesLeftInArea != 0 && debrisLeftInArea != 0)
+        if (other.CompareTag("Player") && enemiesLeftInArea == 0 && debrisLeftInArea == 0)
         {
             StartConversation();
             other.gameObject.transform.position = newPosition;

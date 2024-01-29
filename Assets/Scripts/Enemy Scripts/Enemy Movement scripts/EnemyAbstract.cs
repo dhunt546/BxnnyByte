@@ -50,6 +50,8 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
         healthBar = GetComponentInChildren<HPBar>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         enemyRb = GetComponent<Rigidbody2D>();
+
+        SetSteeringOrigins();
     }
 
     public float CalculateEnemyAttackDmg(float dmgMultiplyer)
@@ -109,11 +111,12 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
     {
         SetEnemyStates();
         UpdateEnemyState();
+        
     }
 
     void SetEnemyStates()
     {
-        if (IsAttacking())
+        if (IsInAttackingRange())
         {
             EnemyState = EnemyStates.Attacking;
         }
@@ -135,7 +138,7 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
         switch (EnemyState)
         {
             case EnemyStates.Attacking:
-                if (!isAttacking)
+                if (!isAttacking) 
                 EnemyAttacking();
                 break;
             case EnemyStates.Hunting:
@@ -178,36 +181,60 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
     }
     private float originalSpeed, originalAcc, originalStoppingDistance;
     [SerializeField] private float circlingSpeed, newSpeed, newAcc;
-    private bool IsAttacking()
+    
+    private bool IsInAttackingRange()
     {
         if (Physics2D.CircleCast(transform.position, 2f, Vector2.zero, 2f, playerLayer))
-        {
+        {      
             return true;
         } 
         else
         return false;
     }
-    void EnemyAttacking()
+    void SetSteeringOrigins()
     {
         originalSpeed = navMeshAgent.speed;
         originalAcc = navMeshAgent.acceleration;
         originalStoppingDistance = navMeshAgent.stoppingDistance;
-
+    }
+    void ResetState()
+    {
+        StopCoroutine(WanderTimer());
+        StopCoroutine(CirclePlayer());
+        navMeshAgent.speed = originalSpeed;
+        navMeshAgent.acceleration = originalAcc;
+        navMeshAgent.stoppingDistance = originalStoppingDistance;
+    }
+    void EnemyAttacking()
+    {
+        ResetState();
         isAttacking = true;
         StartCoroutine(CirclePlayer());
     }
     public float circleRadius;
+    float currentcirclingSpeed;
     IEnumerator CirclePlayer()
-    {
+    {  
+        Vector3 enemyInitialPosition = transform.position;
+        Vector3 playerInitialPosition = player.transform.position;
+
+        //Flips Direction of cirlcing
+        bool circleDirection = enemyInitialPosition.x <= playerInitialPosition.x && enemyInitialPosition.y >= playerInitialPosition.y;    
+        if (circleDirection)      
+        { currentcirclingSpeed = -Mathf.Abs(circlingSpeed); }
+        else if (!circleDirection)
+        { currentcirclingSpeed = circlingSpeed;}
+
+
         navMeshAgent.speed = newSpeed; navMeshAgent.acceleration = newAcc;
         navMeshAgent.stoppingDistance = 0f;
-        while (true) 
-        {
-            float angle = Time.time * circlingSpeed;
-            Vector3 circlePosition = player.transform.position + new Vector3(Mathf.Cos(angle) * circleRadius, Mathf.Sin(angle) * circleRadius, 0f);
+        while (isAttacking) 
+        {       
+            Vector3 playerPosition = player.transform.position;
+            float angle = Time.time * currentcirclingSpeed;
+            Vector3 circlePosition = playerPosition + new Vector3(Mathf.Cos(angle) * circleRadius, Mathf.Sin(angle) * circleRadius, 0f);
             if (navMeshAgent.enabled)
             navMeshAgent.SetDestination(circlePosition);
-
             yield return null;
         }
     }
@@ -220,8 +247,9 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
         return false;
     }
     IEnumerator Seeking()
-    {       
-        if(navMeshAgent.enabled)
+    {
+        ResetState();
+        if (navMeshAgent.enabled)
             navMeshAgent.SetDestination(player.transform.position);
 
         yield return new WaitForSeconds(12f);
@@ -231,7 +259,8 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
     
     void Hunting()
     {
-        StopCoroutine(WanderTimer());
+        ResetState();
+        isAttacking = false;
         RaycastHit2D PlayerLastHit = Physics2D.CircleCast(transform.position, huntingvisionRange, Vector2.zero, huntingvisionRange, playerLayer);
        if (navMeshAgent.enabled)
         navMeshAgent.SetDestination(PlayerLastHit.transform.position);
