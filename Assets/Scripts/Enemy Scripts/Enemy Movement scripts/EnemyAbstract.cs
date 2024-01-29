@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEngine;
+using UnityEngine; 
 using UnityEngine.AI;
 
 
@@ -60,8 +60,27 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
         enemyRb = GetComponent<Rigidbody2D>();
         enemyDefaultMovementSpeed = navMeshAgent.speed;
         SetSteeringOrigins();
+        
+    }
+    public void EnemyUpdate()
+    {
+        SetEnemyStates();
+        UpdateEnemyState();
+        if (isEnemyBehindPlayer())
+        {
+            spriteRenderer.sortingOrder = 15;
+        }
+        else
+            spriteRenderer.sortingOrder = 12;
     }
 
+    bool isEnemyBehindPlayer()
+    {
+        if(transform.position.y >= player.transform.position.y) 
+            return false;
+        else
+            return true;
+    }
     public float CalculateEnemyAttackDmg(float dmgMultiplyer)
     {
 
@@ -116,11 +135,7 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
         }
     }
 
-    public void EnemyUpdate()
-    {
-        SetEnemyStates();
-        UpdateEnemyState();
-    }
+
 
     void SetEnemyStates()
     {

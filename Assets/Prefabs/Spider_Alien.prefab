@@ -5407,8 +5407,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.06117344, y: 0.14037412}
-  m_Size: {x: 0.7103758, y: 1.2505852}
+  m_Offset: {x: 0.030662537, y: 0.109862566}
+  m_Size: {x: 1.1131325, y: 1.113133}
   m_Direction: 0
 --- !u!195 &7671339838900656438
 NavMeshAgent:
