@@ -19,13 +19,21 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
     public EnemyStates EnemyState;
     [Range(5f, 300f)]
     public float enemyMaxHealth;
+    [Range(2f,20f)]
     public float enemyDefaultMovementSpeed;
 
     private float huntingvisionRange = 15f;
-    private bool isWandering = false;
-    private bool isAttacking = false;
+    public float attackRange;
 
-    public float AttackSpeed;
+    private bool isWandering = false;
+    private bool isStartAttack = false;
+
+    private bool isAttacking = false;
+    private bool canAttack = true;
+
+    private float originalSpeed, originalAcc, originalStoppingDistance;
+    [SerializeField] private float circlingSpeed, newSpeed, newAcc;
+
     public float currentEnemyHealth;
     [SerializeField] private LayerMask playerLayer;
     [SerializeField] private LayerMask Walls;
@@ -50,7 +58,7 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
         healthBar = GetComponentInChildren<HPBar>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         enemyRb = GetComponent<Rigidbody2D>();
-
+        enemyDefaultMovementSpeed = navMeshAgent.speed;
         SetSteeringOrigins();
     }
 
@@ -95,7 +103,8 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
     IEnumerator EnemyFlash(SpriteRenderer spriteRenderer)
     {
       float flashDuration = 0.2f;
-      Color originalColor = spriteRenderer.color;
+      //BROKENNNN :((((
+      //Color originalColor = spriteRenderer.color;
 
         if (spriteRenderer != null && spriteRenderer.gameObject != null && spriteRenderer.gameObject.activeSelf)
         {
@@ -111,7 +120,6 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
     {
         SetEnemyStates();
         UpdateEnemyState();
-        
     }
 
     void SetEnemyStates()
@@ -138,7 +146,7 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
         switch (EnemyState)
         {
             case EnemyStates.Attacking:
-                if (!isAttacking) 
+                if (!isStartAttack) 
                 EnemyAttacking();
                 break;
             case EnemyStates.Hunting:
@@ -179,18 +187,6 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
         }
         return false;
     }
-    private float originalSpeed, originalAcc, originalStoppingDistance;
-    [SerializeField] private float circlingSpeed, newSpeed, newAcc;
-    
-    private bool IsInAttackingRange()
-    {
-        if (Physics2D.CircleCast(transform.position, 2f, Vector2.zero, 2f, playerLayer))
-        {      
-            return true;
-        } 
-        else
-        return false;
-    }
     void SetSteeringOrigins()
     {
         originalSpeed = navMeshAgent.speed;
@@ -201,42 +197,14 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
     {
         StopCoroutine(WanderTimer());
         StopCoroutine(CirclePlayer());
+        StopCoroutine(AttackPlayer());
+        ResetNavMesh();
+    }
+    void ResetNavMesh()
+    {
         navMeshAgent.speed = originalSpeed;
         navMeshAgent.acceleration = originalAcc;
         navMeshAgent.stoppingDistance = originalStoppingDistance;
-    }
-    void EnemyAttacking()
-    {
-        ResetState();
-        isAttacking = true;
-        StartCoroutine(CirclePlayer());
-    }
-    public float circleRadius;
-    float currentcirclingSpeed;
-    IEnumerator CirclePlayer()
-    {  
-        Vector3 enemyInitialPosition = transform.position;
-        Vector3 playerInitialPosition = player.transform.position;
-
-        //Flips Direction of cirlcing
-        bool circleDirection = enemyInitialPosition.x <= playerInitialPosition.x && enemyInitialPosition.y >= playerInitialPosition.y;    
-        if (circleDirection)      
-        { currentcirclingSpeed = -Mathf.Abs(circlingSpeed); }
-        else if (!circleDirection)
-        { currentcirclingSpeed = circlingSpeed;}
-
-
-        navMeshAgent.speed = newSpeed; navMeshAgent.acceleration = newAcc;
-        navMeshAgent.stoppingDistance = 0f;
-        while (isAttacking) 
-        {       
-            Vector3 playerPosition = player.transform.position;
-            float angle = Time.time * currentcirclingSpeed;
-            Vector3 circlePosition = playerPosition + new Vector3(Mathf.Cos(angle) * circleRadius, Mathf.Sin(angle) * circleRadius, 0f);
-            if (navMeshAgent.enabled)
-            navMeshAgent.SetDestination(circlePosition);
-            yield return null;
-        }
     }
     bool IsSeeking()
     {
@@ -249,6 +217,7 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
     IEnumerator Seeking()
     {
         ResetState();
+        isStartAttack = false;
         if (navMeshAgent.enabled)
             navMeshAgent.SetDestination(player.transform.position);
 
@@ -260,7 +229,8 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
     void Hunting()
     {
         ResetState();
-        isAttacking = false;
+        isStartAttack = false;
+
         RaycastHit2D PlayerLastHit = Physics2D.CircleCast(transform.position, huntingvisionRange, Vector2.zero, huntingvisionRange, playerLayer);
        if (navMeshAgent.enabled)
         navMeshAgent.SetDestination(PlayerLastHit.transform.position);
@@ -334,6 +304,8 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
             return false;
         }
     }
+    public float hitboxSize = 1f;
+   public Vector3 HitboxCenter;
     void OnDrawGizmosSelected()
     {
             Gizmos.color = Color.green;
@@ -350,6 +322,11 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
             Gizmos.DrawLine(storedObstacleHit.point, storedObstacleHit.point + storedObstacleHit.normal * 0.1f); // Draw a small line along the normal at the hit point
             Gizmos.DrawWireSphere(storedObstacleHit.point, 0.1f); // Draw a small sphere at the hit point
         }
+
+        //AttackHitBox
+        Gizmos.color = Color.magenta;
+        Vector2 hitboxCenter = transform.position + HitboxCenter;
+        Gizmos.DrawWireSphere(hitboxCenter, hitboxSize);
     }
 
     public float enemyThrust;
@@ -374,4 +351,120 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
             enemyRb.isKinematic = true;
         }
     }
+
+    //Enemy Attack:
+
+    private bool isCirclingPlayer()
+    {
+        if (EnemyState != EnemyStates.Attacking)
+        {
+            return false;
+        }
+        else
+        {
+            if (isAttacking)
+                return false;
+            else
+            return true;
+        }
+
+    }
+    void EnemyAttacking()
+    {
+        ResetState();
+        isStartAttack = true;    
+        StartCoroutine(CirclePlayer());
+        StartCoroutine(AttackPlayer());
+    }
+    public float circleRadius;
+    float currentcirclingSpeed;
+    IEnumerator CirclePlayer()
+    {
+        while (EnemyState == EnemyStates.Attacking)
+        {
+            Vector3 enemyInitialPosition = transform.position;
+            Vector3 playerInitialPosition = player.transform.position;
+
+            //Flips Direction of cirlcing
+            bool circleDirection = enemyInitialPosition.x <= playerInitialPosition.x && enemyInitialPosition.y >= playerInitialPosition.y;
+
+            if (circleDirection)
+            { currentcirclingSpeed = -Mathf.Abs(circlingSpeed); }
+            else if (!circleDirection)
+            { currentcirclingSpeed = circlingSpeed; }
+
+            while (isCirclingPlayer())
+            {
+                navMeshAgent.speed = newSpeed; navMeshAgent.acceleration = newAcc;
+                navMeshAgent.stoppingDistance = 0f;
+                Vector3 playerPosition = player.transform.position;
+                float angle = Time.time * currentcirclingSpeed;
+                Vector3 circlePosition = playerPosition + new Vector3(Mathf.Cos(angle) * circleRadius, Mathf.Sin(angle) * circleRadius, 0f);
+                if (navMeshAgent.enabled)
+                {
+                    navMeshAgent.SetDestination(circlePosition);
+                }
+                yield return null;
+            }
+            yield return null;
+        }
+        
+    }
+
+    public float enemyAttackCooldown;
+    IEnumerator AttackEnemyCooldown()
+    {
+        ResetNavMesh();
+        canAttack = false;
+        isAttacking = false;
+        yield return new WaitForSeconds(enemyAttackCooldown);
+        canAttack = true;
+    }
+  
+    private bool IsInAttackingRange()
+    {
+        if (Physics2D.CircleCast(transform.position, attackRange, Vector2.zero, attackRange, playerLayer))
+        {
+            return true;
+        }
+        else
+            return false;
+    }
+    void SetJumpingNumbers()
+    {
+        navMeshAgent.speed = 90f;
+        navMeshAgent.acceleration = 60f;
+        navMeshAgent.stoppingDistance = 0f;
+    }
+    IEnumerator AttackPlayer()
+    {
+        while (EnemyState == EnemyStates.Attacking) {
+            //grabs player position a bit before it attacks so its not 100% accurate
+            Vector3 PlayerDirection = player.transform.position;
+            yield return new WaitForSeconds(0.4f);
+
+            if (canAttack)
+            {
+                isAttacking = true;
+
+            }
+
+            if (isAttacking)
+            {
+                //sets steering numbers so it jumps rly fast
+
+                SetJumpingNumbers();
+
+                navMeshAgent.SetDestination(PlayerDirection);
+
+                yield return new WaitForSeconds(0.4f);
+                StartCoroutine(AttackEnemyCooldown());
+                
+            }
+
+            yield return null;
+        }
+        
+    }
+
 }

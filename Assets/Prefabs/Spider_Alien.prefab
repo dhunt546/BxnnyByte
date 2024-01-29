@@ -5236,7 +5236,6 @@ GameObject:
   - component: {fileID: 3212740079404640009}
   - component: {fileID: 6454608014699158199}
   - component: {fileID: 4591545311294182599}
-  - component: {fileID: 694915010931144503}
   - component: {fileID: 7671339838900656438}
   - component: {fileID: 1985451277286373852}
   - component: {fileID: 2098471477766253589}
@@ -5330,8 +5329,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyState: 0
   enemyMaxHealth: 13
-  enemyDefaultMovementSpeed: 0
-  AttackSpeed: 0
+  enemyDefaultMovementSpeed: 4.2
+  attackRange: 5
+  circlingSpeed: 0.84
+  newSpeed: 2.2
+  newAcc: 60
   currentEnemyHealth: 0
   playerLayer:
     serializedVersion: 2
@@ -5340,12 +5342,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4096
   Strength: 0
-  circlingSpeed: 0.84
-  newSpeed: 2.2
-  newAcc: 60
-  circleRadius: 2
+  hitboxSize: 0.63
+  HitboxCenter: {x: 0.01, y: -0.55, z: 0}
   enemyThrust: 0.58
   enemyKnocktime: 0.81
+  circleRadius: 2.2
+  enemyAttackCooldown: 3
 --- !u!50 &6454608014699158199
 Rigidbody2D:
   serializedVersion: 4
@@ -5408,51 +5410,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0.06117344, y: 0.14037412}
   m_Size: {x: 0.7103758, y: 1.2505852}
   m_Direction: 0
---- !u!61 &694915010931144503
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8655144454707207289}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.15423536, y: -0.47626752}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.625, y: 2.625}
-    newSize: {x: 12.8, y: 7.2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.0291624, y: 1.4108611}
-  m_EdgeRadius: 0
 --- !u!195 &7671339838900656438
 NavMeshAgent:
   m_ObjectHideFlags: 0
