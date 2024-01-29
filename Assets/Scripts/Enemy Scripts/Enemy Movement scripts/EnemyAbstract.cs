@@ -68,10 +68,10 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
         UpdateEnemyState();
         if (isEnemyBehindPlayer())
         {
-            spriteRenderer.sortingOrder = 15;
+            spriteRenderer.sortingOrder = player.GetComponent<SpriteRenderer>().sortingOrder + 1;
         }
         else
-            spriteRenderer.sortingOrder = 12;
+            spriteRenderer.sortingOrder = player.GetComponent<SpriteRenderer>().sortingOrder - 1;
     }
 
     bool isEnemyBehindPlayer()
