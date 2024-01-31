@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-public class Spawner : ObjectHealth
+public class Spawner : DestructableObject
 //By Regan Ly!
 {
     [SerializeField] private GameObject[] Spawners;
@@ -23,13 +23,12 @@ public class Spawner : ObjectHealth
     // Start is called before the first frame update
     void Start()
     {
+        SetObjectDefaultHealth(objectMaxHealth);
         GlowLights(lights);
         //start Glow
         StartGlowing(GlowingVeins);
         //Start pulse for each
-        StartBreathing(Spawners);
-        SetObjectDefaultHealth(2f);
-
+        StartBreathing(Spawners);  
     }
 
     public override void ObjectTakeVisualDamage()

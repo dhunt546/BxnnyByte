@@ -98,6 +98,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5a76ecb080f3fb46bf07b92f8f0d2f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isAddToScore: 0
+  pointsWorth: 1
+  objectMaxHealth: 3.13
   currentObjectHealth: 3
 --- !u!60 &5878958342553732178
 PolygonCollider2D:
