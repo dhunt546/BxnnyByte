@@ -1,37 +1,35 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
-public class MenuManager : MonoBehaviour
+public static class MenuManager
 {
-    private bool isGamePaused = false;
-    public GameObject optionsPanel;
-    public void PauseGame()
+    public static bool isGamePaused = false;
+    
+    public static  void PauseGame()
     {
         // Pause the game
         isGamePaused = true;
         Time.timeScale = 0f;
     }
 
-    public void UnpauseGame()
+    public static void UnpauseGame()
     {
         // Unpause the game
         isGamePaused = false;
         Time.timeScale = 1f;
     }
 
-    public void LoadScene(string sceneName)
+    public static void LoadScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
     }
-    public void RestartLevel()
+    public static void RestartLevel()
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentSceneIndex);
     }
 
-    public void OpenOptionsMenu()
+    public static void OpenOptionsMenu(GameObject optionsPanel)
     {
         if (optionsPanel != null)
         {
@@ -40,7 +38,7 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-    public void CloseOptionsMenu()
+    public static void CloseOptionsMenu(GameObject optionsPanel)
     {
         if (optionsPanel != null)
         {
@@ -48,12 +46,12 @@ public class MenuManager : MonoBehaviour
             UnpauseGame();
         }
     }
-    public void ToggleFullscreen()
+    public static void ToggleFullscreen()
     {
         Screen.fullScreen = !Screen.fullScreen;
     }
 
-    public void ExitGame()
+    public static void ExitGame()
     {
         Application.Quit();
     }

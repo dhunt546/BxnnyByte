@@ -7,7 +7,6 @@ public class VolumeSettings : MonoBehaviour
     public static VolumeSettings instance;
     [SerializeField] private AudioMixer audioMixer;
 
-
     [SerializeField] private Slider masterSlider;
     [SerializeField] private Slider backgroundSlider;
     [SerializeField] private Slider sfxSlider;
@@ -44,6 +43,7 @@ public class VolumeSettings : MonoBehaviour
         SetMasterMusic();
         SetBackgroundMusic();
         SetSFX();
+        //optionsPanel = 
     }
 
     public void SetMasterMusic()
