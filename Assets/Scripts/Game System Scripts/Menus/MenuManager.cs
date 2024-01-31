@@ -7,18 +7,6 @@ public class MenuManager : MonoBehaviour
 {
     private bool isGamePaused = false;
     public GameObject optionsPanel;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void PauseGame()
     {
         // Pause the game
@@ -60,6 +48,13 @@ public class MenuManager : MonoBehaviour
             UnpauseGame();
         }
     }
+    public void ToggleFullscreen()
+    {
+        Screen.fullScreen = !Screen.fullScreen;
+    }
 
-
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
 }
