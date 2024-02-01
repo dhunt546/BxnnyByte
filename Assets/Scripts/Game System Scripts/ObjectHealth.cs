@@ -11,6 +11,7 @@ public class ObjectHealth : MonoBehaviour, IDamageable
     public int pointsWorth;
     //Breakable Objects
     SpriteRenderer objectSpriteRenderer;
+    [SerializeField, Range(2, 15)] public float objectMaxHealth;
     [SerializeField]private float currentObjectHealth;
 
     public void SetObjectDefaultHealth(float maxHealth)

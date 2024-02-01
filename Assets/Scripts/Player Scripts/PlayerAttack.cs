@@ -27,8 +27,8 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private AudioSource attackSource;
 
     //damage amount
-    [SerializeField] private float basicAttackDmg = 1.0f;
-    [SerializeField] private float powerAttackDmg = 3.0f;
+    [SerializeField] private float basicAttackDmg = 3f;
+    [SerializeField] private float powerAttackDmg = 10.0f;
     [SerializeField] private float spinAttackDmg = 0.0f;
 
     public GameObject PlayerDirection;
@@ -46,7 +46,7 @@ public class PlayerAttack : MonoBehaviour
     private float AttackAnimationCooldown = 0.2f;
 
     //Cooldown times
-    private float basicCooldown = 1.0f;
+    private float basicCooldown = 0.6f;
     private float spinCooldown = 5.0f;
     private float powerCooldown = 10.0f;
     private float dodgeCooldown = 2.0f;

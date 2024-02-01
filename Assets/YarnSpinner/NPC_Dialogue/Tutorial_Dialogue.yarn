@@ -1,10 +1,12 @@
 title: Intro
 tags:
 ---
-Ol Jan: Listen, the Boss is always watching...Let's finish your training... 
-Tutorial: Press *E* to Attack and Interact. 
-Tutorial: Press *Arrow Keys* or W,A,S,D to move.
-Ol Jan: You see that pile of junk to the right? The boss wants you to clean it all up. Chop Chop.
+->Tutorial
+->Skip Dialogue
+    Ol Jan: Listen, the Boss is always watching...Let's finish your training... 
+    Tutorial: Press *E* to Attack and Interact. 
+    Tutorial: Press *Arrow Keys* or W,A,S,D to move.
+    Ol Jan: You see that pile of junk to the right? The boss wants you to clean it all up. Chop Chop.
 ===
 
 title: Ai_Intro
@@ -14,9 +16,12 @@ A.I. Supervisor: Attention, this is you Supervisor. Work cessation is not author
 
 title: Ai_Cutscene1
 ---
-A.I. Supervisor: Dead bodies are not premitted...
-A.I. Supervisor: New Clean-Up Objective added...
-A.I. Supervisor: Failure will result in restriced access... 
+->  Skip Dialogue
+    Player: I'm not listening to you....
+-> Listen
+    A.I. Supervisor: Dead bodies are not premitted...
+    A.I. Supervisor: New Clean-Up Objective added...
+    A.I. Supervisor: Failure will result in restriced access... 
 ===
 
 title: Ai_Cutscene2
