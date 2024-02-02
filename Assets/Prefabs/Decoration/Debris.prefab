@@ -128,6 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAddToScore: 1
   pointsWorth: 1
+  objectMaxHealth: 2
   currentObjectHealth: 0
 --- !u!70 &568192943104817268
 CapsuleCollider2D:

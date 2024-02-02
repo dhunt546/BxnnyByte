@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4980563369267253089}
   - component: {fileID: 2757631667367876081}
-  - component: {fileID: 2550424076721896037}
+  - component: {fileID: 158838828202626251}
   m_Layer: 0
   m_Name: Ind_Barrel
   m_TagString: Untagged
@@ -85,8 +85,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &2550424076721896037
-PolygonCollider2D:
+--- !u!70 &158838828202626251
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -117,22 +117,6 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 2}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.027226448, y: -0.6130018}
-      - {x: 0.309999, y: -0.44284773}
-      - {x: 0.4315343, y: 0.34598303}
-      - {x: 0.008084774, y: 0.6080098}
-      - {x: -0.44596672, y: 0.34117222}
-      - {x: -0.31962013, y: -0.43288088}
-  m_UseDelaunayMesh: 0
+  m_Offset: {x: 0, y: 0.28}
+  m_Size: {x: 0.75, y: 0.56}
+  m_Direction: 1

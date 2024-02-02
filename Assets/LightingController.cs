@@ -17,7 +17,9 @@ public class LightingController : MonoBehaviour
     void Start()
     {
         if (LightObjects != null)
-        StartFlashing(LightObjects);
+        {
+            StartFlashing(LightObjects);
+        }
     }
     void StartFlashing(GameObject[] Lights)
     {
