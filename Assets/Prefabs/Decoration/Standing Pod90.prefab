@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5335129744627794521}
   - component: {fileID: 3118051898487677109}
-  - component: {fileID: 7135800001139018168}
+  - component: {fileID: 1998611081267653319}
   m_Layer: 0
   m_Name: Standing Pod90
   m_TagString: Untagged
@@ -85,8 +85,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &7135800001139018168
-PolygonCollider2D:
+--- !u!61 &1998611081267653319
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -117,7 +117,7 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.16362858, y: -1.0329056}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -127,14 +127,6 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.43328285, y: 1.9909077}
-      - {x: -0.6444912, y: 1.5650291}
-      - {x: -1.228961, y: 0.25829887}
-      - {x: -0.9346533, y: -2.1586046}
-      - {x: 0.82908344, y: -2.1558847}
-      - {x: 1.25, y: -1.84375}
-      - {x: 1.2266312, y: -0.3201065}
-      - {x: 0.945838, y: 2.0486383}
-  m_UseDelaunayMesh: 0
+  serializedVersion: 2
+  m_Size: {x: 1.8705502, y: 1.8223171}
+  m_EdgeRadius: 0

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3831734912806669230}
   - component: {fileID: 784319106836209639}
-  - component: {fileID: 2594802996247472134}
+  - component: {fileID: 937727423816267452}
   m_Layer: 0
   m_Name: Standing Pod back
   m_TagString: Untagged
@@ -85,8 +85,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &2594802996247472134
-PolygonCollider2D:
+--- !u!61 &937727423816267452
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -117,7 +117,7 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.9919987}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -127,19 +127,6 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.8353877, y: 1.8038778}
-      - {x: -1.3482308, y: 1.2557745}
-      - {x: -1.3518963, y: 0.14426994}
-      - {x: -1.7848954, y: -0.89669037}
-      - {x: -1.2378697, y: -1.283144}
-      - {x: -1.061012, y: -1.8364868}
-      - {x: 0.89674497, y: -1.9835033}
-      - {x: 1.1620588, y: -1.6495152}
-      - {x: 1.6308978, y: -1.8319092}
-      - {x: 1.84375, y: -1.359375}
-      - {x: 1.3287878, y: -0.53222466}
-      - {x: 1.4455979, y: 0.06580353}
-      - {x: 0.8926928, y: 1.816906}
-  m_UseDelaunayMesh: 0
+  serializedVersion: 2
+  m_Size: {x: 2.0750856, y: 1.5768738}
+  m_EdgeRadius: 0
