@@ -469,6 +469,10 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
                 SetJumpingNumbers();
 
                 navMeshAgent.SetDestination(PlayerDirection);
+                
+                //play animation
+
+                //do damage to hits in hitbox
 
                 yield return new WaitForSeconds(0.4f);
                 StartCoroutine(AttackEnemyCooldown());
@@ -480,4 +484,8 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
         
     }
 
+    void DoAttack()
+    {
+
+    }
 }

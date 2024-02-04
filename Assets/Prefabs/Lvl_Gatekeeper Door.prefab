@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2479305710596443259}
   - component: {fileID: 8739010372784707318}
   m_Layer: 0
-  m_Name: EndOfLevelDoor
+  m_Name: Lvl_Gatekeeper Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

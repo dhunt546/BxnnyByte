@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7055940555833358642}
   - component: {fileID: 2646421207365187091}
-  - component: {fileID: 3115417457355846231}
+  - component: {fileID: 1804365508833629454}
   m_Layer: 0
   m_Name: Couch_Left
   m_TagString: Untagged
@@ -85,8 +85,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &3115417457355846231
-PolygonCollider2D:
+--- !u!61 &1804365508833629454
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -117,7 +117,7 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.05329418, y: 0.014189482}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -127,12 +127,6 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.7019348, y: 1.7904348}
-      - {x: -0.7631817, y: 1.5382867}
-      - {x: -0.729784, y: -1.3633718}
-      - {x: -0.004053116, y: -1.537426}
-      - {x: 0.8140507, y: -1.3844814}
-      - {x: 0.87470245, y: 1.5328016}
-  m_UseDelaunayMesh: 0
+  serializedVersion: 2
+  m_Size: {x: 1.5330868, y: 2.7229972}
+  m_EdgeRadius: 0
