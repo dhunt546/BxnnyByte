@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8469003994266325433}
   - component: {fileID: 3319449654122387237}
-  - component: {fileID: 4728210010314829415}
+  - component: {fileID: -2623817661308202388}
   m_Layer: 0
   m_Name: Crate
   m_TagString: Untagged
@@ -85,8 +85,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &4728210010314829415
-PolygonCollider2D:
+--- !u!61 &-2623817661308202388
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -117,7 +117,7 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.002263546, y: -0.16750097}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -127,10 +127,6 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.35735846, y: -0.45110846}
-      - {x: 0.35294807, y: -0.43346715}
-      - {x: 0.3529482, y: 0.46232307}
-      - {x: -0.36176896, y: 0.45350242}
-  m_UseDelaunayMesh: 0
+  serializedVersion: 2
+  m_Size: {x: 0.6333084, y: 0.52013254}
+  m_EdgeRadius: 0
