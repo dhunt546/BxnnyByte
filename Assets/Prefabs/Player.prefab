@@ -199,9 +199,9 @@ MonoBehaviour:
     m_Bits: 128
   basicAttackRange: 0.9
   attackSource: {fileID: 2096313602671208732}
-  basicAttackDmg: 4
-  powerAttackDmg: 0
-  spinAttackDmg: 0
+  basicAttackDmg: 1
+  powerAttackDmg: 3
+  spinAttackDmg: 10
   PlayerDirection: {fileID: 6641000483796230735}
   _isPlayerAttacking: 0
   TypeOfAttack: 
