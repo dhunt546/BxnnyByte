@@ -65631,7 +65631,7 @@ MonoBehaviour:
   - {fileID: 753753038}
   - {fileID: 1593149923}
   - {fileID: 301750305}
-  lightsFlickerIntensity: 0
+  lightsFlickerIntensity: 1
 --- !u!114 &692908730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67553,6 +67553,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3dd336aebf87d7c409e12ac94e7c0e3d, type: 3}
+--- !u!114 &823079980 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6409599655753404871, guid: a8fea26e0bf79974cbccebb34642108e, type: 3}
+  m_PrefabInstance: {fileID: 1015359438}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &823241326
 GameObject:
   m_ObjectHideFlags: 0
@@ -68505,6 +68516,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7135656899457232387, guid: f446d32d945ae8a4ca568dcdc20d87ad, type: 3}
+      propertyPath: healthSlider
+      value: 
+      objectReference: {fileID: 823079980}
     - target: {fileID: 7155382379663410768, guid: f446d32d945ae8a4ca568dcdc20d87ad, type: 3}
       propertyPath: m_LocalPosition.x
       value: 93.28
