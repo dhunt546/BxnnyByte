@@ -1,17 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting.Antlr3.Runtime;
+using UnityEditor.ShaderGraph.Drawing.Inspector.PropertyDrawers;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Doors : MonoBehaviour
 {
     public GameObject doorPrefab;
 
     private Animator doorAnimator;
+
+    private AudioSource openingSound;
  
     void Start()
     {
-        doorAnimator = GetComponent<Animator>();        
+        doorAnimator = GetComponent<Animator>();   
+        openingSound = GetComponent<AudioSource>();
     }
     public void OnDoorOpened()
     {
@@ -23,6 +28,8 @@ public class Doors : MonoBehaviour
         {
             if (doorAnimator != null)
             {
+                openingSound.Play();
+
                 doorAnimator.SetBool("doorStatus", true);
 
                 doorPrefab.GetComponent<CapsuleCollider2D>().enabled = false;
