@@ -49713,7 +49713,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 747431333974365281, guid: dce029fa379f4654e93e1c0198b1b864, type: 3}
       propertyPath: sceneName
-      value: Level 3
+      value: MainMenu
       objectReference: {fileID: 0}
     - target: {fileID: 1198335082785367556, guid: dce029fa379f4654e93e1c0198b1b864, type: 3}
       propertyPath: m_LocalPosition.x
