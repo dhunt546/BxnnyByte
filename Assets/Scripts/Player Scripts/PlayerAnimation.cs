@@ -95,7 +95,7 @@ public class PlayerAnimation : MonoBehaviour
         }
         else
         {
-            currentPlayerState = PlayerState.Hurt;
+            currentPlayerState = PlayerState.Death;
             Debug.Log("Player is dead");
         }
 
