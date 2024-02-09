@@ -15,7 +15,7 @@ public class PlayerAnimation : MonoBehaviour
     private Color OriginalColour;
     public bool isPlayerRunning;
     public bool isPlayerAttacking;
-
+    public bool isPlayerHurting = false;
     bool animationLock = false;
 
     // Start is called before the first frame update
@@ -52,43 +52,55 @@ public class PlayerAnimation : MonoBehaviour
         Running,
         BasicAttacking,
         PowerAttacking,
-        SpinAttacking,
+        Hurt,
+        Death,
         Stunned,
-        Dodging
-    }
+    } 
 
     void SetPlayerState()
     {
-        if (isPlayerAttacking)
+        if (!_player.isPlayerDead)
         {
-            animationLock = true;
-            switch (_attackPlayer.TypeOfAttack)
+            if (!isPlayerHurting)
             {
-                case "BasicAttack":
-                    currentPlayerState = PlayerState.BasicAttacking;
+                if (isPlayerAttacking)
+                {
+                    animationLock = true;
+                    switch (_attackPlayer.TypeOfAttack)
+                    {
+                        case "BasicAttack":
+                            currentPlayerState = PlayerState.BasicAttacking;
 
-                    break;
-                case "PowerAttack":
-                    currentPlayerState = PlayerState.PowerAttacking;
+                            break;
+                        case "PowerAttack":
+                            currentPlayerState = PlayerState.PowerAttacking;
 
-                    break;
-                case "Spin":
-                    currentPlayerState = PlayerState.SpinAttacking;
+                            break;
+                    }
+                }
+                else if (isPlayerRunning)
+                {
+                    currentPlayerState = PlayerState.Running;
+                }
 
-                    break;
+                else
+                {
+                    currentPlayerState = PlayerState.Idle;
+                }
+            }
+            else if (isPlayerHurting)
+            {
+                currentPlayerState = PlayerState.Hurt;
             }
         }
-        else if (isPlayerRunning)
-        {
-            currentPlayerState = PlayerState.Running;
-        }
-        
         else
         {
-            currentPlayerState = PlayerState.Idle;
+            currentPlayerState = PlayerState.Hurt;
+            Debug.Log("Player is dead");
         }
 
     }
+        
 
 
     private int AnimationLibrary(string playerDirection)
@@ -126,12 +138,17 @@ public class PlayerAnimation : MonoBehaviour
 
         }
     }
-
-    private IEnumerator OnHit()
+    public IEnumerator OnHit()
     {
-        
-      //  _spriteRenderer.color = color.red;
-        yield return new WaitForSeconds(0.2f);
-        //_spriteRenderer.sprite = OriginalColour;
+        if (!_player.isPlayerDead)
+        {
+            isPlayerHurting = true;
+            // _spriteRenderer.color = color.red;
+            yield return new WaitForSeconds(0.72f);
+            //_spriteRenderer.sprite = OriginalColour;
+            isPlayerHurting = false;
+        }
+        else
+            yield return null;
     }
 }
