@@ -45765,6 +45765,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2076195585}
   - component: {fileID: 2076195584}
+  - component: {fileID: 2076195586}
   m_Layer: 0
   m_Name: RoomCamTriggers
   m_TagString: Untagged
@@ -45832,6 +45833,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2076195586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076195583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23bfd9a3fbfe86b4b939c82907e64180, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camSizeValue: 20
+  cinemachineVirtualCamera: {fileID: 328714719}
 --- !u!1 &2078839814
 GameObject:
   m_ObjectHideFlags: 0
