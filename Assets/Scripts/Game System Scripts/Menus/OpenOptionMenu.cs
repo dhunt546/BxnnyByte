@@ -8,13 +8,13 @@ public class OpenOptionMenu : MonoBehaviour     //Created by Devin Hunt.
 
     public void ShowOptionsMenu()
     {   
-        Timer.timeIsRunning = false;
+        //Timer.timeIsRunning = false;
         optionsPanel.SetActive(true);
     }
   
     public void CloseOptionsMenu()
     {
-        Timer.timeIsRunning = true;
+        //Timer.timeIsRunning = true;
         optionsPanel.SetActive(false);
     }
 }

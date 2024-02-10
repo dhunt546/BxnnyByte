@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 7135656899457232387}
   - component: {fileID: 2066365280811866151}
   - component: {fileID: 6020182629853663494}
+  - component: {fileID: 8594984776134401755}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -107,10 +108,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStats: {fileID: 11400000, guid: 5405ee32fe6f3c143b295d087aa3db8d, type: 2}
-  slowedSpeed: 0.2
+  slowedSpeed: 0.82
   normalSpeed: 5.2
   PlayerDirection: {fileID: 6641000483796230735}
   playerDirection: Forward
+  isPlayerDead: 0
+  healthSlider: {fileID: 0}
+  maxHealth: 100
 --- !u!50 &587657636343756053
 Rigidbody2D:
   serializedVersion: 4
@@ -199,9 +203,8 @@ MonoBehaviour:
     m_Bits: 128
   basicAttackRange: 0.9
   attackSource: {fileID: 2096313602671208732}
-  basicAttackDmg: 1
+  basicAttackDmg: 3
   powerAttackDmg: 3
-  spinAttackDmg: 10
   PlayerDirection: {fileID: 6641000483796230735}
   _isPlayerAttacking: 0
   TypeOfAttack: 
@@ -402,6 +405,22 @@ PolygonCollider2D:
       - {x: -0.33130527, y: -0.22055769}
       - {x: 0.2142809, y: -0.18143272}
   m_UseDelaunayMesh: 0
+--- !u!114 &8594984776134401755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2335019052630451878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &3376639628213971382
 GameObject:
   m_ObjectHideFlags: 0

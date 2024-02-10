@@ -11,11 +11,11 @@ public class EnemyAttack : MonoBehaviour  //Jacob foran Enemy Attack
 
     private float attackTimer = 0.0f;
     private bool isPlayerInRange = false;
-    private HealthBar playerHealthBar;
+    private PlayerController playerController;
 
     private void Start()
     {
-        playerHealthBar = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthBar>();
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
     private void FixedUpdate()
     {
@@ -34,10 +34,10 @@ public class EnemyAttack : MonoBehaviour  //Jacob foran Enemy Attack
     {
         
         
-        if (isPlayerInRange && playerHealthBar != null)
+        if (isPlayerInRange && playerController != null)
         {
             // Damage the player by calling the TakeDamage method from HealthBar script
-            playerHealthBar.TakeDamage(attackDamage);
+            playerController.TakeDamage(attackDamage);
             
 
         }

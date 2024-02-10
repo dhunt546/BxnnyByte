@@ -255,7 +255,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2896334895515551581}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
         m_MethodName: OpenOptionsMenu
         m_Mode: 1
@@ -1935,7 +1935,6 @@ GameObject:
   - component: {fileID: 4371477575587989174}
   - component: {fileID: 1212949622004642281}
   - component: {fileID: 6780331468143696200}
-  - component: {fileID: 2896334895515551581}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -2033,19 +2032,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &2896334895515551581
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8555269574736865976}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b1362e7251c811458ca4ea8392cb3da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  optionsPanel: {fileID: 4832327725994637506}
 --- !u!1 &9015901139496177498
 GameObject:
   m_ObjectHideFlags: 0
@@ -2505,10 +2491,6 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5444142319585320327, guid: ac2129f686bd8cc4c8d351ccecdb9719, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2896334895515551581}
-    - target: {fileID: 5444142319585320327, guid: ac2129f686bd8cc4c8d351ccecdb9719, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
@@ -2532,10 +2514,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8826518348514331535, guid: ac2129f686bd8cc4c8d351ccecdb9719, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2896334895515551581}
     - target: {fileID: 8826518348514331535, guid: ac2129f686bd8cc4c8d351ccecdb9719, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: CloseOptionsMenu

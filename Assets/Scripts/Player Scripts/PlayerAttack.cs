@@ -29,7 +29,6 @@ public class PlayerAttack : MonoBehaviour
     //damage amount
     [SerializeField] private float basicAttackDmg = 3f;
     [SerializeField] private float powerAttackDmg = 10.0f;
-    [SerializeField] private float spinAttackDmg = 0.0f;
 
     public GameObject PlayerDirection;
 
@@ -47,7 +46,6 @@ public class PlayerAttack : MonoBehaviour
 
     //Cooldown times
     private float basicCooldown = 0.6f;
-    private float spinCooldown = 5.0f;
     private float powerCooldown = 10.0f;
     private float dodgeCooldown = 2.0f;
 
@@ -56,9 +54,8 @@ public class PlayerAttack : MonoBehaviour
     {
         //keybinds
         KeyInputMappings[KeyCode.E] = "BasicAttack";
-        KeyInputMappings[KeyCode.X] = "Spin";
         KeyInputMappings[KeyCode.Q] = "PowerAttack";
-        KeyInputMappings[KeyCode.Space] = "Dodge";      
+      //  KeyInputMappings[KeyCode.Space] = "Dodge";      
     }
 
     void Start()
@@ -149,21 +146,16 @@ public class PlayerAttack : MonoBehaviour
             //basic attack info goes here
             PreformAttack(basicAttackDmg);
         }
-
-        if (attackName == "Spin")
-        {
-            PreformAttack(spinAttackDmg);
-        }
         if (attackName == "PowerAttack")
         {
             PreformAttack(powerAttackDmg);
         }
-        if(attackName == "Dodge")
-        {
-            //dodge here
-
-           // Debug.Log(attackName);
-        }
+   //   if(attackName == "Dodge")
+   //   {
+   //       //dodge here
+   //
+   //      // Debug.Log(attackName);
+   //   }
     }
 
    //void OnDrawGizmos()
@@ -220,14 +212,12 @@ public class PlayerAttack : MonoBehaviour
        switch (attackName)
        {
            case "BasicAttack":
-               return basicCooldown;         
-           case "Spin":
-               return spinCooldown;         
+               return basicCooldown;                  
            case "PowerAttack":
                return powerCooldown;
-           case "Dodge":
-               return dodgeCooldown;
-           //add more cases here if needed
+       //    case "Dodge":
+       //        return dodgeCooldown;
+       //    //add more cases here if needed
            default:
                return 0f;
        }

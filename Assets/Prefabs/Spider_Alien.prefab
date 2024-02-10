@@ -5328,7 +5328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyState: 0
-  enemyMaxHealth: 13
+  enemyMaxHealth: 6
   enemyDefaultMovementSpeed: 4.2
   attackRange: 5
   circlingSpeed: 0.84
