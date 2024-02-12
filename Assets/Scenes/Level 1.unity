@@ -16952,6 +16952,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3212740079404640009, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
+      propertyPath: enemyRb
+      value: 
+      objectReference: {fileID: 1184984547}
     - target: {fileID: 4537870478123677205, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -52851,6 +52855,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4096
   Strength: 0
+  enemyRb: {fileID: 850894098}
   hitboxSize: 0.5
   HitboxCenter: {x: -0.02, y: 0, z: 0}
   enemyThrust: 0.25
@@ -102006,6 +102011,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5099735164378547376, guid: efafd2d4b04fb1a4b9d9cd38d13150ec, type: 3}
   m_PrefabInstance: {fileID: 1183896188}
   m_PrefabAsset: {fileID: 0}
+--- !u!50 &1184984547 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 6454608014699158199, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
+  m_PrefabInstance: {fileID: 500342093}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1187826257
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -105411,6 +105421,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3212740079404640009, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
+      propertyPath: enemyRb
+      value: 
+      objectReference: {fileID: 1536354754}
     - target: {fileID: 4537870478123677205, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -105435,6 +105449,11 @@ PrefabInstance:
 --- !u!4 &1536354749 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1554144711429746060, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
+  m_PrefabInstance: {fileID: 1536354748}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &1536354754 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 6454608014699158199, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
   m_PrefabInstance: {fileID: 1536354748}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1540578886 stripped
