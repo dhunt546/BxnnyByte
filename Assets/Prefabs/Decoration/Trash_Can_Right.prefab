@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1947303528641472479}
   - component: {fileID: 8977924107495031342}
   - component: {fileID: 3834032471249667486}
+  - component: {fileID: 8482577675859444113}
   m_Layer: 0
   m_Name: Trash_Can_Right
   m_TagString: Untagged
@@ -120,3 +121,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.2637291}
   serializedVersion: 2
   m_Radius: 0.42638922
+--- !u!114 &8482577675859444113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4437981009352439739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff

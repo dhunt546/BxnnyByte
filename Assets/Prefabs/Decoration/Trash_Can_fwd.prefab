@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5271437801643698926}
   - component: {fileID: 1146048226386842876}
   - component: {fileID: 4852236606936045410}
+  - component: {fileID: -783840287081729128}
   m_Layer: 0
   m_Name: Trash_Can_fwd
   m_TagString: Untagged
@@ -120,3 +121,19 @@ CapsuleCollider2D:
   m_Offset: {x: -0.00000011920929, y: -0.25443518}
   m_Size: {x: 0.8488834, y: 0.8488834}
   m_Direction: 0
+--- !u!114 &-783840287081729128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3039493474550723911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff

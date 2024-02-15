@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2394751264934856484}
   - component: {fileID: 3246303046896322339}
   - component: {fileID: 1778536098709659710}
+  - component: {fileID: -2390038273714684853}
   m_Layer: 0
   m_Name: Standing Pod75
   m_TagString: Untagged
@@ -140,3 +141,19 @@ PolygonCollider2D:
       - {x: -1.6651745, y: -1.353239}
       - {x: 0.4471612, y: -2.2969503}
   m_UseDelaunayMesh: 0
+--- !u!114 &-2390038273714684853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6171029952623101061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4322671976598346647}
   - component: {fileID: 2061873075096252246}
   - component: {fileID: 7464867642693076053}
+  - component: {fileID: 6092497902054156519}
   m_Layer: 0
   m_Name: Lunch_Table
   m_TagString: Untagged
@@ -188,3 +189,19 @@ PolygonCollider2D:
       - {x: -0.515625, y: -2.859375}
       - {x: 0.5625, y: -2.859375}
   m_UseDelaunayMesh: 0
+--- !u!114 &6092497902054156519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1500450763906810637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
