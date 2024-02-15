@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 1189373476747339768}
   - component: {fileID: 8243577073624337471}
   - component: {fileID: 2096313602671208732}
-  - component: {fileID: 7135656899457232387}
   - component: {fileID: 2066365280811866151}
   - component: {fileID: 6020182629853663494}
   - component: {fileID: 8594984776134401755}
@@ -158,6 +157,7 @@ MonoBehaviour:
   _attackAnimTime: 0.55
   isPlayerRunning: 0
   isPlayerAttacking: 0
+  isPlayerHurting: 0
 --- !u!95 &1189373476747339768
 Animator:
   serializedVersion: 5
@@ -304,21 +304,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &7135656899457232387
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2335019052630451878}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47e58a16d21ee624bb40d970b9023f44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthSlider: {fileID: 0}
-  maxHealth: 100
-  currentHealth: 100
 --- !u!70 &2066365280811866151
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
