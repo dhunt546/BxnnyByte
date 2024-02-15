@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5332963393402053476}
   - component: {fileID: 180988828328641318}
   - component: {fileID: 4459627592932797553}
+  - component: {fileID: 3591477682089174893}
   m_Layer: 0
   m_Name: Locker_fwd
   m_TagString: Untagged
@@ -130,3 +131,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8852029, y: 0.6799288}
   m_EdgeRadius: 0
+--- !u!114 &3591477682089174893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3596281833940701558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff

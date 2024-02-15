@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8360823154407720889}
   - component: {fileID: 3297677075996132337}
   - component: {fileID: 7106503773875971298}
+  - component: {fileID: 2467821620635208073}
   m_Layer: 0
   m_Name: Terminal_Station_Back
   m_TagString: Untagged
@@ -206,3 +207,19 @@ PolygonCollider2D:
       - {x: 0.75, y: -2.203125}
       - {x: 1.46875, y: -2.046875}
   m_UseDelaunayMesh: 0
+--- !u!114 &2467821620635208073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4351246610163753742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff

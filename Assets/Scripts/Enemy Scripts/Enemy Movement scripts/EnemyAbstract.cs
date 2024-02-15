@@ -48,7 +48,7 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
     ParticleSystem enemyPS;
     HPBar healthBar;
     NavMeshAgent navMeshAgent;
-    Rigidbody2D enemyRb;
+    public Rigidbody2D enemyRb;
 
     public void EnemyGetComponents()
     {
@@ -449,6 +449,34 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
         navMeshAgent.acceleration = 60f;
         navMeshAgent.stoppingDistance = 0f;
     }
+    private Vector3 previousPosition;
+    public string enemyDirection()
+    {
+        string stringDirection;
+        // Get the current position of the object
+        Vector3 currentPosition = transform.position;
+
+        // Calculate the direction by subtracting the current position from the previous position
+        Vector3 direction = currentPosition - previousPosition;
+
+            direction.Normalize();
+
+
+        previousPosition = currentPosition;
+    
+        //Set Direction of player if they have moved.
+        if (direction.y >= 0.1)
+            stringDirection = "Right";
+        else if (direction.x <= -0.1)
+            stringDirection = "Backward";
+        else if (direction.y <= -0.1)
+            stringDirection = "Left";
+        else
+            stringDirection = "Forward";
+
+        return stringDirection;
+    }
+
     IEnumerator AttackPlayer()
     {
         while (EnemyState == EnemyStates.Attacking) {

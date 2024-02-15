@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3831734912806669230}
   - component: {fileID: 784319106836209639}
   - component: {fileID: 937727423816267452}
+  - component: {fileID: -2166020694855837744}
   m_Layer: 0
   m_Name: Standing Pod back
   m_TagString: Untagged
@@ -130,3 +131,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.0750856, y: 1.5768738}
   m_EdgeRadius: 0
+--- !u!114 &-2166020694855837744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7015639290347380550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff

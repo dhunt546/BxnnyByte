@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3519525879061349099}
   - component: {fileID: 6006960660508159158}
   - component: {fileID: 8357928813671886647}
+  - component: {fileID: 1952437974826484028}
   m_Layer: 0
   m_Name: Cargo_Container 1
   m_TagString: Untagged
@@ -130,3 +131,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 8.641893, y: 3.9633274}
   m_EdgeRadius: 0
+--- !u!114 &1952437974826484028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2451891164777273915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
