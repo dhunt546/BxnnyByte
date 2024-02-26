@@ -609,12 +609,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2583287349199688037}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47e58a16d21ee624bb40d970b9023f44, type: 3}
+  m_Script: {fileID: 11500000, guid: 8e8b10b3daea8ba47b1104eac56f19c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthSlider: {fileID: 6409599655753404871}
-  maxHealth: 100
-  currentHealth: 100
 --- !u!1 &2762362850336329201
 GameObject:
   m_ObjectHideFlags: 0
