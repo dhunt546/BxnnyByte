@@ -471,7 +471,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4096
   Strength: 0
-  enemyRb: {fileID: 0}
+  enemyMaxAttackDmg: 0
+  enemyMinAttackDmg: 0
+  enemyDamageAmount: 5
+  enemyRb: {fileID: 8076165088627164565}
   hitboxSize: 0.5
   HitboxCenter: {x: -0.02, y: 0, z: 0}
   enemyThrust: 0.25

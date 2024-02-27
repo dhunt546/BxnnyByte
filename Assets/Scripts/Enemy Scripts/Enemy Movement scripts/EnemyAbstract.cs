@@ -40,8 +40,9 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
     [SerializeField] private LayerMask Walls;
     [Range(1,15)]
     public float Strength;
-    private float enemyMaxAttackDmg;
-    private float enemyMinAttackDmg;
+    [SerializeField] private float enemyMaxAttackDmg;
+    [SerializeField] private float enemyMinAttackDmg;
+    [SerializeField] private float enemyDamageAmount;
 
     GameObject player;
     SpriteRenderer spriteRenderer;
@@ -52,16 +53,21 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
 
     public void EnemyGetComponents()
     {
-        currentEnemyHealth = enemyMaxHealth;
+        SetSteeringOrigins();
+
         player = GameObject.Find("Player");
+        player.GetComponent<PlayerController>();
+
         spriteRenderer = GetComponent<SpriteRenderer>();
         enemyPS = GetComponentInChildren<ParticleSystem>();
         healthBar = GetComponentInChildren<HPBar>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         enemyRb = GetComponent<Rigidbody2D>();
+
         enemyDefaultMovementSpeed = navMeshAgent.speed;
-        SetSteeringOrigins();
-        
+        currentEnemyHealth = enemyMaxHealth;
+
+
     }
     public void EnemyUpdate()
     {
@@ -91,16 +97,16 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
         return damage;
     }
 
-     void IDamageable.Damage(float damageAmount)
+    void IDamageable.Damage(float damageAmount)
     {
-        currentEnemyHealth -= damageAmount;
-        healthBar.UpdateHBar(currentEnemyHealth, enemyMaxHealth);
-        EnemyVisualDamageTaken();
-        
-        if (enemyPS != null)       
-            enemyPS.Play();
-        if (currentEnemyHealth <= 0)
-            EnemyDie();      
+       currentEnemyHealth -= damageAmount;
+       healthBar.UpdateHBar(currentEnemyHealth, enemyMaxHealth);
+       //EnemyVisualDamageTaken();
+       
+       if (enemyPS != null)       
+           enemyPS.Play();
+       if (currentEnemyHealth <= 0)
+           EnemyDie();      
     }
     void EnemyDie()
     {
@@ -108,33 +114,33 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
         Destroy(gameObject);
     }
 
-    void EnemyVisualDamageTaken()
-    {
-        if (spriteRenderer != null)
-        {
-            EnemyKnockBack();
-            StartCoroutine(EnemyFlash(spriteRenderer));
-        }
-        else
-        {
-            Debug.LogError("SpriteRenderer is null. Make sure the object has a SpriteRenderer component.");
-        }
-    }
-    IEnumerator EnemyFlash(SpriteRenderer spriteRenderer)
-    {
-      float flashDuration = 0.2f;
-      //BROKENNNN :((((
-      //Color originalColor = spriteRenderer.color;
-
-        if (spriteRenderer != null && spriteRenderer.gameObject != null && spriteRenderer.gameObject.activeSelf)
-        {
-            spriteRenderer.color = Color.red;
-
-            yield return new WaitForSeconds(flashDuration);
-            if (spriteRenderer != null && spriteRenderer.gameObject != null && spriteRenderer.gameObject.activeSelf)
-            { spriteRenderer.color = new Color(1f, 1f, 1f);}    
-        }
-    }
+    //void EnemyVisualDamageTaken()
+    //{
+    //    if (spriteRenderer != null)
+    //    {
+    //        EnemyKnockBack();
+    //        StartCoroutine(EnemyFlash(spriteRenderer));
+    //    }
+    //    else
+    //    {
+    //        Debug.LogError("SpriteRenderer is null. Make sure the object has a SpriteRenderer component.");
+    //    }
+    //}
+    //IEnumerator EnemyFlash(SpriteRenderer spriteRenderer)
+    //{
+    //  float flashDuration = 0.2f;
+    //  //BROKENNNN :((((
+    //  //Color originalColor = spriteRenderer.color;
+    //
+    //    if (spriteRenderer != null && spriteRenderer.gameObject != null && spriteRenderer.gameObject.activeSelf)
+    //    {
+    //        spriteRenderer.color = Color.red;
+    //
+    //        yield return new WaitForSeconds(flashDuration);
+    //        if (spriteRenderer != null && spriteRenderer.gameObject != null && spriteRenderer.gameObject.activeSelf)
+    //        { spriteRenderer.color = new Color(1f, 1f, 1f);}    
+    //    }
+    //}
     void SetEnemyStates()
     {
         if (IsInAttackingRange())
@@ -480,7 +486,7 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
     IEnumerator AttackPlayer()
     {
         while (EnemyState == EnemyStates.Attacking) {
-            //grabs player position a bit before it attacks so its not 100% accurate
+         
             Vector3 PlayerDirection = player.transform.position;
             yield return new WaitForSeconds(0.4f);
 
@@ -491,29 +497,21 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
             }
 
             if (isAttacking)
-            {
-                //sets steering numbers so it jumps rly fast
+            {            
 
                 SetJumpingNumbers();
 
                 navMeshAgent.SetDestination(PlayerDirection);
-                
-                //play animation
 
-                //do damage to hits in hitbox
+                player.GetComponent<PlayerController>().TakeDamage(enemyDamageAmount);
 
                 yield return new WaitForSeconds(0.4f);
                 StartCoroutine(AttackEnemyCooldown());
                 
             }
-
             yield return null;
         }
         
     }
 
-    void DoAttack()
-    {
-
-    }
 }

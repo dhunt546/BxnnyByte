@@ -103,7 +103,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void UpdateHealthBar()
+    public void UpdateHealthBar()
     {
         float healthPercentage = playerStats.playerHealth / maxHealth;
         healthSlider.value = healthPercentage;

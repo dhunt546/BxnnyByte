@@ -26,14 +26,15 @@ public class KnockBack : MonoBehaviour       //Jacob Foran https://www.youtube.c
         }
 
         Rigidbody2D Enemy = GetComponent<Rigidbody2D>();
-        if (Enemy != null)
-        {           
+        if (playerObject != null && Enemy != null)
+        {
             Enemy.isKinematic = false;
             Vector2 difference = Enemy.transform.position - playerObject.transform.position;
             difference = difference.normalized * thrust;
             Enemy.AddForce(difference, ForceMode2D.Impulse);
             StartCoroutine(KnockCo(Enemy));
         }
+
 
     }
 
