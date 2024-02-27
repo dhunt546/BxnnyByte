@@ -61,7 +61,9 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
         enemyRb = GetComponent<Rigidbody2D>();
         enemyDefaultMovementSpeed = navMeshAgent.speed;
         SetSteeringOrigins();
-        
+        player.GetComponent<PlayerController>();
+
+
     }
     public void EnemyUpdate()
     {
@@ -497,11 +499,11 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
                 SetJumpingNumbers();
 
                 navMeshAgent.SetDestination(PlayerDirection);
-                
+
                 //play animation
 
                 //do damage to hits in hitbox
-
+                player.GetComponent<PlayerController>().TakeDamage(enemyMinAttackDmg);
                 yield return new WaitForSeconds(0.4f);
                 StartCoroutine(AttackEnemyCooldown());
                 
@@ -514,6 +516,6 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
 
     void DoAttack()
     {
-
+        
     }
 }
