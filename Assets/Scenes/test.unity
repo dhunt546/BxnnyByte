@@ -19444,7 +19444,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &521913643
 Transform:
   m_ObjectHideFlags: 0
@@ -44039,6 +44039,18 @@ PrefabInstance:
       propertyPath: enemyRb
       value: 
       objectReference: {fileID: 1845041934}
+    - target: {fileID: 3212740079404640009, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
+      propertyPath: EnemyState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3212740079404640009, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
+      propertyPath: enemyDamageAmount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3212740079404640009, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
+      propertyPath: enemyMinAttackDmg
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4537870478123677205, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -44518,6 +44530,10 @@ PrefabInstance:
     - target: {fileID: 3417032355913933261, guid: 3434d8a57cf71ac4dbe6d14d6289905f, type: 3}
       propertyPath: m_Name
       value: CamZoomController
+      objectReference: {fileID: 0}
+    - target: {fileID: 3417032355913933261, guid: 3434d8a57cf71ac4dbe6d14d6289905f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -72923,7 +72939,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2078997296
 Transform:
   m_ObjectHideFlags: 0

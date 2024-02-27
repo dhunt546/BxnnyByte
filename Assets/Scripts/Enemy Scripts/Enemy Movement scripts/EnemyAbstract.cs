@@ -40,8 +40,9 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
     [SerializeField] private LayerMask Walls;
     [Range(1,15)]
     public float Strength;
-    private float enemyMaxAttackDmg;
-    private float enemyMinAttackDmg;
+    [SerializeField] private float enemyMaxAttackDmg;
+    [SerializeField] private float enemyMinAttackDmg;
+    [SerializeField] private float enemyDamageAmount;
 
     GameObject player;
     SpriteRenderer spriteRenderer;
@@ -503,7 +504,9 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
                 //play animation
 
                 //do damage to hits in hitbox
-                player.GetComponent<PlayerController>().TakeDamage(enemyMinAttackDmg);
+
+                player.GetComponent<PlayerController>().TakeDamage(enemyDamageAmount);
+
                 yield return new WaitForSeconds(0.4f);
                 StartCoroutine(AttackEnemyCooldown());
                 
@@ -514,8 +517,11 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
         
     }
 
+
     void DoAttack()
     {
+     
+        
         
     }
 }
