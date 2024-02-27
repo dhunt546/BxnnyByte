@@ -2,11 +2,12 @@ title: Intro
 tags:
 ---
 ->Tutorial
-->Skip Dialogue
     Ol Jan: Listen, the Boss is always watching...Let's finish your training... 
     Tutorial: Press *E* to Attack and Interact. 
     Tutorial: Press *Arrow Keys* or W,A,S,D to move.
     Ol Jan: You see that pile of junk to the right? The boss wants you to clean it all up. Chop Chop.
+->Skip Dialogue
+    Player: I'm not listening to you....
 ===
 
 title: Ai_Intro
