@@ -91,16 +91,16 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
         return damage;
     }
 
-     void IDamageable.Damage(float damageAmount)
+    void IDamageable.Damage(float damageAmount)
     {
-        currentEnemyHealth -= damageAmount;
-        healthBar.UpdateHBar(currentEnemyHealth, enemyMaxHealth);
-        EnemyVisualDamageTaken();
-        
-        if (enemyPS != null)       
-            enemyPS.Play();
-        if (currentEnemyHealth <= 0)
-            EnemyDie();      
+       currentEnemyHealth -= damageAmount;
+       healthBar.UpdateHBar(currentEnemyHealth, enemyMaxHealth);
+       EnemyVisualDamageTaken();
+       
+       if (enemyPS != null)       
+           enemyPS.Play();
+       if (currentEnemyHealth <= 0)
+           EnemyDie();      
     }
     void EnemyDie()
     {
