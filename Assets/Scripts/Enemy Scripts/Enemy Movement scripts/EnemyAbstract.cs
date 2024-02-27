@@ -53,16 +53,19 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
 
     public void EnemyGetComponents()
     {
-        currentEnemyHealth = enemyMaxHealth;
+        SetSteeringOrigins();
+
         player = GameObject.Find("Player");
+        player.GetComponent<PlayerController>();
+
         spriteRenderer = GetComponent<SpriteRenderer>();
         enemyPS = GetComponentInChildren<ParticleSystem>();
         healthBar = GetComponentInChildren<HPBar>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         enemyRb = GetComponent<Rigidbody2D>();
+
         enemyDefaultMovementSpeed = navMeshAgent.speed;
-        SetSteeringOrigins();
-        player.GetComponent<PlayerController>();
+        currentEnemyHealth = enemyMaxHealth;
 
 
     }
