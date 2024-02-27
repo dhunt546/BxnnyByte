@@ -50,8 +50,11 @@ public class ObjectHealth : MonoBehaviour, IDamageable
 
     public virtual void ObjectTakeVisualDamage()
     {
-        StartCoroutine(ShakeSprite(transform));
-        StartCoroutine(ObjectFlashDamage(objectSpriteRenderer));
+        if (objectSpriteRenderer != null)
+        {
+            StartCoroutine(ShakeSprite(transform));
+            StartCoroutine(ObjectFlashDamage(objectSpriteRenderer));
+        }
     }
 
 

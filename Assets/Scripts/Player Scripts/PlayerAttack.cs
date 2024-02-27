@@ -47,7 +47,7 @@ public class PlayerAttack : MonoBehaviour
     //Cooldown times
     private float basicCooldown = 0.6f;
     private float powerCooldown = 10.0f;
-    private float dodgeCooldown = 2.0f;
+    //private float dodgeCooldown = 2.0f;
 
     public string TypeOfAttack;
     void Awake()
