@@ -5,9 +5,26 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour        //Edited by Devin Hunt.
 {
+    int currentSceneIndex;
+    int previousSceneIndex;
+
+    private void Start()
+    {
+
+        currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+    }
+
+    private void Update()
+    {
+        if (currentSceneIndex != SceneManager.GetActiveScene().buildIndex)
+        {
+            previousSceneIndex = currentSceneIndex;
+            currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        }
+    }
+
     public void RestartLevel()
     {
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentSceneIndex);
     }
 
@@ -24,5 +41,10 @@ public class SceneLoader : MonoBehaviour        //Edited by Devin Hunt.
     public void LoadGameOver()
     {
         SceneManager.LoadScene(4);
+    }
+
+    public void LoadPreviousScene()
+    {
+        SceneManager.LoadScene(previousSceneIndex);
     }
 }

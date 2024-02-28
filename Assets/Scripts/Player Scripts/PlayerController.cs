@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
         playerStats.playerHealth = maxHealth;
         UpdateHealthBar();
 
-        sceneLoader = GetComponentInChildren<SceneLoader>();
+        sceneLoader = FindObjectOfType<SceneLoader>();
     }
 
     void Update()
@@ -86,13 +86,19 @@ public class PlayerController : MonoBehaviour
         moveSpeed = normalSpeed;
     }
 
-    
+
     public void PlayerDead()
     {
         isPlayerDead = true;
 
-        sceneLoader.LoadGameOver();
-        
+        if (sceneLoader != null)
+        {
+            sceneLoader.LoadGameOver();
+        }
+        else
+        {
+            Debug.LogError("SceneLoader not found");
+        }
     }
     // Function to reduce health
     public void TakeDamage(float damageAmount)
