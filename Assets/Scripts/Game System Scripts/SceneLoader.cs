@@ -20,4 +20,9 @@ public class SceneLoader : MonoBehaviour        //Edited by Devin Hunt.
     {
         SceneManager.LoadScene(1);
     }
+
+    public void LoadGameOver()
+    {
+        SceneManager.LoadScene(4);
+    }
 }

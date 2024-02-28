@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour
     public Slider healthSlider;
     public float maxHealth = 100f;
 
+    SceneLoader sceneLoader;
+
     //public int PlayerHealth = 5;
     private void Start()
     {
@@ -32,6 +34,8 @@ public class PlayerController : MonoBehaviour
 
         playerStats.playerHealth = maxHealth;
         UpdateHealthBar();
+
+        sceneLoader = GetComponentInChildren<SceneLoader>();
     }
 
     void Update()
@@ -82,26 +86,30 @@ public class PlayerController : MonoBehaviour
         moveSpeed = normalSpeed;
     }
 
+    
     public void PlayerDead()
     {
         isPlayerDead = true;
+
+        sceneLoader.LoadGameOver();
+        
     }
     // Function to reduce health
     public void TakeDamage(float damageAmount)
     {
         Debug.Log("Taking damage");
         StartCoroutine(animator.OnHit());
+        playerStats.playerHealth -= damageAmount; // Subtract damage before updating health bar
         playerStats.playerHealth = Mathf.Clamp(playerStats.playerHealth, 0f, maxHealth); // Ensure health doesn't go below 0 or above maxHealth
         UpdateHealthBar();
-        playerStats.playerHealth -= damageAmount;
-        //PROBLEM: 
 
         // Check if the player is dead (health is 0)
-        if (playerStats.playerHealth == 0f)
+        if (playerStats.playerHealth <= 0f) // Use less than or equal to, just in case health goes below 0
         {
             PlayerDead();
         }
     }
+
 
     public void UpdateHealthBar()
     {

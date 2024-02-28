@@ -500,8 +500,11 @@ public class EnemyAbstract: MonoBehaviour, IDamageable
 
                 navMeshAgent.SetDestination(PlayerDirection);
 
-                player.GetComponent<PlayerController>().TakeDamage(enemyDamageAmount);
-
+                if (player !=null)
+                {
+                    player.GetComponent<PlayerController>().TakeDamage(enemyDamageAmount);
+                }
+                
                 yield return new WaitForSeconds(0.4f);
                 StartCoroutine(AttackEnemyCooldown());
                 
