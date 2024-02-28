@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 5110570242111286812}
   - component: {fileID: 6841135404817092913}
   - component: {fileID: 402326305321373252}
-  - component: {fileID: 8831639735421480694}
   m_Layer: 5
   m_Name: button
   m_TagString: Untagged
@@ -139,7 +138,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8831639735421480694}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
         m_MethodName: LoadNewScene
         m_Mode: 5
@@ -151,15 +150,3 @@ MonoBehaviour:
           m_StringArgument: Tutorial
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &8831639735421480694
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6112245225584063388}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26639adeef50cee4aa596163e37cde44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
