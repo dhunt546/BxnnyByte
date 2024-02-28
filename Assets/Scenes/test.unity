@@ -24650,18 +24650,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4600279497946633765, guid: b5916771450dd7b42995df99aa899c59, type: 3}
-      propertyPath: newAcc
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 4600279497946633765, guid: b5916771450dd7b42995df99aa899c59, type: 3}
-      propertyPath: hitboxSize
-      value: 0.175
-      objectReference: {fileID: 0}
-    - target: {fileID: 4600279497946633765, guid: b5916771450dd7b42995df99aa899c59, type: 3}
-      propertyPath: HitboxCenter.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5803998214135954576, guid: b5916771450dd7b42995df99aa899c59, type: 3}
       propertyPath: m_Name
       value: Swarmer_Spider
@@ -44056,10 +44044,6 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3212740079404640009, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
-      propertyPath: attackRange
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3212740079404640009, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
       propertyPath: enemyDamageAmount
       value: 5
       objectReference: {fileID: 0}
@@ -44069,11 +44053,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4537870478123677205, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4537870478123677205, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8655144454707207289, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
       propertyPath: m_Name
@@ -44081,7 +44065,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8655144454707207289, guid: fce4f06bb01c5844baf3dcb0633b984d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
